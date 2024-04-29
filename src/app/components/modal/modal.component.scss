@@ -1,0 +1,25 @@
+.dialogContent {
+  padding: 20px;
+}
+
+.clickClose {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.video {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  max-width: 285px;
+  border-radius: 5px;
+}
+
+.buttonDetail {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
