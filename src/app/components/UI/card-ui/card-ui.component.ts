@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-ui',
   templateUrl: './card-ui.component.html',
-  styleUrls: ['./card-ui.component.scss']
+  styleUrls: ['./card-ui.component.css']
 })
 export class CardUIComponent {
-
+  @Input() cardStyle?: any;
 }

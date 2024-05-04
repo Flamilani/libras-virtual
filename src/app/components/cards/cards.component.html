@@ -1,0 +1,22 @@
+<div class="letter spaceBottom">
+  <div *ngIf="type === 'datilologia'">
+    <a [routerLink]="redirect" routerLinkActive="router-link-active">
+      <span class="fontLibrasA fontSizeA">
+          ABC
+      </span>
+  </a>
+  <span class="fontSizeB fontBack">
+      ABC
+  </span>
+  </div>
+  <div *ngIf="type === 'alfabeto'">
+    <a [routerLink]="redirect" routerLinkActive="router-link-active">
+      <span class="fontLibrasA fontSizeA fontBack">
+          ABC
+      </span>
+  </a>
+  <span class="fontSizeB">
+      ABC
+  </span>
+  </div>
+</div>

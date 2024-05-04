@@ -1,0 +1,15 @@
+.containerCard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 665px;
+  margin: 0 auto;
+}
+
+
+.containerCard h2 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}

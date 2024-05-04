@@ -1,0 +1,22 @@
+.menu {
+  margin: 10px;
+}
+
+.menu .dropMenu {
+  color: #28166f;
+}
+
+.btn-menu {
+  color: #28166f;
+  border: none;
+}
+
+.sizeIcon {
+  height: 35px;
+  width: 35px;
+}
+
+.menu a.menuSpc {
+  color: #28166f;
+  margin-right: 10px;
+}

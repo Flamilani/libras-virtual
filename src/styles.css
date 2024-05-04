@@ -1,0 +1,211 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap CSS file. */
+
+@font-face {
+  font-family: "Libras 2019";
+  src: url(./assets/fonts/Libras2019-Regular.ttf);
+}
+
+@font-face {
+  font-family: "LIBRAS PROF CLEBER COUTO";
+  src: url(./assets/fonts/Libras2013.ttf);
+}
+
+@font-face {
+  font-family: "Libras-2016";
+  src: url(./assets/fonts/Libras-2016.ttf);
+}
+
+@font-face {
+  font-family: "Libras Black 2020";
+  src: url(./assets/fonts/LibrasBlack2020-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #ededed;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  min-height: calc(100vh - 100px);
+}
+
+article {
+  margin: 10px;
+}
+
+@media only screen and (max-width: 667px) {
+ .sectionTop span {
+    font-size: 18px !important;
+   }
+}
+
+/* @media only screen and (max-width: 412px) {
+ article .sectionTop {
+    padding-left: 15px;
+}
+} */
+
+@media only screen and (max-width: 360px) {
+ article {
+    min-height: calc(100vh - 180px);
+}
+ main {
+    min-height: calc(100vh - 44px);
+ }
+ .footerHome {
+    margin-top: 20px !important;
+ }
+}
+
+.footerHome {
+ margin-top: 23px;
+}
+
+footer {
+  align-self: end;
+  grid-column: 2;
+}
+
+a {
+  color: #042e68;
+  text-decoration: none !important;
+  transition: 0.5s;
+}
+
+a:hover {
+  color: #003cff;
+  transition: 0.5s;
+  filter: brightness(80%);
+}
+
+a:active {
+  color: #003cff;
+}
+
+
+/* PAGES */
+
+.sectionTop {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.sectionTop span {
+  padding: 12px;
+  vertical-align: text-bottom;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.linkTop {
+  font-size: 30px;
+}
+
+.formControl {
+ padding: 4px;
+ border-radius: 6px;
+ font-size: 16px;
+}
+
+.formGroup {
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 22px;
+  padding: 5px;
+}
+
+.result {
+  font-size: 70px;
+  border: 2px solid #979797;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+  padding-top: 15px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.inputCamp {
+  border-radius: 8px;
+  border: 2px solid #979797;
+  padding: 10px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.link-button {
+ background-color: transparent;
+ border: none;
+ cursor: pointer;
+ display: inline;
+ margin: 0;
+ padding: 0;
+ color: #3f51b5;
+ font-weight: 900;
+}
+
+.link-button:hover {
+ text-decoration: underline;
+}
+
+.iconClose svg {
+ float: right;
+ border: 1px solid #ccc;
+ border-radius: 50%;
+ padding: 3px;
+ font-size: 25px;
+ color: #fff;
+ background-color: #888;
+}
+
+.btn-orange {
+ background-color: #003cff;
+ border: none;
+}
+
+.btn-orange:hover {
+ background-color: #003cff;
+}
+
+.btn:disabled {
+ background-color: #003cff !important;
+ border: none;
+}
+
+.fontLibrasA {
+  font-family: "Libras 2019";
+}
+
+.fontLibrasB {
+   font-family: "Libras-2016";
+   padding-top: 25px;
+}
+
+.fontLibrasC {
+  font-family: "LIBRAS PROF CLEBER COUTO";
+}
+
+.fontLibrasD {
+   font-family: "Libras Black 2020";
+}

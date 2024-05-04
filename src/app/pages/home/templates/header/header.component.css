@@ -1,13 +1,9 @@
 .header {
   display: flex;
   justify-content: left;
-  background-color: #042e68;
-  padding: 5px;
+  background-color: #7dd6ff;
+  padding: 10px;
   color: #fff;
-
-  .divHeader h1 {
-    font-size: 23px;
-  }
 
   .divHeader {
     width: 100%;
@@ -15,6 +11,10 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+
+    h1 {
+      font-size: 23px;
+    }
   }
 
   h1 span {
@@ -25,14 +25,9 @@
 
   .logo {
     width: 100%;
-    max-width: 160px;
+    max-width: 300px;
   }
 
-  .retrato {
-    width: 65px;
-    height: 100%;
-    margin-left: 15px;
-  }
 }
 
 @media only screen and (max-width: 360px) {
@@ -49,7 +44,4 @@
     width: 265px;
   }
 
-  .header .retrato {
-    width: 60px;
-  }
 }

@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const assets = '';
-const imagePath = '../assets/imgs/logo_icone.png';
+const imagePath = '../assets/imgs/logo.png';
 
 export const environment = {
   production: false,

@@ -4,31 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MenuComponent } from './components/menu/menu.component';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { ModalComponent } from './components/modal/modal.component';
-import { CardUIComponent } from './UI/card-ui/card-ui.component';
-import { FooterComponent } from './pages/home/templates/footer/footer.component';
-import { HeaderComponent } from './pages/home/templates/header/header.component';
-import { FingerspellingComponent } from './pages/fingerspelling/fingerspelling.component';
-import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeModule } from './pages/home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    BreadcrumbComponent,
-    ModalComponent,
-    CardUIComponent,
-    FooterComponent,
-    HeaderComponent,
-    HomeComponent,
-    FingerspellingComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule
+    HttpClientModule,
+    NgbModule,
+    HomeModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

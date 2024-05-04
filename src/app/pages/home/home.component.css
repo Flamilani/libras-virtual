@@ -1,0 +1,22 @@
+.cardHome {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 710px;
+  margin: 0 auto;
+}
+
+.cardHome h2 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 667px) {
+  .cardHome {
+      width: auto;
+      max-width: 365px;
+  }
+}
