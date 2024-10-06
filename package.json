@@ -24,7 +24,6 @@
     "bootstrap": "^5.3.3",
     "feather-icons": "^4.29.1",
     "jquery": "^3.7.1",
-    "ngx-bottom-sheet-modal": "^3.0.1",
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
