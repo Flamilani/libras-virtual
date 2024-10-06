@@ -1,30 +1,18 @@
-.containerCard {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 665px;
-  margin: 0 auto;
-}
-.containerCard h2 {
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 5;
-  margin-bottom: 5px;
-}
+
 .cardItem {
   display: block;
   margin: 10px;
   text-align: center;
 }
-.containerCard img {
+
+.cardItem img {
   border-radius: 10px;
   width: auto;
   height: 145px;
   border: 2px solid #3f51b5;
 }
 
-.containerCard .icon {
+.cardItem .icon {
   border-radius: 10px;
   width: auto;
   height: 130px;
@@ -35,7 +23,7 @@
   font-size: 40px;
 }
 
-.containerCard p {
+.cardItem p {
   width: 140px;
   display: block;
   text-align: center;

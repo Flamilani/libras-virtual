@@ -1,0 +1,81 @@
+.sectionTop {
+  max-width: 500px;
+}
+
+.sectionTop span {
+  padding: 12px;
+  vertical-align: super;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.linkTop {
+  font-size: 30px;
+}
+
+.subtitle {
+  font-size: 15px;
+  vertical-align: sub;
+  color: #888;
+}
+
+.formGroup {
+  margin-top: 0px;
+  padding: 0px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.inputCamp.name {
+  text-transform: uppercase;
+}
+
+.result.inicial {
+  font-size: 18px;
+  padding-top: 10px;
+  color: #707070;
+  cursor: default;
+}
+
+.btnDownload {
+  border: none;
+  background-color: #3f51b5;
+  color: #fff;
+  padding: 7px;
+  border-radius: 6px;
+  margin: 13px;
+  margin-left: 0px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btnDownload:hover {
+  background-color: #00bcd4;
+  color: #3f51b5;
+}
+
+.fonteOriginal {
+  font-size: 35px;
+  text-transform: capitalize;
+}
+
+.labelFontes {
+  display: flex;
+  justify-content: space-between;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  text-transform: none;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  text-transform: none;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  text-transform: none;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  text-transform: none;
+}
+::placeholder { /* Recent browsers */
+  text-transform: none;
+}

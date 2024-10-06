@@ -3,6 +3,7 @@ import { iInitials } from "../interfaces/initials.interface";
 const img01 = './../assets/imgs/datilologia.png';
 const img02 = './../assets/imgs/nomes.png';
 const img03 = './../assets/imgs/numeros.png';
+const img04 = './../assets/imgs/saudacoes.png';
 
 export const cINITIALS: iInitials[] = [
     {
@@ -24,6 +25,13 @@ export const cINITIALS: iInitials[] = [
     link: "/numeros",
     title: "Números",
     image: img03,
+    active: false
+  },
+  {
+    id: "4",
+    link: "/saudacoes",
+    title: "Saudações",
+    image: img04,
     active: true
   },
 ]

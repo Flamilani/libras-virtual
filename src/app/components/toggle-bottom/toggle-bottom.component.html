@@ -1,0 +1,22 @@
+<div *ngIf="showBottom">
+  <div class="offcanvas offcanvas-bottom" [id]="idBottom" tabindex="-1" *ngIf="isOpen">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close text-reset" aria-label="Close"
+      (click)="closeBottomSheet()"></button>
+    </div>
+    <div class="offcanvas-body small">
+      <p [ngClass]="[cardStyle, fontClass]" class="letter-modal">{{ content }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Este é o conteúdo do seu Offcanvas!</p>
+    <button class="btn btn-primary" (click)="closeOffcanvas()">Fechar Offcanvas</button>
+  </div>
+</div>

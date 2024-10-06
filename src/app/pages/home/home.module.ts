@@ -14,6 +14,12 @@ import { RouterModule } from '@angular/router';
 import { CardsComponent } from 'src/app/components/cards/cards.component';
 import { FingerspellingComponent } from './fingerspelling/fingerspelling.component';
 import { AlphabetComponent } from './alphabet/alphabet.component';
+import { LettersComponent } from 'src/app/components/letters/letters.component';
+import { ModalLetterComponent } from 'src/app/components/modal-letter/modal-letter.component';
+import { ToggleBottomComponent } from 'src/app/components/toggle-bottom/toggle-bottom.component';
+import { NamesComponent } from './names/names.component';
+import { GrettingComponent } from './gretting/gretting.component';
+import { CardsGrettingComponent } from 'src/app/components/cards-gretting/cards-gretting.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +27,17 @@ import { AlphabetComponent } from './alphabet/alphabet.component';
     BreadcrumbComponent,
     HeaderComponent,
     ModalComponent,
+    ModalLetterComponent,
+    ToggleBottomComponent,
     MenuComponent,
     InitialsComponent,
     CardsComponent,
     FingerspellingComponent,
-    AlphabetComponent
+    AlphabetComponent,
+    LettersComponent,
+    NamesComponent,
+    GrettingComponent,
+    CardsGrettingComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +49,9 @@ import { AlphabetComponent } from './alphabet/alphabet.component';
     RouterModule
   ],
   exports: [
-    CardsComponent
+    CardsComponent,
+    LettersComponent,
+    CardsGrettingComponent,
   ]
 })
 export class HomeModule { }

@@ -1,4 +1,6 @@
-export const Alphabet = [
+import { iAlphabet } from "../interfaces/alphabet.inteface";
+
+export const Alphabet: iAlphabet[] = [
    {
       id: "1",
       letter: "A"
@@ -58,7 +60,7 @@ export const Alphabet = [
    {
       id: "15",
       letter: "O"
-   },   
+   },
    {
       id: "16",
       letter: "P"

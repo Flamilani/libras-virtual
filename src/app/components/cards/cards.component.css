@@ -3,7 +3,7 @@
 }
 
 .letter {
-  display: flex;
+  display: ruby-text;
   justify-content: center;
  }
 
@@ -15,10 +15,16 @@
  }
 
  .letter .fontSizeA {
-  font-size: 48px;
-  margin-top: 20px;
-  padding-top: 8px;
+  font-size: 4rem;
+  padding-top: 10px;
  }
+
+ .letter .fontSizeB {
+  font-size: 3.2rem;
+  padding: 15px;
+  padding-bottom: 18px;
+  margin-left: 15px;
+}
 
  .letter .fontBack {
   background: #66e5f5;
@@ -26,9 +32,8 @@
   cursor: default;
  }
 
- .letter .fontSizeB {
-   font-size: 35px;
-   padding: 10px;
-   margin-left: 10px;
- }
 
+
+ .backWhite {
+  background-color: #fff;
+ }

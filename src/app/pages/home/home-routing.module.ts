@@ -4,6 +4,8 @@ import { HomeComponent } from "./home.component";
 import { InitialsComponent } from './initials/initials.component';
 import { AlphabetComponent } from "./alphabet/alphabet.component";
 import { FingerspellingComponent } from "./fingerspelling/fingerspelling.component";
+import { NamesComponent } from "./names/names.component";
+import { GrettingComponent } from "./gretting/gretting.component";
 
 const routes: Routes = [
   {
@@ -23,6 +25,12 @@ const routes: Routes = [
       },
       {
         path: 'alfabeto/:id', component: AlphabetComponent,
+      },
+      {
+        path: 'nomes', component: NamesComponent,
+      },
+      {
+        path: 'saudacoes', component: GrettingComponent,
       },
     ]
   }

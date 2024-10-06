@@ -1,15 +1,35 @@
 .containerCard {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   max-width: 665px;
   margin: 0 auto;
 }
 
-
 .containerCard h2 {
   font-weight: bold;
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: 5;
   margin-bottom: 5px;
+}
+
+.justifyContentStart {
+  justify-content: start;
+}
+
+.marginTop {
+  margin-top: 40px;
+}
+
+.centerCard {
+  justify-content: center;
+}
+
+@media only screen and (max-width: 667px) {
+  .containerCard {
+    width: auto;
+    max-width: 330px;
+    justify-content: flex-start;
+  }
 }

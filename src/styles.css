@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap CSS file. */
+@import '@angular/cdk/overlay-prebuilt.css';
 
 @font-face {
   font-family: "Libras 2019";
@@ -30,13 +31,16 @@
 
 html, body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #ededed;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+body.base-root {
+  background-color: #f1f1f1;
 }
 
 main {
@@ -87,13 +91,13 @@ a {
 }
 
 a:hover {
-  color: #003cff;
+  color: #66e5f5;
   transition: 0.5s;
   filter: brightness(80%);
 }
 
 a:active {
-  color: #003cff;
+  color: #3f51b5;
 }
 
 
@@ -208,4 +212,33 @@ a:active {
 
 .fontLibrasD {
    font-family: "Libras Black 2020";
+}
+
+/*  CDK Overlay Backdrop  */
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 1;
+}
+
+.overlay-backdrop {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.cdk-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.overlay-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
 }

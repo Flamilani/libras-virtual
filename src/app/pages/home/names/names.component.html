@@ -1,0 +1,26 @@
+<card-ui [cardStyle]="'containerCard justifyContentStart'">
+  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
+</card-ui>
+<content-ui [cardStyle]="'containerCard'">
+<div class="formGroup">
+    <label htmlFor="name">Seu nome</label>
+    <input
+        class="inputCamp name mb-3" type="text"
+        [(ngModel)]="nameInput"
+        placeholder='Digite seu nome aqui'
+        autoComplete="off"
+    />
+  <div class="groupNames">
+    <div class="labelFontes">
+    <label>Meu nome em Libras</label>
+    <component-select *ngIf="nameInput" (fontChange)="handleFontChange($event)"></component-select>
+  </div>
+    <p *ngIf="!nameInput" class="result inicial mt-2">
+      Após o nome digitado, seu nome em Libras aparece aqui
+    </p>
+      <p *ngIf="nameInput" [ngClass]="'mt-2 result' + ' ' + selectedFont">
+        {{ nameInput }}
+      </p>
+  </div>
+</div>
+</content-ui>

@@ -1,0 +1,27 @@
+.contentCard {
+  display: grid;
+  justify-content: center;
+}
+
+.contentCard h2 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 5;
+  margin-bottom: 5px;
+}
+
+.marginTop {
+  margin-top: 40px;
+}
+
+.centerCard {
+  justify-content: center;
+  text-align: center;
+}
+
+@media only screen and (max-width: 415px) {
+  .contentCard {
+    width: auto;
+    max-width: 390px;
+  }
+}

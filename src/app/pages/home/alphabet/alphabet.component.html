@@ -1,7 +1,10 @@
-<app-card-ui [cardStyle]="'containerCard'">
+<card-ui [cardStyle]="'containerCard justifyContentStart'">
   <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
-</app-card-ui>
-<div class="containerCard">
-<app-cards [type]="'alfabeto'" [redirect]="'/datilologia'"></app-cards>
-</div>
-
+</card-ui>
+<content-ui [cardStyle]="'contentCard centerCard'">
+  <app-cards [type]="'alfabeto'" [redirect]="'/datilologia'"></app-cards>
+  <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters'" [fontClass]="noFont"></app-letters>
+  <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
+    (previous)="previousLetter()" (next)="nextLetter()"
+    [cardStyle]="'letter-modal'" [fontClass]="''"></app-modal-letter>
+</content-ui>

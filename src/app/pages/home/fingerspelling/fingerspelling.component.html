@@ -1,14 +1,13 @@
-<app-card-ui [cardStyle]="'containerCard'">
+<card-ui [cardStyle]="'containerCard justifyContentStart'">
   <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
-</app-card-ui>
-<div class="containerCard">
-<app-cards [type]="'datilologia'" [redirect]="'/alfabeto'"></app-cards>
+</card-ui>
+<content-ui [cardStyle]="'contentCard centerCard'">
+  <app-cards [type]="'datilologia'" [redirect]="'/alfabeto'"></app-cards>
+    <component-select (fontChange)="handleFontChange($event)"></component-select>
+    <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters'" [fontClass]="selectedFont"></app-letters>
+    <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
+    (previous)="previousLetter()" (next)="nextLetter()"
+    [cardStyle]="'letter-modal'" [fontClass]="selectedFont"></app-modal-letter>
+  <app-toggle-bottom #bottomSheet [idBottom]="'offcanvasBottom'" [cardStyle]="'offcanvas offcanvas-bottom'" [fontClass]="selectedFont"></app-toggle-bottom>
+</content-ui>
 
-<div className="first-step-finger formGroup spaceBottom">
-  <select className="second-step-finger formControl optionFonts" [value]='1'>
-        <option [value]='1'>
-          teste
-        </option>
-    </select>
-</div>
-</div>

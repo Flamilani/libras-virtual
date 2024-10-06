@@ -1,0 +1,6 @@
+.cardGroup.greetingGroup {
+  margin-top: 10px;
+  display: flex;
+  max-width: 680px;
+  width: 100%;
+}

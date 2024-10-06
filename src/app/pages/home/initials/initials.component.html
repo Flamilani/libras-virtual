@@ -1,7 +1,4 @@
-<app-card-ui [cardStyle]="'containerCard'">
-  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
-</app-card-ui>
-<div class="containerCard centerCard">
+<card-ui [cardStyle]="'containerCard marginTop'">
   <div *ngFor="let initial of initials">
     <div class="cardItem" *ngIf="initial.active === true">
       <a [routerLink]="['/' + initial.link]">
@@ -10,4 +7,4 @@
       </a>
     </div>
   </div>
-</div>
+</card-ui>

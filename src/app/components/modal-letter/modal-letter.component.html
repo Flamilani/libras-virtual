@@ -1,0 +1,23 @@
+<div *ngIf="showModal">
+  <div class="modal-backdrop-ps" *ngIf="isOpen" (click)="closeOnBackdropClick($event)">
+    <div class="modal-ps" (click)="$event.stopPropagation()">
+      <div class="modal-header-ps">
+        <button class="close-btn-ps" (click)="close()">X</button>
+      </div>
+      <div class="modal-body-ps">
+        <span [ngClass]="[cardStyle, fontClass]" class="letter-modal">{{ content }}</span>
+      </div>
+      <div class="modal-footer-ps">
+        <div class="navigation-buttons">
+          <button class="btn btn-link" *ngIf="!isFirstLetter" (click)="previousLetter()">
+            <i-feather name="arrow-left" class="sizeIconArrow"></i-feather>
+          </button>
+          <button class="btn btn-link" *ngIf="!isLastLetter" (click)="nextLetter()">
+            <i-feather name="arrow-right" class="sizeIconArrow"></i-feather>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
