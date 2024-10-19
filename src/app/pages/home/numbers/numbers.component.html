@@ -1,0 +1,44 @@
+<card-ui [cardStyle]="'containerCardNumbers justifyContentStart'">
+  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
+</card-ui>
+<div class="displayFlexNumbers">
+  <div class="font-buttons">
+    <button [disabled]="!displayedValue" class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+      <i-feather name="plus"></i-feather>
+    </button>
+    <button [disabled]="!displayedValue" class="btn btn-secondary btnFontSize me-5" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+      <i-feather name="minus"></i-feather>
+    </button>
+  </div>
+<component-select
+[disabled]="!displayedValue"
+(fontChange)="handleFontChange($event)"
+></component-select>
+</div>
+<content-ui [cardStyle]="'containerCardNumbers'">
+
+  <div class="container formGroup">
+    <input
+      [ngClass]="'inputNumber form-control text-center result ' + ' ' + selectedFont"
+      type="number"
+      [ngStyle]="{'font-size.px': fontSize}"
+      [(ngModel)]="displayedValue"
+      readonly
+    />
+    <div class="buttons">
+      <div *ngFor="let row of numbers" class="button-row">
+        <button
+          *ngFor="let num of row"
+          (click)="addNumber(num)"
+          class="btn btn-secondary btnNumbers"
+        >
+          {{ num }}
+        </button>
+      </div>
+      <div class="btnLast">
+        <button class="btn btn-secondary btnNumbers" (click)="addNumber('0')">0</button>
+        <button class="btn btn-light btnNumbers" (click)="clearInput()">C</button>
+      </div>
+    </div>
+  </div>
+</content-ui>

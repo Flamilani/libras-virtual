@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', redirectTo: 'iniciais'
+    path: '', pathMatch: 'full', redirectTo: 'webapp'
   },
   {
-    path: 'home', pathMatch: 'full', redirectTo: 'iniciais'
+    path: 'home', pathMatch: 'full', redirectTo: 'webapp'
   },
 ];
 

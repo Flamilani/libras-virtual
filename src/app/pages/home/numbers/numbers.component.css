@@ -1,0 +1,50 @@
+input.inputNumber {
+  padding: 0px;
+  margin-bottom: 10px;
+/*   height: 100%; */
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}
+
+.btnLast {
+  text-align: end;
+}
+
+.formGroup {
+  width: 100%;
+  background: #ccc;
+  border-radius: 15px;
+}
+
+.buttons {
+  margin: 0 auto;
+}
+
+.btnNumbers {
+  width: 75px;
+  height: 75px;
+  margin: 5px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.clear-button {
+  margin-top: 10px;
+}
+
+.containerCard .shared-component__select {
+  position: absolute;
+  top: 145px;
+}
+
+.font-buttons {
+  display: contents;
+}
+
+.displayFlexNumbers {
+  display: flex;
+  justify-content: center;
+}

@@ -12,6 +12,7 @@ export class FingerspellingComponent implements OnInit {
   @ViewChild('modal') modal!: ModalLetterComponent;
   @ViewChild('bottomSheet') bottomSheet!: ToggleBottomComponent;
 
+  showFonts = true;
   selectedLetter: string = '';
   alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -19,7 +20,7 @@ export class FingerspellingComponent implements OnInit {
 
   title: string = "Datilologia em Libras";
   styles: string = "sectionTop";
-  link: string = "/iniciais";
+  link: string = "/webapp";
 
   selectedFont!: string;
   letters!: any;

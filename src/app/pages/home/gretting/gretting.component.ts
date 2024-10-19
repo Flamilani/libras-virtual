@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class GrettingComponent {
   title: string = "Saudações em Libras";
   styles: string = "sectionTop";
-  link: string = "/iniciais";
+  link: string = "/webapp";
 
 }

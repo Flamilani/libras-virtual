@@ -1,8 +1,8 @@
 .shared-component__select {
-  float: right;
+  display: inline-block;
+  justify-content: flex-end;
 }
 
 .shared-component__select .form-select {
-  width: 125px;
   cursor: pointer;
 }

@@ -3,26 +3,24 @@
 }
 
 .letter {
-  display: ruby-text;
-  justify-content: center;
+  display: flex;
  }
 
  .letter span {
    display: block;
    background: #fff;
    border-radius: 10px;
-   padding: 5px;
+   padding-left: 8px;
+   padding-right: 8px;
  }
 
  .letter .fontSizeA {
-  font-size: 4rem;
-  padding-top: 10px;
+  font-size: 35px;
+  font-weight: 700;
  }
 
  .letter .fontSizeB {
-  font-size: 3.2rem;
-  padding: 15px;
-  padding-bottom: 18px;
+  font-size: 35px;
   margin-left: 15px;
 }
 

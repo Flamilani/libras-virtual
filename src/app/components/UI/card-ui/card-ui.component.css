@@ -1,6 +1,5 @@
 .containerCard {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   max-width: 665px;
@@ -24,6 +23,27 @@
 
 .centerCard {
   justify-content: center;
+}
+
+.containerCardNumbers {
+  display: flex;
+  width: 100%;
+  max-width: 435px;
+  margin: 0 auto;
+}
+
+.containerCardNames {
+  display: flex;
+  width: 100%;
+  max-width: 468px;
+  margin: 0 auto;
+}
+
+.containerCardFinger {
+  display: flex;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 667px) {

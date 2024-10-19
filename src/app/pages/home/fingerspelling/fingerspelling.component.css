@@ -1,0 +1,4 @@
+.displayFlexFinger {
+  display: flex;
+  justify-content: space-between;
+}

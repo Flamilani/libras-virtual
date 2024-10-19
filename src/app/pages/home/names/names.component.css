@@ -19,11 +19,15 @@
   color: #888;
 }
 
-.formGroup {
+.formGroupName {
   margin-top: 0px;
   padding: 0px;
   max-width: 450px;
   width: 100%;
+}
+
+.formGroupName label {
+  font-size: 20px;
 }
 
 .inputCamp.name {

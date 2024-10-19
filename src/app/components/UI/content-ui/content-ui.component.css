@@ -19,6 +19,11 @@
   text-align: center;
 }
 
+.containerCardNumbers {
+  margin: 0 auto;
+  width: 280px;
+}
+
 @media only screen and (max-width: 415px) {
   .contentCard {
     width: auto;

@@ -192,11 +192,6 @@ a:active {
  background-color: #003cff;
 }
 
-.btn:disabled {
- background-color: #003cff !important;
- border: none;
-}
-
 .fontLibrasA {
   font-family: "Libras 2019";
 }

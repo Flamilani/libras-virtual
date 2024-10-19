@@ -12,7 +12,7 @@ export class AlphabetComponent {
 
   title: string = 'Alfabeto em Português';
   styles: string = 'sectionTop';
-  link: string = '/iniciais';
+  link: string = '/webapp';
   noFont = '';
 
   alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');

@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SelectComponent {
   selectedFont = 'fontLibrasA'; // valor padrão
+  @Input() disabled = true;
   @Output() fontChange = new EventEmitter<string>();
 
   onFontChange() {

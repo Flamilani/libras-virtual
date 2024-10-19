@@ -6,13 +6,14 @@ import { AlphabetComponent } from "./alphabet/alphabet.component";
 import { FingerspellingComponent } from "./fingerspelling/fingerspelling.component";
 import { NamesComponent } from "./names/names.component";
 import { GrettingComponent } from "./gretting/gretting.component";
+import { NumbersComponent } from "./numbers/numbers.component";
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
       {
-        path: 'iniciais', component: InitialsComponent,
+        path: 'webapp', component: InitialsComponent,
       },
       {
         path: 'datilologia', component: FingerspellingComponent,
@@ -28,6 +29,9 @@ const routes: Routes = [
       },
       {
         path: 'nomes', component: NamesComponent,
+      },
+      {
+        path: 'numeros', component: NumbersComponent,
       },
       {
         path: 'saudacoes', component: GrettingComponent,

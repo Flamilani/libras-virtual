@@ -20,6 +20,8 @@ import { ToggleBottomComponent } from 'src/app/components/toggle-bottom/toggle-b
 import { NamesComponent } from './names/names.component';
 import { GrettingComponent } from './gretting/gretting.component';
 import { CardsGrettingComponent } from 'src/app/components/cards-gretting/cards-gretting.component';
+import { NumbersComponent } from './numbers/numbers.component';
+import { MapsComponent } from './maps/maps.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CardsGrettingComponent } from 'src/app/components/cards-gretting/cards-
     LettersComponent,
     NamesComponent,
     GrettingComponent,
-    CardsGrettingComponent
+    CardsGrettingComponent,
+    NumbersComponent,
+    MapsComponent
   ],
   imports: [
     CommonModule,

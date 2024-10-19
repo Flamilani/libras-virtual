@@ -1,9 +1,11 @@
-<card-ui [cardStyle]="'containerCard justifyContentStart'">
+<card-ui [cardStyle]="'containerCardFinger justifyContentStart'">
   <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
 </card-ui>
 <content-ui [cardStyle]="'contentCard centerCard'">
-  <app-cards [type]="'datilologia'" [redirect]="'/alfabeto'"></app-cards>
-    <component-select (fontChange)="handleFontChange($event)"></component-select>
+  <div class="displayFlexFinger">
+    <app-cards [type]="'datilologia'" [redirect]="'/alfabeto'"></app-cards>
+    <component-select [disabled]="!showFonts" (fontChange)="handleFontChange($event)"></component-select>
+  </div>
     <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters'" [fontClass]="selectedFont"></app-letters>
     <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
     (previous)="previousLetter()" (next)="nextLetter()"

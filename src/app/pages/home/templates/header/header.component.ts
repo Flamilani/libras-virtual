@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,4 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderComponent {
   logo = environment.imagePath;
+
+  constructor(public router: Router) {}
 }

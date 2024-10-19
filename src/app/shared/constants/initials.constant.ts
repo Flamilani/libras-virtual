@@ -25,7 +25,7 @@ export const cINITIALS: iInitials[] = [
     link: "/numeros",
     title: "Números",
     image: img03,
-    active: false
+    active: true
   },
   {
     id: "4",

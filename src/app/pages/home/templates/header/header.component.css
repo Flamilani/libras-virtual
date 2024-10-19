@@ -7,8 +7,8 @@
 }
 
 .divHeader {
-  width: 100%;
-  max-width: 690px;
+/*   width: 100%;
+  max-width: 690px; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NamesComponent implements OnInit {
   title: string = "Nome em Libras";
   styles: string = "sectionTop";
-  link: string = "/iniciais";
+  link: string = "/webapp";
   nameInput!: string;
   selectedFont!: string;
 
