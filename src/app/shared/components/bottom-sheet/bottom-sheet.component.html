@@ -1,0 +1,7 @@
+<div #overlay class="bottom-sheet-overlay" (click)="closeBottomSheet()"></div>
+<div #bottomSheet class="bottom-sheet">
+  <button class="closeButton" (click)="closeBottomSheet()">X</button>
+<!--   <app-cards-sheet [type]="'datilologia'"></app-cards-sheet> -->
+  <ng-content></ng-content>
+</div>
+

@@ -22,6 +22,8 @@ import { GrettingComponent } from './gretting/gretting.component';
 import { CardsGrettingComponent } from 'src/app/components/cards-gretting/cards-gretting.component';
 import { NumbersComponent } from './numbers/numbers.component';
 import { MapsComponent } from './maps/maps.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,6 @@ import { MapsComponent } from './maps/maps.component';
     ToggleBottomComponent,
     MenuComponent,
     InitialsComponent,
-    CardsComponent,
     FingerspellingComponent,
     AlphabetComponent,
     LettersComponent,
@@ -41,9 +42,12 @@ import { MapsComponent } from './maps/maps.component';
     GrettingComponent,
     CardsGrettingComponent,
     NumbersComponent,
-    MapsComponent
+    MapsComponent,
+    CardsComponent
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     HomeRoutingModule,
     FormsModule,

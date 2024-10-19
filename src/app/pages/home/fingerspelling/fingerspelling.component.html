@@ -10,6 +10,10 @@
     <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
     (previous)="previousLetter()" (next)="nextLetter()"
     [cardStyle]="'letter-modal'" [fontClass]="selectedFont"></app-modal-letter>
-  <app-toggle-bottom #bottomSheet [idBottom]="'offcanvasBottom'" [cardStyle]="'offcanvas offcanvas-bottom'" [fontClass]="selectedFont"></app-toggle-bottom>
+    <component-bottom-sheet>
+      <p class="letterBottomSheet fontLibrasA">{{ selectedLetter }}</p>
+    </component-bottom-sheet>
 </content-ui>
+
+
 

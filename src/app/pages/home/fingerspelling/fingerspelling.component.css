@@ -2,3 +2,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.letterBottomSheet {
+  font-size: 25rem;
+  height: 100%;
+}
