@@ -2,7 +2,7 @@
   background: #fff;
   border: 2px solid #979797;
   border-radius: 10px;
-  font-size: 70px;
+  font-size: 60px;
   padding: 15px;
   text-align: center;
   word-break: break-word;
@@ -16,7 +16,8 @@
 .resultLetter.cardLetters {
   max-width: 500px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .resultLetter a {
@@ -24,3 +25,6 @@
   cursor: pointer;
 }
 
+.resultLetter.fingerLetters {
+  font-size: 70px;
+}

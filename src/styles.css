@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap CSS file. */
-@import '@angular/cdk/overlay-prebuilt.css';
+@import "@angular/cdk/overlay-prebuilt.css";
 
 @font-face {
   font-family: "Libras 2019";
@@ -29,8 +29,10 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+html,
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 body {
@@ -52,9 +54,9 @@ article {
 }
 
 @media only screen and (max-width: 667px) {
- .sectionTop span {
+  .sectionTop span {
     font-size: 18px !important;
-   }
+  }
 }
 
 /* @media only screen and (max-width: 412px) {
@@ -64,19 +66,19 @@ article {
 } */
 
 @media only screen and (max-width: 360px) {
- article {
+  article {
     min-height: calc(100vh - 180px);
-}
- main {
+  }
+  main {
     min-height: calc(100vh - 44px);
- }
- .footerHome {
+  }
+  .footerHome {
     margin-top: 20px !important;
- }
+  }
 }
 
 .footerHome {
- margin-top: 23px;
+  margin-top: 23px;
 }
 
 footer {
@@ -100,7 +102,6 @@ a:active {
   color: #3f51b5;
 }
 
-
 /* PAGES */
 
 .sectionTop {
@@ -122,9 +123,9 @@ a:active {
 }
 
 .formControl {
- padding: 4px;
- border-radius: 6px;
- font-size: 16px;
+  padding: 4px;
+  border-radius: 6px;
+  font-size: 16px;
 }
 
 .formGroup {
@@ -159,37 +160,37 @@ a:active {
 }
 
 .link-button {
- background-color: transparent;
- border: none;
- cursor: pointer;
- display: inline;
- margin: 0;
- padding: 0;
- color: #3f51b5;
- font-weight: 900;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  color: #3f51b5;
+  font-weight: 900;
 }
 
 .link-button:hover {
- text-decoration: underline;
+  text-decoration: underline;
 }
 
 .iconClose svg {
- float: right;
- border: 1px solid #ccc;
- border-radius: 50%;
- padding: 3px;
- font-size: 25px;
- color: #fff;
- background-color: #888;
+  float: right;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 3px;
+  font-size: 25px;
+  color: #fff;
+  background-color: #888;
 }
 
 .btn-orange {
- background-color: #003cff;
- border: none;
+  background-color: #003cff;
+  border: none;
 }
 
 .btn-orange:hover {
- background-color: #003cff;
+  background-color: #003cff;
 }
 
 .fontLibrasA {
@@ -197,16 +198,23 @@ a:active {
 }
 
 .fontLibrasB {
-   font-family: "Libras-2016";
-   padding-top: 25px;
+  font-family: "Libras-2016";
+  padding-top: 25px;
 }
 
 .fontLibrasC {
   font-family: "LIBRAS PROF CLEBER COUTO";
+  padding-top: 25px;
+}
+
+.fontLibrasC2 {
+  font-family: "LIBRAS PROF CLEBER COUTO";
+  padding-top: 40px;
+  font-size: 15rem !important;
 }
 
 .fontLibrasD {
-   font-family: "Libras Black 2020";
+  font-family: "Libras Black 2020";
 }
 
 /*  CDK Overlay Backdrop  */
@@ -216,7 +224,7 @@ a:active {
 }
 
 .overlay-backdrop {
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .cdk-overlay-backdrop {

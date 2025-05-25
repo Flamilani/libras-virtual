@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { cINITIALS } from '../constants/initials.constant';
-import { Alphabet } from '../constants/alphabet.constant';
+import { Alphabet, Consonants, Vowels } from '../constants/alphabet.constant';
 import { BehaviorSubject } from 'rxjs';
 import { cGrettings } from '../constants/grettings.constant';
 
@@ -24,6 +24,20 @@ export class DatasService {
 
   getLetters() {
     return this.listLetters;
+  }
+
+    setLetters(type: string) {
+    switch (type) {
+      case 'vowels':
+        this.listLetters = Vowels;
+        break;
+      case 'consonants':
+        this.listLetters = Consonants;
+        break;
+      default:
+        this.listLetters = Alphabet;
+        break;
+    }
   }
 
   setSelectedLetter(letter: string) {

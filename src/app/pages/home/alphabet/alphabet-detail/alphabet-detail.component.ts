@@ -1,63 +1,78 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ModalLetterComponent } from 'src/app/shared/components/modal-letter/modal-letter.component';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-alphabet',
-  templateUrl: './alphabet.component.html',
-  styleUrls: ['./alphabet.component.css'],
+  selector: 'app-alphabet-detail',
+  templateUrl: './alphabet-detail.component.html',
+  styleUrls: ['./alphabet-detail.component.css'],
 })
-export class AlphabetComponent implements OnInit {
-  @ViewChild('modal') modal!: ModalLetterComponent;
-  selectedLetter: string = '';
-
+export class AlphabetDetailComponent implements OnInit {
   title: string = 'Alfabeto em Português';
   styles: string = 'sectionTop';
-  link: string = '/webapp';
-  noFont = '';
-
+  link: string = '/alfabeto';
+  selectedLetter: string = '';
   alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
   vowels: string[] = 'aeiou'.split('');
   consonants: string[] = 'bcdfghjklmnpqrstvwxyz'.split('');
+  type: string = '';
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.selectedLetter = params.get('id')?.toString() ?? '';
       if (this.selectedLetter) {
-        this.router.navigate(['/alfabeto', this.selectedLetter.toLocaleLowerCase()]);
-      //   this.modal.content = this.selectedLetter;
-       // this.modal.open();
+        //   this.modal.content = this.selectedLetter;
+        // this.modal.open();
+        this.router.navigate([this.link, this.selectedLetter]);
       }
+    });
+
+    this.route.queryParams.subscribe((params) => {
+      this.type = params['type'];
     });
   }
 
-  onLetterSelected(letter: string) {
-    this.selectedLetter = letter;
-    console.log(this.selectedLetter);
-    this.router.navigate(['/alfabeto', this.selectedLetter.toLocaleLowerCase()]);
-    //    this.modal.open();
-    // this.modal.content = this.selectedLetter;
+  get letter(): string {
+    return `/datilologia/${this.selectedLetter}`;
   }
 
-  updateModalContent() {
-    this.modal.content = this.selectedLetter;
+  /*  previousLetter() {
+    console.log(this.selectedLetter);
+    const index = this.alphabet.indexOf(this.selectedLetter);
+    if (index > 0) {
+      this.selectedLetter = this.alphabet[index - 1];
+      this.router.navigate([
+        this.link,
+        this.selectedLetter.toLocaleLowerCase(),
+      ]);
+    }
   }
+
+  nextLetter() {
+    const index = this.alphabet.indexOf(this.selectedLetter);
+    if (index < this.alphabet.length - 1) {
+      this.selectedLetter = this.alphabet[index + 1];
+      this.router.navigate([
+        this.link,
+        this.selectedLetter.toLocaleLowerCase(),
+      ]);
+    }
+  }
+ */
 
   previousLetter() {
-    if (this.isVowel(this.selectedLetter)) {
+    if (this.type === 'vogal') {
       const index = this.vowels.indexOf(this.selectedLetter);
       if (index > 0) {
         this.selectedLetter = this.vowels[index - 1];
+        this.router.navigate([this.link], { queryParams: { type: this.type } });
       }
-    } else if (this.isConsonant(this.selectedLetter)) {
+    } else if (this.type === 'consoante') {
       const index = this.consonants.indexOf(this.selectedLetter);
       if (index > 0) {
         this.selectedLetter = this.consonants[index - 1];
+        this.router.navigate([this.link], { queryParams: { type: this.type } });
       }
     } else {
       const index = this.alphabet.indexOf(this.selectedLetter);
@@ -68,12 +83,12 @@ export class AlphabetComponent implements OnInit {
   }
 
   nextLetter() {
-    if (this.isVowel(this.selectedLetter)) {
+    if (this.type === 'vogal') {
       const index = this.vowels.indexOf(this.selectedLetter);
       if (index < this.vowels.length - 1) {
         this.selectedLetter = this.vowels[index + 1];
       }
-    } else if (this.isConsonant(this.selectedLetter)) {
+    } else if (this.type === 'consoante') {
       const index = this.consonants.indexOf(this.selectedLetter);
       if (index < this.consonants.length - 1) {
         this.selectedLetter = this.consonants[index + 1];
@@ -94,11 +109,11 @@ export class AlphabetComponent implements OnInit {
     return this.selectedLetter === 'z';
   }
 
-    isConsonant(letter: string): boolean {
+  isConsonant(letter: string): boolean {
     return this.consonants.includes(letter);
   }
 
-   isVowel(letter: string): boolean {
+  isVowel(letter: string): boolean {
     return this.vowels.includes(letter);
   }
 }

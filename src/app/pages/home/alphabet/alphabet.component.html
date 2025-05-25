@@ -3,8 +3,9 @@
 </card-ui>
 <content-ui [cardStyle]="'contentCard centerCard'">
   <app-cards [type]="'alfabeto'" [redirect]="'/datilologia'"></app-cards>
-  <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters'" [fontClass]="noFont"></app-letters>
-  <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
+  <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters'"
+    [fontClass]="noFont"></app-letters>
+  <!-- <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
     (previous)="previousLetter()" (next)="nextLetter()"
-    [cardStyle]="'letter-modal'" [fontClass]="''"></app-modal-letter>
+    [cardStyle]="'letter-modal'" [fontClass]="''"></app-modal-letter> -->
 </content-ui>

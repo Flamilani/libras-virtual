@@ -1,0 +1,18 @@
+<card-ui [cardStyle]="'containerCardFinger justifyContentStart'">
+  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
+</card-ui>
+<content-ui [cardStyle]="'contentCard centerCard'">
+  <app-cards [type]="'alfabeto'" [redirect]="letter"></app-cards>
+  <div class="resultLetter cardLetters">
+    {{ this.selectedLetter }}
+  </div>
+  <!--   <app-arrows [routerLink]="routerLink"></app-arrows> -->
+  <div class="navigation-buttons">
+    <button class="btn btn-link" *ngIf="!isFirstLetter()" (click)="previousLetter()">
+      <bi name="arrow-left" class="sizeIconArrow"></bi>
+    </button>
+    <button class="btn btn-link" *ngIf="!isLastLetter()" (click)="nextLetter()">
+      <bi name="arrow-right" class="sizeIconArrow"></bi>
+    </button>
+  </div>
+</content-ui>

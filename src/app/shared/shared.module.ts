@@ -7,10 +7,16 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { ContentUiComponent } from '../components/UI/content-ui/content-ui.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BottomSheetComponent } from './components/bottom-sheet/bottom-sheet.component';
-import { CardsComponent } from '../components/cards/cards.component';
-import { HomeRoutingModule } from '../pages/home/home-routing.module';
-import { CardsSheetComponent } from '../components/cards-sheet/cards-sheet.component';
-
+import { CardsComponent } from './components/cards/cards.component';
+import { CardsSheetComponent } from './components/cards-sheet/cards-sheet.component';
+import { ArrowsComponent } from './components/arrows/arrows.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { CardsGrettingComponent } from './components/cards-gretting/cards-gretting.component';
+import { LettersComponent } from './components/letters/letters.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalLetterComponent } from './components/modal-letter/modal-letter.component';
+import { ToggleBottomComponent } from './components/toggle-bottom/toggle-bottom.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,13 +24,22 @@ import { CardsSheetComponent } from '../components/cards-sheet/cards-sheet.compo
     ContentUiComponent,
     SelectComponent,
     BottomSheetComponent,
-    CardsSheetComponent
+    CardsSheetComponent,
+    ArrowsComponent,
+    BreadcrumbComponent,
+    CardsComponent,
+    CardsGrettingComponent,
+    LettersComponent,
+    ModalComponent,
+    ModalLetterComponent,
+    ToggleBottomComponent
   ],
   imports: [
     CommonModule,
     IconsModule,
     OverlayModule,
     ReactiveFormsModule,
+    RouterModule,
     FormsModule,
   ],
   exports: [
@@ -32,11 +47,20 @@ import { CardsSheetComponent } from '../components/cards-sheet/cards-sheet.compo
     OverlayModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     CardUIComponent,
     ContentUiComponent,
     SelectComponent,
     BottomSheetComponent,
-    CardsSheetComponent
+    CardsSheetComponent,
+    ArrowsComponent,
+    BreadcrumbComponent,
+    CardsComponent,
+    CardsGrettingComponent,
+    LettersComponent,
+    ModalComponent,
+    ModalLetterComponent,
+    ToggleBottomComponent
   ]
 })
 export class SharedModule { }

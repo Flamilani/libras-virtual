@@ -1,0 +1,21 @@
+<card-ui [cardStyle]="'containerCardFinger justifyContentStart'">
+  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
+</card-ui>
+<content-ui [cardStyle]="'contentCard centerCard'">
+  <div class="displayFlexFinger">
+    <app-cards [type]="'datilologia'" [redirect]="letter"></app-cards>
+    <component-select [disabled]="!showFonts" (fontChange)="handleFontChange($event)"></component-select>
+  </div>
+  <div class="resultLetter cardLetters" [ngClass]="selectedFont">
+    {{ this.selectedLetter }}
+  </div>
+<!--     <app-arrows [routerLink]="letterArrow"></app-arrows> -->
+  <div class="navigation-buttons">
+    <button class="btn btn-link" *ngIf="!isFirstLetter()" (click)="previousLetter()">
+      <bi name="arrow-left" class="sizeIconArrow"></bi>
+    </button>
+    <button class="btn btn-link" *ngIf="!isLastLetter()" (click)="nextLetter()">
+      <bi name="arrow-right" class="sizeIconArrow"></bi>
+    </button>
+  </div>
+</content-ui>

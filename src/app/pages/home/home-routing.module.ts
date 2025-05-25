@@ -7,6 +7,8 @@ import { FingerspellingComponent } from "./fingerspelling/fingerspelling.compone
 import { NamesComponent } from "./names/names.component";
 import { GrettingComponent } from "./gretting/gretting.component";
 import { NumbersComponent } from "./numbers/numbers.component";
+import { AlphabetDetailComponent } from "./alphabet/alphabet-detail/alphabet-detail.component";
+import { FingerspellingDetailComponent } from "./fingerspelling/fingerspelling-detail/fingerspelling-detail.component";
 
 const routes: Routes = [
   {
@@ -19,13 +21,13 @@ const routes: Routes = [
         path: 'datilologia', component: FingerspellingComponent,
       },
       {
-        path: 'datilologia/:id', component: FingerspellingComponent,
+        path: 'datilologia/:id', component: FingerspellingDetailComponent,
       },
       {
         path: 'alfabeto', component: AlphabetComponent,
       },
       {
-        path: 'alfabeto/:id', component: AlphabetComponent,
+        path: 'alfabeto/:id', component: AlphabetDetailComponent,
       },
       {
         path: 'nomes', component: NamesComponent,

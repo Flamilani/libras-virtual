@@ -1,26 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FeatherModule } from 'angular-feather';
-import { Menu, ArrowLeft, ArrowLeftCircle, ArrowRight, ArrowRightCircle, Plus, Minus } from 'angular-feather/icons';
-
-const icons = {
-  Menu,
-  ArrowLeft,
-  ArrowLeftCircle,
-  ArrowRight,
-  ArrowRightCircle,
-  Plus,
-  Minus
-};
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { allIcons } from 'ng-bootstrap-icons/icons';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    FeatherModule.pick(icons)
+    BootstrapIconsModule.pick(allIcons)
   ],
   exports: [
-    FeatherModule
+    BootstrapIconsModule
   ]
 })
 export class IconsModule { }

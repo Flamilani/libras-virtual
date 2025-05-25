@@ -1,6 +1,13 @@
-import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { ModalLetterComponent } from 'src/app/components/modal-letter/modal-letter.component';
-import { ToggleBottomComponent } from 'src/app/components/toggle-bottom/toggle-bottom.component';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModalLetterComponent } from 'src/app/shared/components/modal-letter/modal-letter.component';
+import { ToggleBottomComponent } from 'src/app/shared/components/toggle-bottom/toggle-bottom.component';
 import { BottomSheetService } from 'src/app/shared/services/bottom-sheet.service';
 import { DatasService } from 'src/app/shared/services/datas.service';
 
@@ -15,7 +22,7 @@ export class FingerspellingComponent implements OnInit {
 
   showFonts = true;
   selectedLetter: string = '';
-  alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
   isOpen: boolean = true;
 
@@ -29,7 +36,9 @@ export class FingerspellingComponent implements OnInit {
 
   constructor(
     private datasService: DatasService,
-    private bottomSheetService: BottomSheetService
+    private bottomSheetService: BottomSheetService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.checkIfMobile();
   }
@@ -42,6 +51,13 @@ export class FingerspellingComponent implements OnInit {
   ngOnInit() {
     this.selectedFont = 'fontLibrasA';
     this.letters = this.datasService.getLetters();
+
+    this.route.paramMap.subscribe((params) => {
+      this.selectedLetter = params.get('id')?.toString() ?? '';
+      if (this.selectedLetter) {
+        this.router.navigate(['/datilologia', this.selectedLetter.toLocaleLowerCase()]);
+      }
+    });
   }
 
   handleFontChange(newFont: string) {
@@ -54,14 +70,17 @@ export class FingerspellingComponent implements OnInit {
 
   onLetterSelected(letter: string) {
     this.selectedLetter = letter;
-
-    if (this.isMobile) {
+    this.router.navigate([
+      '/datilologia',
+      this.selectedLetter.toLocaleLowerCase(),
+    ]);
+    /*     if (this.isMobile) {
       this.bottomSheetService.open();
     } else {
       this.modal.content = this.selectedLetter;
       this.updateModalContent();
       this.modal.open();
-    }
+    } */
   }
 
   updateModalContent() {
@@ -72,7 +91,7 @@ export class FingerspellingComponent implements OnInit {
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index > 0) {
       this.selectedLetter = this.alphabet[index - 1];
-      this.updateModalContent();
+    //  this.updateModalContent();
     }
   }
 
@@ -81,16 +100,16 @@ export class FingerspellingComponent implements OnInit {
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index < this.alphabet.length - 1) {
       this.selectedLetter = this.alphabet[index + 1];
-      this.updateModalContent();
+  //    this.updateModalContent();
     }
   }
 
   isFirstLetter(): boolean {
-    return this.selectedLetter === 'A';
+    return this.selectedLetter === 'a';
   }
 
   isLastLetter(): boolean {
-    return this.selectedLetter === 'Z';
+    return this.selectedLetter === 'z';
   }
 
   checkIfMobile() {

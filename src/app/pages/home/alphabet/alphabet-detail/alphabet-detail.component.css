@@ -1,0 +1,32 @@
+.resultLetter {
+  background: #fff;
+  border: 2px solid #979797;
+  border-radius: 10px;
+  font-size: 15rem;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  line-height: 300px;
+}
+
+.resultLetter span {
+  padding: 6px;
+}
+
+.resultLetter.cardLetters {
+  max-width: 500px;
+  width: 100%;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.resultLetter a {
+  color: #3f51b5;
+  cursor: pointer;
+}
+
+.sizeIconArrow {
+  height: 50px;
+  width: 50px;
+}
