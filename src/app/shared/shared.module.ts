@@ -17,6 +17,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ModalLetterComponent } from './components/modal-letter/modal-letter.component';
 import { ToggleBottomComponent } from './components/toggle-bottom/toggle-bottom.component';
 import { RouterModule } from '@angular/router';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RouterModule } from '@angular/router';
     LettersComponent,
     ModalComponent,
     ModalLetterComponent,
-    ToggleBottomComponent
+    ToggleBottomComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ import { RouterModule } from '@angular/router';
     LettersComponent,
     ModalComponent,
     ModalLetterComponent,
-    ToggleBottomComponent
+    ToggleBottomComponent,
+    MenuComponent
   ]
 })
 export class SharedModule { }
