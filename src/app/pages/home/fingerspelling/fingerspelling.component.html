@@ -5,7 +5,7 @@
   <div class="displayFlexFinger">
     <app-cards [type]="'datilologia'" [redirect]="'/alfabeto'"></app-cards>
     <component-select [disabled]="!showFonts" (fontChange)="handleFontChange($event)"></component-select>
-  </div>
+   </div>
     <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters fingerLetters'" [fontClass]="selectedFont"></app-letters>
 <!--     <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
     (previous)="previousLetter()" (next)="nextLetter()"

@@ -10,6 +10,8 @@ import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { CustomRouteReuseStrategy } from './shared/helpers/custom-route';
+import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule,
     HomeModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -31,7 +32,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [],
+providers: [
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

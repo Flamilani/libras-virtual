@@ -23,6 +23,11 @@
   src: url(./assets/fonts/LibrasBlack2020-Regular.ttf);
 }
 
+@font-face {
+  font-family: "Libras_Kidimais01";
+  src: url(./assets/fonts/libras_kidimais01.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +51,7 @@ body.base-root {
 }
 
 main {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 58px);
 }
 
 article {
@@ -68,9 +73,6 @@ article {
 @media only screen and (max-width: 360px) {
   article {
     min-height: calc(100vh - 180px);
-  }
-  main {
-    min-height: calc(100vh - 44px);
   }
   .footerHome {
     margin-top: 20px !important;
@@ -207,14 +209,12 @@ a:active {
   padding-top: 25px;
 }
 
-.fontLibrasC2 {
-  font-family: "LIBRAS PROF CLEBER COUTO";
-  padding-top: 40px;
-  font-size: 15rem !important;
-}
-
 .fontLibrasD {
   font-family: "Libras Black 2020";
+}
+
+.fontLibrasE {
+  font-family: "Libras_Kidimais01";
 }
 
 /*  CDK Overlay Backdrop  */

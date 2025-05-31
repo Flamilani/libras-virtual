@@ -1,16 +1,33 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Options } from '../../constants/options.constant';
+import { DatasService } from '../../services/datas.service';
 
 @Component({
   selector: 'component-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css']
 })
-export class SelectComponent {
+export class SelectComponent implements OnInit {
+
   selectedFont = 'fontLibrasA'; // valor padrão
   @Input() disabled = true;
   @Output() fontChange = new EventEmitter<string>();
 
+  fonts = this.datasService.getFonts();
+
+  constructor(private datasService: DatasService) {}
+
+  ngOnInit(): void {
+    this.fonts;
+  }
+
+  listOptions = Options;
+
   onFontChange() {
+    this.fontChange.emit(this.selectedFont); // emite o valor da fonte selecionada
+  }
+
+  listOptionsFonts() {
     this.fontChange.emit(this.selectedFont); // emite o valor da fonte selecionada
   }
 }

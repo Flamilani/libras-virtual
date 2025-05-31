@@ -7,3 +7,13 @@
   font-size: 25rem;
   height: 100%;
 }
+
+.selectFont {
+  margin-top: 15px;
+}
+
+.sizeIcon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}

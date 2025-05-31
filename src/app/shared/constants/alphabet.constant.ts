@@ -216,3 +216,123 @@ export const Consonants: iAlphabet[] = [
     letter: "Z"
   }
 ];
+
+export const AES: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "A"
+  },
+  {
+    id: "2",
+    letter: "E"
+  },
+  {
+    id: "3",
+    letter: "S"
+  },
+]
+
+export const MN: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "M"
+  },
+  {
+    id: "2",
+    letter: "N"
+  },
+]
+
+export const DI: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "D"
+  },
+  {
+    id: "2",
+    letter: "I"
+  },
+]
+
+export const FT: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "F"
+  },
+  {
+    id: "2",
+    letter: "T"
+  },
+]
+
+export const GQ: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "G"
+  },
+  {
+    id: "2",
+    letter: "Q"
+  },
+]
+
+export const HJKWXYZ: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "H"
+  },
+  {
+    id: "2",
+    letter: "J"
+  },
+  {
+    id: "3",
+    letter: "K"
+  },
+  {
+    id: "4",
+    letter: "W"
+  },
+  {
+    id: "5",
+    letter: "X"
+  },
+  {
+    id: "6",
+    letter: "Y"
+  },
+  {
+    id: "7",
+    letter: "Z"
+  },
+]
+
+export const HKP: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "H"
+  },
+  {
+    id: "2",
+    letter: "K"
+  },
+  {
+    id: "3",
+    letter: "P"
+  },
+]
+
+export const RUV: iAlphabet[] = [
+  {
+    id: "1",
+    letter: "R"
+  },
+  {
+    id: "2",
+    letter: "U"
+  },
+  {
+    id: "3",
+    letter: "V"
+  },
+]

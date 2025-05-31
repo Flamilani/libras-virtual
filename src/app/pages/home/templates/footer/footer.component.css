@@ -1,0 +1,28 @@
+footer {
+    text-align: center;
+    font-size: 12px;
+    border-top: 2px solid #b7b7b7;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+footer svg {
+    color: darkcyan;
+    font-size: 20px;
+    vertical-align: sub;
+    margin-right: 5px;
+}
+
+footer span {
+    display: inline-flex;
+    margin-top: 3px;
+}
+
+.sizeIcon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 7px;
+  margin-bottom: 5px;
+}

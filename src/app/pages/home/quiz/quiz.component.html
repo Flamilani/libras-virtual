@@ -1,0 +1,99 @@
+<card-ui [cardStyle]="'containerCardFinger justifyContentStart'">
+  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
+</card-ui>
+
+<div class="quiz-container">
+  <!-- Tela de seleção de categorias -->
+  <div *ngIf="!quizStarted && !quizFinished" class="category-selection">
+    <h2>Selecione as categorias:</h2>
+    <div class="categories-list">
+      <div *ngFor="let category of categories"
+           class="category-item"
+           [class.selected]="selectedCategories.includes(category)"
+           (click)="toggleCategory(category)">
+        {{category}}
+      </div>
+    </div>
+
+    <button (click)="startQuiz()" class="start-button" [disabled]="selectedCategories.length === 0">
+      Iniciar Quiz
+    </button>
+  </div>
+
+  <!-- Tela do quiz em andamento -->
+  <div *ngIf="quizStarted && !quizFinished" class="quiz-screen">
+    <div class="progress-container">
+      <div class="progress-bar" [style.width.%]="(currentQuestionIndex / questions.length) * 100"></div>
+    </div>
+
+    <div class="question-container">
+      <div class="category-label">{{questions[currentQuestionIndex].category}}</div>
+      <div class="question-text">{{questions[currentQuestionIndex].text}}</div>
+
+      <!-- Container do GIF (se existir) -->
+      <div *ngIf="questions[currentQuestionIndex].gifUrl" class="question-gif">
+        <img [src]="questions[currentQuestionIndex].gifUrl" alt="Ilustração da pergunta">
+      </div>
+
+      <!-- Opções de resposta com feedback -->
+      <div class="options-grid">
+        <button *ngFor="let option of questions[currentQuestionIndex].options; let i = index"
+                class="option-button"
+                [ngClass]="{
+                  'correct': showFeedback && i === correctAnswerIndex,
+                  'incorrect': showFeedback && selectedOption === i && !isAnswerCorrect,
+                  'selected': selectedOption === i
+                }"
+                (click)="answerQuestion(i)"
+                [disabled]="showFeedback">
+          <span class="option-number">{{i + 1}})</span> {{option}}
+          <span *ngIf="showFeedback && i === correctAnswerIndex" class="feedback-icon">✓</span>
+          <span *ngIf="showFeedback && selectedOption === i && !isAnswerCorrect" class="feedback-icon">✗</span>
+        </button>
+      </div>
+
+      <!-- Mensagem de feedback -->
+      <div *ngIf="showFeedback" class="feedback-message" [ngClass]="{'correct': isAnswerCorrect, 'incorrect': !isAnswerCorrect}">
+        {{ isAnswerCorrect ? 'Resposta Correta!' : 'Resposta Incorreta!' }}
+      </div>
+    </div>
+
+    <div class="progress-text">
+      Pergunta {{currentQuestionIndex + 1}} de {{questions.length}}
+    </div>
+  </div>
+
+  <!-- Tela de resultados -->
+  <div *ngIf="quizFinished" class="results-screen">
+    <h2>Resultados do Quiz</h2>
+
+    <div class="total-score">
+      <div class="score-display">
+        <span class="score-label">Pontuação Total:</span>
+        <span class="score-value">{{score}}/{{questions.length}}</span>
+      </div>
+      <div class="percentage-display">
+        <span class="percentage-label">Percentual:</span>
+        <span class="percentage-value">{{(score / questions.length * 100).toFixed(0)}}%</span>
+      </div>
+    </div>
+
+    <h3>Desempenho por Categoria:</h3>
+    <div class="category-results">
+      <div *ngFor="let result of categoryResults" class="category-result">
+        <div class="category-name">{{result.name}}</div>
+        <div class="result-details">
+          <span class="correct-answers">{{result.correct}}/{{result.total}}</span>
+          <span class="percentage">({{result.percentage}}%)</span>
+        </div>
+        <div class="result-bar-container">
+          <div class="result-bar" [style.width.%]="result.percentage"></div>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="resetQuiz()" class="restart-button">
+      Fazer Quiz Novamente
+    </button>
+  </div>
+</div>

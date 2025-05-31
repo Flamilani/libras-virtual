@@ -18,11 +18,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlphabetDetailComponent } from './alphabet/alphabet-detail/alphabet-detail.component';
 import { FingerspellingDetailComponent } from './fingerspelling/fingerspelling-detail/fingerspelling-detail.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { FooterComponent } from './templates/footer/footer.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
+    FooterComponent,
     InitialsComponent,
     FingerspellingComponent,
     AlphabetComponent,
@@ -32,6 +36,8 @@ import { FingerspellingDetailComponent } from './fingerspelling/fingerspelling-d
     MapsComponent,
     AlphabetDetailComponent,
     FingerspellingDetailComponent,
+    QuizComponent,
+    GlossaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,7 @@ import { FingerspellingDetailComponent } from './fingerspelling/fingerspelling-d
     IconsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule,
+    RouterModule
   ],
 })
 export class HomeModule {}

@@ -33,6 +33,8 @@ export class FingerspellingComponent implements OnInit {
   selectedFont!: string;
   letters!: any;
   isMobile!: boolean;
+  displayedValue: string = '';
+  fontSize: number = 100;
 
   constructor(
     private datasService: DatasService,
@@ -114,5 +116,17 @@ export class FingerspellingComponent implements OnInit {
 
   checkIfMobile() {
     this.isMobile = window.innerWidth <= 768;
+  }
+
+    increaseFontSize() {
+    this.fontSize += 20; // Aumenta o tamanho da fonte em 2 pixels
+  }
+
+  // Função para diminuir o tamanho da fonte
+  decreaseFontSize() {
+    if (this.fontSize > 80) {
+      // Limite mínimo de tamanho da fonte
+      this.fontSize -= 20; // Diminui o tamanho da fonte em 2 pixels
+    }
   }
 }

@@ -21,10 +21,26 @@
 }
 
 .resultLetter a {
-  color: #3f51b5;
+  color: #000;
   cursor: pointer;
 }
 
 .resultLetter.fingerLetters {
   font-size: 70px;
+}
+
+
+.selectFonts {
+  width: 160px;
+}
+
+.sizeIcon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.font-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
