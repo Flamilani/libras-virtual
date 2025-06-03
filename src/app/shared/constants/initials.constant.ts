@@ -5,6 +5,7 @@ const img02 = './../assets/imgs/nomes.png';
 const img03 = './../assets/imgs/numeros.png';
 const img04 = './../assets/imgs/saudacoes.png';
 const img05 = './../assets/imgs/quiz.png';
+const img06 = './../assets/imgs/expressoes-faciais.png';
 
 export const cINITIALS: iInitials[] = [
   {
@@ -40,6 +41,13 @@ export const cINITIALS: iInitials[] = [
     link: '/quiz',
     title: 'Quiz',
     image: img05,
+    active: true,
+  },
+  {
+    id: '6',
+    link: '/expressoes-faciais',
+    title: 'Expressões Faciais',
+    image: img06,
     active: true,
   },
 ];

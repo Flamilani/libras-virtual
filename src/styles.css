@@ -245,3 +245,16 @@ a:active {
   background-color: #fff;
   padding: 20px;
 }
+
+#video-container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}

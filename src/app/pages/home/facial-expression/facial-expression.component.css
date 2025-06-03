@@ -1,0 +1,13 @@
+.containerFacial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.expressions {
+    position: relative;
+    bottom: 56px;
+    background: #ccc;
+    padding: 5px;
+    border-radius: 10px;
+}

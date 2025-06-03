@@ -29,6 +29,7 @@
     "@ng-web-apis/speech": "^4.11.1",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.3.3",
+    "face-api.js": "^0.22.2",
     "jquery": "^3.7.1",
     "ng-bootstrap-icons": "^13.1.2-canary.1",
     "popper.js": "^1.16.1",

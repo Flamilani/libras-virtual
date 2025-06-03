@@ -21,6 +21,7 @@ import { FingerspellingDetailComponent } from './fingerspelling/fingerspelling-d
 import { QuizComponent } from './quiz/quiz.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { GlossaryComponent } from './glossary/glossary.component';
+import { FacialExpressionComponent } from './facial-expression/facial-expression.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { GlossaryComponent } from './glossary/glossary.component';
     FingerspellingDetailComponent,
     QuizComponent,
     GlossaryComponent,
+    FacialExpressionComponent,
   ],
   imports: [
     BrowserModule,

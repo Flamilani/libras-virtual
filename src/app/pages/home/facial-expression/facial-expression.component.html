@@ -1,0 +1,11 @@
+<card-ui [cardStyle]="'containerCardNumbers justifyContentStart'">
+  <app-breadcrumb title="Expressões faciais" link="/webapp"></app-breadcrumb>
+</card-ui>
+<div class="containerFacial">
+<div id="video-container">
+  <video id="video" width="640" height="480" autoplay muted></video>
+</div>
+  <h2 class="expressions" *ngIf="currentLabelPt">
+  Expressão: {{ currentLabelPt }} {{ currentEmoji }}
+</h2>
+</div>
