@@ -1,4 +1,4 @@
-<card-ui [cardStyle]="'containerCard marginTop'">
+<card-ui [cardStyle]="'containerCard'">
   <div *ngFor="let initial of initials">
     <div class="cardItem" *ngIf="initial.active === true">
       <a [routerLink]="['/' + initial.link]">
