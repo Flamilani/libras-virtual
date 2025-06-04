@@ -11,6 +11,8 @@ import { AlphabetDetailComponent } from './alphabet/alphabet-detail/alphabet-det
 import { FingerspellingDetailComponent } from './fingerspelling/fingerspelling-detail/fingerspelling-detail.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { FacialExpressionComponent } from './facial-expression/facial-expression.component';
+import { GlossaryComponent } from './glossary/glossary.component';
+import { DialogueComponent } from './dialogue/dialogue.component';
 
 const routes: Routes = [
   {
@@ -54,8 +56,16 @@ const routes: Routes = [
         component: QuizComponent,
       },
       {
+        path: 'dialogo',
+        component: DialogueComponent,
+      },
+      {
         path: 'expressoes-faciais',
         component: FacialExpressionComponent,
+      },
+      {
+        path: 'glossario',
+        component: GlossaryComponent,
       },
     ],
   },

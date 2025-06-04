@@ -22,6 +22,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { FacialExpressionComponent } from './facial-expression/facial-expression.component';
+import { DialogueComponent } from './dialogue/dialogue.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FacialExpressionComponent } from './facial-expression/facial-expression
     QuizComponent,
     GlossaryComponent,
     FacialExpressionComponent,
+    DialogueComponent,
   ],
   imports: [
     BrowserModule,

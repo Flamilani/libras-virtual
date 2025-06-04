@@ -1,0 +1,25 @@
+<div class="chat-window">
+  <div *ngFor="let msg of messages" class="message" [ngClass]="msg.cssClass">
+    <img [src]="msg.avatar" class="avatar" />
+    <div class="bubble">
+      <strong>{{ msg.sender }}</strong>
+      <div>{{ msg.text }}</div>
+    </div>
+  </div>
+
+  <!-- Digitando -->
+  <div *ngIf="typingUser" class="message typing" [ngClass]="typingUser === 'Pessoa A' ? 'pessoa-a' : 'pessoa-b'">
+    <img [src]="avatars[typingUser!]" class="avatar" />
+    <div class="bubble typing-bubble">
+      <strong>{{ typingUser }}</strong>
+      <div class="dots">
+        <span>.</span><span>.</span><span>.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button (click)="speak('A')" [disabled]="isTyping || aIndex >= aDialogues.length">Fala Pessoa A</button>
+  <button (click)="speak('B')" [disabled]="isTyping || bIndex >= bDialogues.length">Fala Pessoa B</button>
+</div>
