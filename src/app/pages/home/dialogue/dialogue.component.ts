@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-type Speaker = 'Pessoa A' | 'Pessoa B';
+import { aDialogues_01, bDialogues_01 } from 'src/app/shared/constants/dialogues/dialogue-01.constant';
 
 @Component({
   selector: 'app-dialogue',
@@ -8,56 +7,63 @@ type Speaker = 'Pessoa A' | 'Pessoa B';
   styleUrls: ['./dialogue.component.css'],
 })
 export class DialogueComponent {
-  title: string = 'Diálogo em Libras';
-  link: string = '/webapp';
 
-  aDialogues = ['Olá!', 'Como você está?', 'Legal! Até mais.'];
-  bDialogues = ['Oi!', 'Tudo bem, e você?', 'Tchau!'];
+  combinedDialogues: { gif: string; text: string; sender: 'A' | 'B' }[] = [];
+  currentIndex = 0;
 
-  aIndex = 0;
-  bIndex = 0;
-
-  messages: { sender: Speaker; text: string; avatar: string; cssClass: string }[] = [];
+  showAButton = true;
+  showBButton = false;
+  conversationEnded = false;
 
   isTyping = false;
-  typingUser: Speaker | null = null;
 
-  avatars: Record<Speaker, string> = {
-    'Pessoa A': 'https://i.pravatar.cc/40?img=1',
-    'Pessoa B': 'https://i.pravatar.cc/40?img=2',
-  };
+  typingSender: 'A' | 'B' | null = null;
 
-  async speak(person: 'A' | 'B') {
-    if (this.isTyping) return;
+  showNext(sender: 'A' | 'B') {
+    const dialogues = sender === 'A' ? aDialogues_01 : bDialogues_01;
 
-    const sender: Speaker = person === 'A' ? 'Pessoa A' : 'Pessoa B';
-    const dialogue =
-      person === 'A'
-        ? this.aDialogues[this.aIndex]
-        : this.bDialogues[this.bIndex];
+    if (this.currentIndex * 2 < dialogues.length) {
+      const gif = dialogues[this.currentIndex * 2];
+      const text = dialogues[this.currentIndex * 2 + 1];
 
-    if (!dialogue) return;
+      this.isTyping = true;
+      this.typingSender = sender;
+      this.showAButton = false;
+      this.showBButton = false;
 
-    this.isTyping = true;
-    this.typingUser = sender;
+      setTimeout(() => {
+        this.combinedDialogues.push({ gif, text, sender });
+        this.isTyping = false;
+        this.typingSender = null;
 
-    await this.delay(1000); // Simula "digitando..."
+        if (sender === 'A') {
+          this.showBButton = true;
+        } else {
+          this.showAButton = true;
+          this.currentIndex++;
+        }
 
-    this.messages.push({
-      sender,
-      text: dialogue,
-      avatar: this.avatars[sender],
-      cssClass: sender === 'Pessoa A' ? 'pessoa-a' : 'pessoa-b'
-    });
-
-    if (person === 'A') this.aIndex++;
-    if (person === 'B') this.bIndex++;
-
-    this.isTyping = false;
-    this.typingUser = null;
+        if (this.currentIndex * 2 >= aDialogues_01.length) {
+          this.showAButton = false;
+          this.showBButton = false;
+          this.conversationEnded = true;
+        }
+      }, 1200);
+    }
   }
 
-  delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  resetConversation() {
+    this.isTyping = true;
+    this.typingSender = null;
+    this.combinedDialogues = [];
+    this.currentIndex = 0;
+    this.showAButton = true;
+    this.showBButton = false;
+    this.conversationEnded = false;
+
+    setTimeout(() => {
+      this.isTyping = false;
+      this.showAButton = true;
+    }, 1500);
   }
 }

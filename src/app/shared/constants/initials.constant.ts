@@ -6,6 +6,7 @@ const img03 = './../assets/imgs/numeros.png';
 const img04 = './../assets/imgs/saudacoes.png';
 const img05 = './../assets/imgs/quiz.png';
 const img06 = './../assets/imgs/expressoes-faciais.png';
+const img07 = './../assets/imgs/dialogo.png';
 
 export const cINITIALS: iInitials[] = [
   {
@@ -13,7 +14,7 @@ export const cINITIALS: iInitials[] = [
     link: '/glossario',
     title: 'Glossário',
     image: img01,
-    active: true,
+    active: false,
   },
   {
     id: '2',
@@ -48,13 +49,13 @@ export const cINITIALS: iInitials[] = [
     link: '/quiz',
     title: 'Quiz',
     image: img05,
-    active: true,
+    active: false,
   },
   {
     id: '7',
     link: '/dialogo',
     title: 'Diálogo em Libras',
-    image: img06,
+    image: img07,
     active: true,
   },
   {

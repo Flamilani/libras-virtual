@@ -1,25 +1,26 @@
-<div class="chat-window">
-  <div *ngFor="let msg of messages" class="message" [ngClass]="msg.cssClass">
-    <img [src]="msg.avatar" class="avatar" />
-    <div class="bubble">
-      <strong>{{ msg.sender }}</strong>
-      <div>{{ msg.text }}</div>
-    </div>
+<card-ui [cardStyle]="'containerCard'">
+  <app-breadcrumb title="Diálogo em Libras" link="/webapp"></app-breadcrumb>
+</card-ui>
+<div class="dialog-container">
+  <div *ngFor="let msg of combinedDialogues" [ngClass]="{'message-row': true, 'right': msg.sender === 'B'}">
+    <img [src]="msg.gif" class="gif" />
+    <div class="message" [ngClass]="{'b-message': msg.sender === 'B'}">{{ msg.text }}</div>
   </div>
 
-  <!-- Digitando -->
-  <div *ngIf="typingUser" class="message typing" [ngClass]="typingUser === 'Pessoa A' ? 'pessoa-a' : 'pessoa-b'">
-    <img [src]="avatars[typingUser!]" class="avatar" />
-    <div class="bubble typing-bubble">
-      <strong>{{ typingUser }}</strong>
-      <div class="dots">
-        <span>.</span><span>.</span><span>.</span>
-      </div>
-    </div>
+<div
+  class="typing-indicator message-row"
+  *ngIf="isTyping"
+  [ngClass]="{'right': typingSender === 'B'}"
+>
+  <div class="message" [ngClass]="{'b-message': typingSender === 'B'}">
+    Gravando<span class="dot"></span><span class="dot"></span><span class="dot"></span>
   </div>
 </div>
 
-<div class="controls">
-  <button (click)="speak('A')" [disabled]="isTyping || aIndex >= aDialogues.length">Fala Pessoa A</button>
-  <button (click)="speak('B')" [disabled]="isTyping || bIndex >= bDialogues.length">Fala Pessoa B</button>
+
 </div>
+  <div class="controls">
+    <button *ngIf="showAButton" (click)="showNext('A')">Pessoa A</button>
+    <button *ngIf="showBButton" (click)="showNext('B')">Pessoa B</button>
+    <button *ngIf="conversationEnded && !isTyping" (click)="resetConversation()">Resetar conversa</button>
+  </div>

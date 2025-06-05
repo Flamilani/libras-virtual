@@ -8,4 +8,7 @@
   <h2 class="expressions" *ngIf="currentLabelPt">
   Expressão: {{ currentLabelPt }} {{ currentEmoji }}
 </h2>
+<h5 class="alert alert-info text-center mt-3" *ngIf="!currentLabelPt">
+  Aproxime-se ao sensor para detectar expressões faciais
+</h5>
 </div>
