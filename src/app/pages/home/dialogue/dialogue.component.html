@@ -2,25 +2,45 @@
   <app-breadcrumb title="Diálogo em Libras" link="/webapp"></app-breadcrumb>
 </card-ui>
 <div class="dialog-container">
-  <div *ngFor="let msg of combinedDialogues" [ngClass]="{'message-row': true, 'right': msg.sender === 'B'}">
-    <img [src]="msg.gif" class="gif" />
-    <div class="message" [ngClass]="{'b-message': msg.sender === 'B'}">{{ msg.text }}</div>
+  <div *ngFor="let msg of combinedDialogues; let i = index"
+    [ngClass]="{'message-row': true, 'right': msg.sender === 'B'}">
+    <div class="gif-wrapper">
+      <div class="gif-loading" *ngIf="gifLoading[i]">
+        <span class="spinner"></span>
+      </div>
+      <img [src]="msg.gif" (load)="onGifLoad(i)" [hidden]="gifLoading[i]" class="gif" />
+      <div [hidden]="gifLoading[i]" class="message" [ngClass]="{'b-message': msg.sender === 'B'}">
+       <span class="message-text">{{ msg.text }}</span>
+      </div>
+    </div>
+<!--     <div class="gif-container">
+           <img
+        *ngIf="gifLoading[i]"
+        [src]="imgLoading"
+        class="gif loading-gif"
+        alt="Carregando..."
+      />
+      <span class="spinner"></span>
+
+    </div>
+    <div class="gif-container">
+      <img [hidden]="gifLoading[i]" (load)="onGifLoad(i)" (error)="onGifError(i)" [src]="msg.gif" class="gif" />
+      <div [hidden]="gifLoading[i]" class="message" [ngClass]="{'b-message': msg.sender === 'B'}">{{ msg.text }}
+      </div>
+    </div> -->
   </div>
-
-<div
-  class="typing-indicator message-row"
-  *ngIf="isTyping"
-  [ngClass]="{'right': typingSender === 'B'}"
->
-  <div class="message" [ngClass]="{'b-message': typingSender === 'B'}">
-    Gravando<span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  <div class="typing-indicator message-row" *ngIf="isTyping" [ngClass]="{'right': typingSender === 'B'}">
+    <div class="message" [ngClass]="{'b-message': typingSender === 'B'}">
+      Gravando<span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
   </div>
-</div>
-
-
-</div>
+    <div *ngIf="combinedDialogues.length === 0 && !isTyping" class="alert alert-info start-tip">
+    Clicar abaixo para iniciar diálogo
+  </div>
   <div class="controls">
     <button *ngIf="showAButton" (click)="showNext('A')">Pessoa A</button>
     <button *ngIf="showBButton" (click)="showNext('B')">Pessoa B</button>
     <button *ngIf="conversationEnded && !isTyping" (click)="resetConversation()">Resetar conversa</button>
   </div>
+
+</div>

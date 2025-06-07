@@ -3,11 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 const assets = '';
 const imagePath = '../assets/imgs/logo.png';
+const imgLoading = '../assets/loading.gif';
 
 export const environment = {
   production: false,
   assets,
   imagePath,
+  imgLoading,
   firebase: {
     apiKey: "AIzaSyAi_8seHoUwv3etTCUoKxmqL43pl9lZGQc",
 /*     authDomain: "app-librasvideos.firebaseapp.com",

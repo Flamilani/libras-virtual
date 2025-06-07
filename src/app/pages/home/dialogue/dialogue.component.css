@@ -5,7 +5,7 @@
   font-family: Arial, sans-serif;
   padding: 10px;
   background-color: #dcdcdc;
-  border: 1px solid #607D8B;
+  border: 1px solid #607d8b;
   border-radius: 10px;
 }
 
@@ -20,19 +20,31 @@
   text-align: right;
 }
 
+.gif-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-top: 5px;
+}
+
 .gif {
   width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin: 0 10px;
+  margin-bottom: 10px;
 }
 
 .message {
   background-color: #e0e0e0;
   padding: 10px 14px;
   border-radius: 12px;
-  max-width: 70%;
+  max-width: 95%;
   animation: fadeIn 0.3s ease-in;
+}
+
+.message-text {
+  text-align: center;
 }
 
 .message.b-message {
@@ -72,6 +84,13 @@ button:hover {
   justify-content: flex-start;
 }
 
+.start-tip {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
 .message {
   background-color: #faffca;
   border-radius: 16px;
@@ -84,10 +103,9 @@ button:hover {
 }
 
 .b-message {
-  background-color: #d1eaff; /* exemplo para mensagens do remetente B */
+  background-color: #d1eaff;
   color: #004085;
   display: flex;
-  justify-content: flex-end;
 }
 
 .dot {
@@ -122,6 +140,14 @@ button:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+

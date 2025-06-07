@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { aDialogues_01, bDialogues_01 } from 'src/app/shared/constants/dialogues/dialogue-01.constant';
+import {
+  aDialogues_01,
+  bDialogues_01,
+} from 'src/app/shared/constants/dialogues/dialogue-01.constant';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-dialogue',
@@ -7,8 +12,11 @@ import { aDialogues_01, bDialogues_01 } from 'src/app/shared/constants/dialogues
   styleUrls: ['./dialogue.component.css'],
 })
 export class DialogueComponent {
+  imgLoading = environment.imgLoading;
 
   combinedDialogues: { gif: string; text: string; sender: 'A' | 'B' }[] = [];
+  loading = true;
+  gifLoading: boolean[] = [];
   currentIndex = 0;
 
   showAButton = true;
@@ -32,7 +40,10 @@ export class DialogueComponent {
       this.showBButton = false;
 
       setTimeout(() => {
+        const msgIndex = this.combinedDialogues.length;
         this.combinedDialogues.push({ gif, text, sender });
+        this.gifLoading[msgIndex] = true;
+
         this.isTyping = false;
         this.typingSender = null;
 
@@ -52,14 +63,24 @@ export class DialogueComponent {
     }
   }
 
+  onGifLoad(index: number) {
+    this.gifLoading[index] = false;
+  }
+
+  onGifError(index: number) {
+    this.gifLoading[index] = false;
+    console.error('Erro ao carregar o GIF na posição', index);
+  }
+
   resetConversation() {
-    this.isTyping = true;
-    this.typingSender = null;
+    this.gifLoading = [];
     this.combinedDialogues = [];
     this.currentIndex = 0;
     this.showAButton = true;
     this.showBButton = false;
     this.conversationEnded = false;
+    this.isTyping = false;
+    this.typingSender = null;
 
     setTimeout(() => {
       this.isTyping = false;
