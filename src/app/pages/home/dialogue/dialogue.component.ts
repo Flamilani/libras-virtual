@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   aDialogues_01,
   bDialogues_01,
@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dialogue.component.css'],
 })
 export class DialogueComponent {
+  @ViewChild('bottom') bottomEl!: ElementRef;
   imgLoading = environment.imgLoading;
 
   combinedDialogues: { gif: string; text: string; sender: 'A' | 'B' }[] = [];
@@ -27,6 +28,13 @@ export class DialogueComponent {
 
   typingSender: 'A' | 'B' | null = null;
 
+  private scrollToBottom() {
+    setTimeout(() => {
+      this.bottomEl.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+
+
   showNext(sender: 'A' | 'B') {
     const dialogues = sender === 'A' ? aDialogues_01 : bDialogues_01;
 
@@ -38,6 +46,7 @@ export class DialogueComponent {
       this.typingSender = sender;
       this.showAButton = false;
       this.showBButton = false;
+      this.scrollToBottom();
 
       setTimeout(() => {
         const msgIndex = this.combinedDialogues.length;
@@ -59,6 +68,7 @@ export class DialogueComponent {
           this.showBButton = false;
           this.conversationEnded = true;
         }
+        this.scrollToBottom();
       }, 1200);
     }
   }
@@ -85,6 +95,7 @@ export class DialogueComponent {
     setTimeout(() => {
       this.isTyping = false;
       this.showAButton = true;
+      this.scrollToBottom();
     }, 1500);
   }
 }

@@ -7,6 +7,23 @@
   background-color: #dcdcdc;
   border: 1px solid #607d8b;
   border-radius: 10px;
+
+  max-height: 540px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.dialog-container {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+.dialog-container::-webkit-scrollbar {
+  width: 6px;
+}
+.dialog-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
 }
 
 .message-row {
@@ -73,6 +90,24 @@ button:hover {
   background-color: #1565c0;
 }
 
+.button-green {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button-green:hover {
+  background-color: #79ce7c;
+}
+
+.button-black {
+  background-color: #000;
+  color: white;
+}
+
+.button-black:hover {
+  background-color: #333;
+}
+
 .typing-indicator {
   display: flex;
   align-items: center;
@@ -93,13 +128,24 @@ button:hover {
 
 .message {
   background-color: #faffca;
+  border: 2px solid #939393;
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.message-typing {
+  background-color: #faffca;
+  border: 2px solid #939393;
   border-radius: 16px;
   padding: 8px 12px;
   font-size: 14px;
   color: #333;
   display: flex;
   align-items: center;
-  gap: 3px;
 }
 
 .b-message {
@@ -108,10 +154,16 @@ button:hover {
   display: flex;
 }
 
+.b-message-typing {
+  background-color: #d1eaff;
+  color: #004085;
+  display: flex;
+}
+
 .dot {
   width: 4px;
   height: 4px;
-  margin-left: 3px;
+  margin-left: 5px;
   background-color: #555;
   border-radius: 50%;
   display: inline-block;

@@ -30,17 +30,18 @@
     </div> -->
   </div>
   <div class="typing-indicator message-row" *ngIf="isTyping" [ngClass]="{'right': typingSender === 'B'}">
-    <div class="message" [ngClass]="{'b-message': typingSender === 'B'}">
+    <div class="message-typing" [ngClass]="{'b-message-typing': typingSender === 'B'}">
       Gravando<span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
   </div>
     <div *ngIf="combinedDialogues.length === 0 && !isTyping" class="alert alert-info start-tip">
     Clicar abaixo para iniciar diálogo
   </div>
+
+  <div #bottom></div>
+</div>
   <div class="controls">
-    <button *ngIf="showAButton" (click)="showNext('A')">Pessoa A</button>
-    <button *ngIf="showBButton" (click)="showNext('B')">Pessoa B</button>
+    <button class="button-green" *ngIf="showAButton" (click)="showNext('A')">Pessoa A fala em Libras</button>
+    <button class="button-black" *ngIf="showBButton" (click)="showNext('B')">Pessoa B fala em Libras</button>
     <button *ngIf="conversationEnded && !isTyping" (click)="resetConversation()">Resetar conversa</button>
   </div>
-
-</div>
