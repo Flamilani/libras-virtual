@@ -8,28 +8,25 @@
 }
 
 .cardApp.greeting {
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
 }
 
 .cardApp.greeting img {
   max-width: 220px;
   width: 100%;
+  object-fit: cover;
+  height: 180px;
 }
 
 .flip-card {
   width: 220px;
   height: 250px;
   perspective: 1000px;
-  margin-bottom: 90px;
+  margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 414px){
-  .flip-card {
-  width: 320px;
-  height: 300px;
-  margin-bottom: 180px;
-  }
-
+@media only screen and (max-width: 414px) {
   .cardApp.greeting img {
     max-width: 100%;
   }
@@ -42,14 +39,15 @@
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
