@@ -71,6 +71,7 @@ export class DialogueComponent {
         this.scrollToBottom();
       }, 1200);
     }
+    this.scrollToBottom();
   }
 
   onGifLoad(index: number) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-names',
@@ -9,8 +10,11 @@ export class NamesComponent implements OnInit {
   title: string = "Nome em Libras";
   styles: string = "sectionTop";
   link: string = "/webapp";
+
   nameInput!: string;
   selectedFont!: string;
+
+  icon = environment.iconSign;
 
   ngOnInit(): void {
     setTimeout(() => {

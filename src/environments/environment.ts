@@ -4,12 +4,14 @@
 const assets = '';
 const imagePath = '../assets/imgs/logo.png';
 const imgLoading = '../assets/loading.gif';
+const iconSign = './../assets/imgs/sign-language.png';
 
 export const environment = {
   production: false,
   assets,
   imagePath,
   imgLoading,
+  iconSign,
   firebase: {
     apiKey: "AIzaSyAi_8seHoUwv3etTCUoKxmqL43pl9lZGQc",
 /*     authDomain: "app-librasvideos.firebaseapp.com",

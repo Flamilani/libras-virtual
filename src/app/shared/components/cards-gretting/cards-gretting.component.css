@@ -16,12 +16,12 @@
   max-width: 220px;
   width: 100%;
   object-fit: cover;
-  height: 180px;
+  height: 290px;
 }
 
 .flip-card {
-  width: 220px;
-  height: 250px;
+  width: 300px;
+  height: 360px;
   perspective: 1000px;
   margin-bottom: 20px;
 }
@@ -42,10 +42,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -63,5 +59,9 @@
 
 .flip-card-back {
   color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-inner.flipped {
   transform: rotateY(180deg);
 }

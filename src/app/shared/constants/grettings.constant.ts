@@ -1,11 +1,17 @@
 import { iGretting } from '../interfaces/gretting.interface';
 
 const imgPt01 = './../../../assets/imgs/imagem-bom-dia.png';
-const imgLs01 = './../../../assets/gifs/bom-dia.gif';
+const imgLs01 = './../../../assets/gifs/saudacoes/bom-dia.gif';
 const imgPt02 = './../../../assets/imgs/imagem-boa-tarde.png';
-const imgLs02 = './../../../assets/gifs/boa-tarde.gif';
+const imgLs02 = './../../../assets/gifs/saudacoes/boa-tarde.gif';
 const imgPt03 = './../../../assets/imgs/imagem-boa-noite.png';
-const imgLs03 = './../../../assets/gifs/boa-noite.gif';
+const imgLs03 = './../../../assets/gifs/saudacoes/boa-noite.gif';
+const imgPt04 = './../../../assets/imgs/desculpe.png';
+const imgLs04 = './../../../assets/gifs/saudacoes/desculpe.gif';
+const imgPt05 = './../../../assets/imgs/com-licenca.png';
+const imgLs05 = './../../../assets/gifs/saudacoes/com-licenca.gif';
+const imgPt06 = './../../../assets/imgs/por-favor.png';
+const imgLs06 = './../../../assets/gifs/saudacoes/por-favor.gif';
 
 export const cGrettings: iGretting[] = [
   {
@@ -33,6 +39,33 @@ export const cGrettings: iGretting[] = [
     descriptionPt: '',
     titleLs: 'Boa noite em Libras',
     imageLs: imgLs03,
+    descriptionLs: '',
+  },
+  {
+    id: '4',
+    titlePt: 'Desculpe',
+    imagePt: imgPt04,
+    descriptionPt: '',
+    titleLs: 'Desculpe em Libras',
+    imageLs: imgLs04,
+    descriptionLs: '',
+  },
+  {
+    id: '5',
+    titlePt: 'Com licença',
+    imagePt: imgPt05,
+    descriptionPt: '',
+    titleLs: 'Com licença em Libras',
+    imageLs: imgLs05,
+    descriptionLs: '',
+  },
+    {
+    id: '6',
+    titlePt: 'Por favor',
+    imagePt: imgPt06,
+    descriptionPt: '',
+    titleLs: 'Por favor em Libras',
+    imageLs: imgLs06,
     descriptionLs: '',
   },
 ];

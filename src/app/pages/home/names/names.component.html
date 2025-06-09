@@ -3,7 +3,11 @@
 </card-ui>
 <content-ui [cardStyle]="'containerCard'">
 <div class="formGroup formGroupName">
-    <label htmlFor="name">Seu nome</label>
+    <label htmlFor="name"> <span class="spanName">Seu nome</span>
+      <button class="btnInfo">
+        <img [src]="icon" alt="" />
+       </button>
+    </label>
     <input
         class="inputCamp name mb-3" type="text"
         [(ngModel)]="nameInput"
@@ -12,7 +16,10 @@
     />
   <div class="groupNames">
     <div class="labelFontes">
-    <label>Meu nome em Libras</label>
+    <label> <span class="spanName">Meu nome em Libras</span>
+      <button class="btnInfo">
+        <img [src]="icon" alt="" />
+       </button></label>
     <component-select [disabled]="!nameInput" (fontChange)="handleFontChange($event)"></component-select>
   </div>
     <p *ngIf="!nameInput" class="result inicial mt-2">
