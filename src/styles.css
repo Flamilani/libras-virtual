@@ -307,3 +307,14 @@ a:active {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.gif-container-greeting, .img-container {
+  position: relative;
+  height: 290px;
+}
+
+@media only screen and (max-width: 667px) {
+ .gif-container-greeting, .img-container {
+    height: 35dvh;
+   }
+}

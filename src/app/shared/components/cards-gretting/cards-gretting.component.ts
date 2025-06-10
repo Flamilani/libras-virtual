@@ -8,6 +8,8 @@ import { DatasService } from 'src/app/shared/services/datas.service';
   styleUrls: ['./cards-gretting.component.css'],
 })
 export class CardsGrettingComponent implements OnInit {
+  loading = true;
+
   grettings!: iGretting[];
   flippedIndex: number | null = null;
   constructor(private grettingService: DatasService) {}
@@ -22,5 +24,15 @@ export class CardsGrettingComponent implements OnInit {
     } else {
       this.flippedIndex = index;
     }
+  }
+
+
+  onGifLoad() {
+    this.loading = false;
+  }
+
+  onGifError() {
+    this.loading = false;
+    console.error('Erro ao carregar o GIF');
   }
 }

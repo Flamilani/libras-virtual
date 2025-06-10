@@ -1,22 +1,25 @@
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-md-4 col-lg-4" *ngFor="let gretting of grettings; let i = index">
-        <div class="cardApp greeting" (click)="toggleCard(i)">
-          <div class="flip-card">
-            <div class="flip-card-inner" [class.flipped]="flippedIndex === i">
-              <div class="flip-card-front">
-                <div class="card bg-light">
-                  <h2 class="card-header text-white bg-primary">{{ gretting.titlePt }}</h2>
-                  <div class="card-body">
-                    <img class="card-img" [src]="gretting.imagePt" [alt]="gretting.titlePt">
-                  </div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-4 col-lg-4" *ngFor="let gretting of grettings; let i = index">
+      <div class="cardApp greeting" (click)="toggleCard(i)">
+        <div class="flip-card">
+          <div class="flip-card-inner" [class.flipped]="flippedIndex === i">
+            <div class="flip-card-front">
+              <div class="card bg-light">
+                <h2 class="card-header text-white bg-primary">{{ gretting.titlePt }}</h2>
+                <div class="card-body">
+                  <img class="card-img" [src]="gretting.imagePt" [alt]="gretting.titlePt">
                 </div>
               </div>
-              <div class="flip-card-back">
-                <div class="card bg-light">
-                  <h2 class="card-header text-white bg-primary">{{ gretting.titleLs }}</h2>
-                  <div class="card-body">
-                    <img class="card-img" [src]="gretting.imageLs" [alt]="gretting.titleLs">
+            </div>
+            <div class="flip-card-back">
+              <div class="card bg-light">
+                <h2 class="card-header text-white bg-primary">{{ gretting.titleLs }}</h2>
+                <div class="card-body">
+                  <div class="gif-container-greeting">
+                    <div class="spinner" *ngIf="loading"></div>
+                    <img (load)="onGifLoad()" (error)="onGifError()" class="video" *ngIf="!loading || gretting.imageLs"
+                      [src]="gretting.imageLs" [alt]="gretting.imageLs" />
                   </div>
                 </div>
               </div>
@@ -26,7 +29,4 @@
       </div>
     </div>
   </div>
-
-
-
-
+</div>
