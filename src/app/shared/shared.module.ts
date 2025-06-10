@@ -18,6 +18,8 @@ import { ModalLetterComponent } from './components/modal-letter/modal-letter.com
 import { ToggleBottomComponent } from './components/toggle-bottom/toggle-bottom.component';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
+import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
+import { MaterialModule } from '../modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { MenuComponent } from './components/menu/menu.component';
     ModalComponent,
     ModalLetterComponent,
     ToggleBottomComponent,
-    MenuComponent
+    MenuComponent,
+    DialogContentComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { MenuComponent } from './components/menu/menu.component';
     ReactiveFormsModule,
     RouterModule,
     FormsModule,
+    MaterialModule,
   ],
   exports: [
     IconsModule,
@@ -50,6 +54,7 @@ import { MenuComponent } from './components/menu/menu.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    MaterialModule,
     CardUIComponent,
     ContentUiComponent,
     SelectComponent,

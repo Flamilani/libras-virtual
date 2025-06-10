@@ -13,10 +13,12 @@ import {
   RUV,
   Vowels,
 } from '../constants/alphabet.constant';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { cGrettings } from '../constants/grettings.constant';
 import { Options } from '../constants/options.constant';
 import { OptionsAlphabet } from '../constants/options-alphabet.constant';
+import { cNames } from '../constants/names.constant';
+import { iNames } from '../interfaces/names.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -27,11 +29,22 @@ export class DatasService {
   listGrettings = cGrettings;
   listFonts = Options;
   listOptinsAlphabet = OptionsAlphabet;
+  listNames = cNames;
+
+  private namesSubject = new BehaviorSubject<iNames[]>(
+    this.listNames
+  );
 
   private letterSource = new BehaviorSubject<string | null>(null);
   letter$ = this.letterSource.asObservable();
 
   constructor() {}
+
+  getNames(id?: number): Observable<any> {
+    const names = this.namesSubject.value;
+    const name = names.find((n) => n.id === id);
+    return of(name);
+  }
 
   getFonts() {
     return this.listFonts;

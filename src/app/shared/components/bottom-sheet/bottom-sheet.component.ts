@@ -2,45 +2,37 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   NgZone,
   ViewChild,
 } from '@angular/core';
 import { BottomSheetService } from '../../services/bottom-sheet.service';
+import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { iNames } from '../../interfaces/names.interface';
 
 @Component({
   selector: 'component-bottom-sheet',
   templateUrl: './bottom-sheet.component.html',
   styleUrls: ['./bottom-sheet.component.css'],
 })
-export class BottomSheetComponent implements AfterViewInit {
-  @ViewChild('bottomSheet') bottomSheet!: ElementRef;
-  @ViewChild('overlay') overlay!: ElementRef;
+export class BottomSheetComponent {
+  loading = true;
 
   constructor(
-    private el: ElementRef,
-    private readonly bottomSheetService: BottomSheetService,
-    private ngZone: NgZone
+    public bootRef: MatBottomSheetRef<BottomSheetComponent>,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: iNames,
   ) {}
 
-  ngAfterViewInit() {
-    this.bottomSheetService.bottomSheetState$.subscribe((isOpen: boolean) => {
-      this.ngZone.run(() => {
-        this.toggleBottomSheet(isOpen);
-      });
-    });
+  onGifLoad() {
+    this.loading = false;
   }
 
-  toggleBottomSheet(isOpen: boolean) {
-    if (isOpen) {
-      this.bottomSheet.nativeElement.classList.add('active');
-      this.overlay.nativeElement.classList.add('active');
-    } else {
-      this.bottomSheet.nativeElement.classList.remove('active');
-      this.overlay.nativeElement.classList.remove('active');
-    }
+  onGifError() {
+    this.loading = false;
+    console.error('Erro ao carregar o GIF');
   }
 
-  closeBottomSheet() {
-    this.bottomSheetService.close();
+  cancel(): void {
+    this.bootRef.dismiss();
   }
 }

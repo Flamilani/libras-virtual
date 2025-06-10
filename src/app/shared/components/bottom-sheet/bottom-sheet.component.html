@@ -1,7 +1,12 @@
-<div #overlay class="bottom-sheet-overlay" (click)="closeBottomSheet()"></div>
-<div #bottomSheet class="bottom-sheet">
-  <button class="closeButton" (click)="closeBottomSheet()">X</button>
-<!--   <app-cards-sheet [type]="'datilologia'"></app-cards-sheet> -->
-  <ng-content></ng-content>
+<div class="modalSheet">
+  <h2 class="titleModal">
+    {{ data.title }}
+    <a class="clickClose" (click)="cancel()">X</a>
+  </h2>
+  <div class="gif-container">
+    <div class="spinner" *ngIf="loading"></div>
+    <img (load)="onGifLoad()"
+    (error)="onGifError()"
+    class="video" *ngIf="!loading || data.video" [src]="data.video" [alt]="data.title" />
+  </div>
 </div>
-

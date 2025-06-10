@@ -1,7 +1,5 @@
 .shared-component__select {
   display: inline-block;
-  justify-content: flex-end;
-  margin-left: 22px;
 }
 
 .shared-component__select .form-select {

@@ -3,9 +3,12 @@
 </card-ui>
 <content-ui [cardStyle]="'containerCard'">
 <div class="formGroup formGroupName">
-    <label htmlFor="name"> <span class="spanName">Seu nome</span>
-      <button class="btnInfo">
-        <img [src]="icon" alt="" />
+    <label htmlFor="name"> <span class="spanName">{{ listNames[0].title }}</span>
+      <button *ngIf="!isMobile" class="btnInfo" (click)="openDialog(1)">
+        <img [src]="icon" alt="Libras" />
+       </button>
+      <button *ngIf="isMobile" class="btnInfo" (click)="openBottomSheet(1)">
+        <img [src]="icon" alt="Libras" />
        </button>
     </label>
     <input
@@ -16,12 +19,16 @@
     />
   <div class="groupNames">
     <div class="labelFontes">
-    <label> <span class="spanName">Meu nome em Libras</span>
-      <button class="btnInfo">
-        <img [src]="icon" alt="" />
-       </button></label>
-    <component-select [disabled]="!nameInput" (fontChange)="handleFontChange($event)"></component-select>
+    <label> <span class="spanName">{{ listNames[1].title }}</span>
+      <button *ngIf="!isMobile" class="btnInfo" (click)="openDialog(2)">
+        <img [src]="icon" alt="Libras" />
+       </button>
+        <button *ngIf="isMobile" class="btnInfo" (click)="openBottomSheet(2)">
+        <img [src]="icon" alt="Libras" />
+       </button>
+    </label>
   </div>
+  <component-select [disabled]="!nameInput" (fontChange)="handleFontChange($event)"></component-select>
     <p *ngIf="!nameInput" class="result inicial mt-2">
       Após o nome digitado, seu nome em Libras aparece aqui
     </p>

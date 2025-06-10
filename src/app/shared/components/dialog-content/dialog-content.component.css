@@ -1,0 +1,26 @@
+.dialogContent {
+  padding: 5px;
+}
+
+.clickClose {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.video {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: block;
+  max-height: 350px;
+  border-radius: 5px;
+}
+
+.titleModal {
+  margin-bottom: -10px;
+}
+
+.mat-mdc-dialog-content {
+  max-height: 75vh;
+}
