@@ -53,7 +53,6 @@ export class FingerspellingComponent implements OnInit {
   ngOnInit() {
     this.selectedFont = 'fontLibrasA';
     this.letters = this.datasService.getLetters();
-
     this.route.paramMap.subscribe((params) => {
       this.selectedLetter = params.get('id')?.toString() ?? '';
       if (this.selectedLetter) {
@@ -76,13 +75,6 @@ export class FingerspellingComponent implements OnInit {
       '/datilologia',
       this.selectedLetter.toLocaleLowerCase(),
     ]);
-    /*     if (this.isMobile) {
-      this.bottomSheetService.open();
-    } else {
-      this.modal.content = this.selectedLetter;
-      this.updateModalContent();
-      this.modal.open();
-    } */
   }
 
   updateModalContent() {
@@ -116,17 +108,5 @@ export class FingerspellingComponent implements OnInit {
 
   checkIfMobile() {
     this.isMobile = window.innerWidth <= 768;
-  }
-
-    increaseFontSize() {
-    this.fontSize += 20; // Aumenta o tamanho da fonte em 2 pixels
-  }
-
-  // Função para diminuir o tamanho da fonte
-  decreaseFontSize() {
-    if (this.fontSize > 80) {
-      // Limite mínimo de tamanho da fonte
-      this.fontSize -= 20; // Diminui o tamanho da fonte em 2 pixels
-    }
   }
 }

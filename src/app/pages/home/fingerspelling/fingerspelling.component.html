@@ -7,12 +7,6 @@
     <component-select [disabled]="!showFonts" (fontChange)="handleFontChange($event)"></component-select>
    </div>
     <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters fingerLetters'" [fontClass]="selectedFont"></app-letters>
-<!--     <app-modal-letter #modal [isFirstLetter]="isFirstLetter()" [isLastLetter]="isLastLetter()"
-    (previous)="previousLetter()" (next)="nextLetter()"
-    [cardStyle]="'letter-modal'" [fontClass]="selectedFont"></app-modal-letter>
-    <component-bottom-sheet>
-      <p class="letterBottomSheet fontLibrasA">{{ selectedLetter }}</p>
-    </component-bottom-sheet> -->
 </content-ui>
 
 

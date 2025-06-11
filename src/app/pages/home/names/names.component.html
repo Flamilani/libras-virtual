@@ -16,6 +16,7 @@
         [(ngModel)]="nameInput"
         placeholder='Digite seu nome aqui'
         autoComplete="off"
+        (ngModelChange)="getName(nameInput)"
     />
   <div class="groupNames">
     <div class="labelFontes">

@@ -142,6 +142,35 @@ a:active {
   padding: 5px;
 }
 
+.resultName {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  border: none;
+  font-size: 75px;
+  word-break: break-word;
+  line-height: normal;
+  text-align: center;
+  color: #000;
+}
+
+.resultNameSheet {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 70px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border: none;
+  font-size: 75px;
+  word-break: break-word;
+  line-height: normal;
+  text-align: center;
+  color: #000;
+}
+
 .result {
   font-size: 70px;
   border: 2px solid #979797;
@@ -259,7 +288,6 @@ a:active {
   z-index: 10;
 }
 
-
 .gif-loading {
   display: flex;
   align-items: center;
@@ -274,15 +302,17 @@ a:active {
   margin-bottom: 10px;
 }
 
-.gif-container, .img-container {
+.gif-container,
+.img-container {
   position: relative;
-  height: 380px;
+  height: 325px;
 }
 
 @media only screen and (max-width: 667px) {
- .gif-container, .img-container {
-    height: 35dvh;
-   }
+  .gif-container,
+  .img-container {
+    height: 28dvh;
+  }
 }
 
 .spinner {
@@ -305,16 +335,24 @@ a:active {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-.gif-container-greeting, .img-container {
+.gif-container-greeting,
+.img-container {
   position: relative;
   height: 290px;
 }
 
 @media only screen and (max-width: 667px) {
- .gif-container-greeting, .img-container {
-    height: 35dvh;
-   }
+  .gif-container-greeting,
+  .img-container {
+    height: 40dvh;
+  }
 }

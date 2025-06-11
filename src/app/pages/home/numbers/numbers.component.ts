@@ -43,7 +43,9 @@ export class NumbersComponent implements OnInit {
   }
 
   increaseFontSize() {
+    if (this.fontSize < 240) {
     this.fontSize += 20; // Aumenta o tamanho da fonte em 2 pixels
+    }
   }
 
   // Função para diminuir o tamanho da fonte

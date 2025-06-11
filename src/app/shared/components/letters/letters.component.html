@@ -1,17 +1,17 @@
 <div class="text-center mt-4">
   <div class="row">
     <div class="col">
-      <select class="form-select selectFonts" [(ngModel)]="selectedValue" (change)="changeLetters(selectedValue)">
-        <option selected *ngFor="let option of optionsAlphabet" [value]="option.value" [value]="option.value">{{ option.text }}</option>
+      <select name="selectFonts" class="form-select selectFonts" [(ngModel)]="selectedValue" (change)="changeLetters(selectedValue)">
+        <option *ngFor="let option of optionsAlphabet" [value]="option.value" [value]="option.value">{{ option.text }}</option>
       </select>
     </div>
     <div class="col">
      <span class="font-buttons">
     <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
-      <bi name="plus" class="sizeIcon"></bi>
+      <bi name="zoom-in" class="sizeIcon"></bi>
     </button>
     <button class="btn btn-secondary btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
-      <bi name="dash" class="sizeIcon"></bi>
+      <bi name="zoom-out" class="sizeIcon"></bi>
     </button>
   </span>
     </div>

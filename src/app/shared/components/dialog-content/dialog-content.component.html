@@ -9,4 +9,5 @@
   (error)="onGifError()"
   class="video" *ngIf="!loading || data.video" [src]="data.video" [alt]="data.title" />
 </div>
+ <span *ngIf="data.id === 2" class="resultName" [ngClass]="font"> {{ name }}</span>
 </div>

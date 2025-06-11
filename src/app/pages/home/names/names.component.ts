@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { BottomSheetComponent } from 'src/app/shared/components/bottom-sheet/bottom-sheet.component';
 import { DialogContentComponent } from 'src/app/shared/components/dialog-content/dialog-content.component';
 import { iNames } from 'src/app/shared/interfaces/names.interface';
 import { DatasService } from 'src/app/shared/services/datas.service';
+import { NameStatesService } from 'src/app/shared/states/name-states/name-states.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,6 +17,7 @@ export class NamesComponent implements OnInit {
   title: string = 'Nome em Libras';
   styles: string = 'sectionTop';
   link: string = '/webapp';
+
   listNames = this.datasService.listNames;
   nameInput!: string;
   selectedFont!: string;
@@ -26,7 +28,8 @@ export class NamesComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private datasService: DatasService,
-    private _bottomSheet: MatBottomSheet
+    private _bottomSheet: MatBottomSheet,
+    private nameStatesService: NameStatesService
   ) {
     this.checkIfMobile();
   }
@@ -39,7 +42,16 @@ export class NamesComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.selectedFont = 'fontLibrasA';
+      this.getFont(this.selectedFont);
     }, 100);
+  }
+
+  getName(name: string) {
+    this.nameStatesService.selectName(name);
+  }
+
+  getFont(font: string) {
+    this.nameStatesService.selectFont(font);
   }
 
   checkIfMobile() {
@@ -47,6 +59,7 @@ export class NamesComponent implements OnInit {
   }
 
   handleFontChange(newFont: string) {
+    this.getFont((this.selectedFont = newFont));
     this.selectedFont = newFont;
   }
 
