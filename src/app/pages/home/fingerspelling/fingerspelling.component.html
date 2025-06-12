@@ -3,7 +3,7 @@
 </card-ui>
 <content-ui [cardStyle]="'contentCard centerCard'">
   <div class="displayFlexFinger">
-    <app-cards [type]="'datilologia'" [redirect]="'/alfabeto'"></app-cards>
+    <app-cards [type]="'datilologia'" (letterSelected)="onLetterEntered($event)" [redirect]="'/alfabeto'"></app-cards>
     <component-select [disabled]="!showFonts" (fontChange)="handleFontChange($event)"></component-select>
    </div>
     <app-letters (letterSelected)="onLetterSelected($event)" [cardStyle]="'resultLetter cardLetters fingerLetters'" [fontClass]="selectedFont"></app-letters>

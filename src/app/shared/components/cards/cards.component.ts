@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cards',
@@ -8,9 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardsComponent implements OnInit {
   @Input() type: string = '';
   @Input() redirect: string = '';
+  @Output() letterSelected = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLetterSelected(letter: any) {
+    this.letterSelected.emit(letter);
   }
 }

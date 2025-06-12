@@ -16,15 +16,32 @@ const initialState: LettersState = {
   providedIn: 'root',
 })
 export class LettersStatesService extends StateService<LettersState> {
-  private showLetterSubject = new BehaviorSubject<string>('');
-  showLetters$ = this.select((state) => state.letter);
+/*   private showLetterSubject = new BehaviorSubject<string>('all');
+  showLetters$ = this.select((state) => state.letter); */
 
   constructor() {
     super(initialState);
   }
 
-   selectLetter(letter: string) {
-    this.setState({ letter: letter });
-    this.showLetterSubject.next(letter);
+  private selectedValueSubject = new BehaviorSubject<string>('all');
+  selectedValue$ = this.selectedValueSubject.asObservable();
+
+  selectLetter(letter: string) {
+    this.selectedValueSubject.next(letter);
+  }
+
+  getSelectedValue(): string {
+    return this.selectedValueSubject.value;
+  }
+
+  private selectedFontSubject = new BehaviorSubject<string>('');
+  selectedFont$ = this.selectedFontSubject.asObservable();
+
+  selectFont(font: string) {
+    this.selectedFontSubject.next(font);
+  }
+
+  getSelectedFont(): string {
+    return this.selectedFontSubject.value;
   }
 }

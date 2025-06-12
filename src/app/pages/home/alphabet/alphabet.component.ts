@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalLetterComponent } from 'src/app/shared/components/modal-letter/modal-letter.component';
+import { Observable, Subscription } from 'rxjs';
+import { LettersStatesService } from 'src/app/shared/states/letters-states/letters-states.service';
 
 @Component({
   selector: 'app-alphabet',
   templateUrl: './alphabet.component.html',
   styleUrls: ['./alphabet.component.css'],
 })
-export class AlphabetComponent implements OnInit {
-  @ViewChild('modal') modal!: ModalLetterComponent;
+export class AlphabetComponent implements OnInit, OnDestroy {
   selectedLetter: string = '';
 
   title: string = 'Alfabeto em Português';
@@ -20,32 +20,55 @@ export class AlphabetComponent implements OnInit {
   vowels: string[] = 'aeiou'.split('');
   consonants: string[] = 'bcdfghjklmnpqrstvwxyz'.split('');
 
+  selectedValue$: Observable<string> = this.lettersStatesService.selectedValue$;
+  letter!: string;
+
+  selectedFont$: Observable<string> = this.lettersStatesService.selectedFont$;
+  font!: string;
+
+  private subscription!: Subscription;
+
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private lettersStatesService: LettersStatesService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.selectedLetter = params.get('id')?.toString() ?? '';
       if (this.selectedLetter) {
-        this.router.navigate(['/alfabeto', this.selectedLetter.toLocaleLowerCase()]);
-      //   this.modal.content = this.selectedLetter;
-       // this.modal.open();
+        this.router.navigate([
+          '/alfabeto',
+          this.selectedLetter.toLocaleLowerCase(),
+        ]);
+        //   this.modal.content = this.selectedLetter;
+        // this.modal.open();
       }
     });
+
+    this.subscription = this.lettersStatesService.selectedValue$.subscribe(
+      (letter) => {
+        console.log('letter atualizado:', letter);
+        this.letter = letter;
+      }
+    );
+
+    this.subscription = this.lettersStatesService.selectedFont$.subscribe(
+      (font) => {
+        console.log('font atualizado:', font);
+        this.font = font;
+      }
+    );
   }
 
   onLetterSelected(letter: string) {
     this.selectedLetter = letter;
     console.log(this.selectedLetter);
-    this.router.navigate(['/alfabeto', this.selectedLetter.toLocaleLowerCase()]);
-    //    this.modal.open();
-    // this.modal.content = this.selectedLetter;
-  }
-
-  updateModalContent() {
-    this.modal.content = this.selectedLetter;
+    this.router.navigate([
+      '/alfabeto',
+      this.selectedLetter.toLocaleLowerCase(),
+    ]);
   }
 
   previousLetter() {
@@ -94,11 +117,15 @@ export class AlphabetComponent implements OnInit {
     return this.selectedLetter === 'z';
   }
 
-    isConsonant(letter: string): boolean {
+  isConsonant(letter: string): boolean {
     return this.consonants.includes(letter);
   }
 
-   isVowel(letter: string): boolean {
+  isVowel(letter: string): boolean {
     return this.vowels.includes(letter);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

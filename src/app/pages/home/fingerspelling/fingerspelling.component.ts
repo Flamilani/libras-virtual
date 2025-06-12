@@ -2,14 +2,15 @@ import {
   Component,
   HostListener,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalLetterComponent } from 'src/app/shared/components/modal-letter/modal-letter.component';
-import { ToggleBottomComponent } from 'src/app/shared/components/toggle-bottom/toggle-bottom.component';
+import { Observable, Subscription } from 'rxjs';
 import { BottomSheetService } from 'src/app/shared/services/bottom-sheet.service';
 import { DatasService } from 'src/app/shared/services/datas.service';
+import { LettersStatesService } from 'src/app/shared/states/letters-states/letters-states.service';
 
 @Component({
   selector: 'app-fingerspelling',
@@ -17,9 +18,6 @@ import { DatasService } from 'src/app/shared/services/datas.service';
   styleUrls: ['./fingerspelling.component.css'],
 })
 export class FingerspellingComponent implements OnInit {
-  @ViewChild('modal') modal!: ModalLetterComponent;
-  @ViewChild('bottomSheet') bottomSheet!: ToggleBottomComponent;
-
   showFonts = true;
   selectedLetter: string = '';
   alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -36,11 +34,20 @@ export class FingerspellingComponent implements OnInit {
   displayedValue: string = '';
   fontSize: number = 100;
 
+  selectedValue$: Observable<string> = this.lettersStatesService.selectedValue$;
+  letter!: string;
+
+  selectedFont$: Observable<string> = this.lettersStatesService.selectedFont$;
+  font!: string;
+
+  private subscription!: Subscription;
+
   constructor(
     private datasService: DatasService,
     private bottomSheetService: BottomSheetService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private lettersStatesService: LettersStatesService
   ) {
     this.checkIfMobile();
   }
@@ -56,9 +63,31 @@ export class FingerspellingComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.selectedLetter = params.get('id')?.toString() ?? '';
       if (this.selectedLetter) {
-        this.router.navigate(['/datilologia', this.selectedLetter.toLocaleLowerCase()]);
+        this.router.navigate([
+          '/datilologia',
+          this.selectedLetter.toLocaleLowerCase(),
+        ]);
       }
     });
+
+     this.subscription = this.lettersStatesService.selectedValue$.subscribe(
+      (letter) => {
+        console.log('letter atualizado:', letter);
+        this.letter = letter;
+      }
+    );
+
+     this.subscription = this.lettersStatesService.selectedFont$.subscribe(
+      (font) => {
+        console.log('font atualizado:', font);
+        this.font = font;
+      }
+    );
+  }
+
+  onLetterEntered(letter: string) {
+    this.selectedLetter = letter;
+    console.log('Letter entered:', letter);
   }
 
   handleFontChange(newFont: string) {
@@ -77,15 +106,11 @@ export class FingerspellingComponent implements OnInit {
     ]);
   }
 
-  updateModalContent() {
-    this.modal.content = this.selectedLetter;
-  }
-
   previousLetter() {
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index > 0) {
       this.selectedLetter = this.alphabet[index - 1];
-    //  this.updateModalContent();
+      //  this.updateModalContent();
     }
   }
 
@@ -94,7 +119,7 @@ export class FingerspellingComponent implements OnInit {
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index < this.alphabet.length - 1) {
       this.selectedLetter = this.alphabet[index + 1];
-  //    this.updateModalContent();
+      //    this.updateModalContent();
     }
   }
 
@@ -108,5 +133,9 @@ export class FingerspellingComponent implements OnInit {
 
   checkIfMobile() {
     this.isMobile = window.innerWidth <= 768;
+  }
+
+ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

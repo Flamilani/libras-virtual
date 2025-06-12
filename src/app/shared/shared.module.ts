@@ -14,8 +14,6 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { CardsGrettingComponent } from './components/cards-gretting/cards-gretting.component';
 import { LettersComponent } from './components/letters/letters.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { ModalLetterComponent } from './components/modal-letter/modal-letter.component';
-import { ToggleBottomComponent } from './components/toggle-bottom/toggle-bottom.component';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
 import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
@@ -34,8 +32,6 @@ import { MaterialModule } from '../modules/material/material.module';
     CardsGrettingComponent,
     LettersComponent,
     ModalComponent,
-    ModalLetterComponent,
-    ToggleBottomComponent,
     MenuComponent,
     DialogContentComponent
   ],
@@ -66,8 +62,6 @@ import { MaterialModule } from '../modules/material/material.module';
     CardsGrettingComponent,
     LettersComponent,
     ModalComponent,
-    ModalLetterComponent,
-    ToggleBottomComponent,
     MenuComponent
   ]
 })
