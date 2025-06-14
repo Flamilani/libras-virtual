@@ -1,40 +1,36 @@
 <card-ui [cardStyle]="'containerCard'">
   <app-breadcrumb title="Transcrição de Leitura por Voz" link="/webapp"></app-breadcrumb>
 </card-ui>
-
+<div class="font-buttons">
+  <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+    <bi name="zoom-in" class="sizeIcon"></bi>
+  </button>
+  <button class="btn btn-secondary btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+    <bi name="zoom-out" class="sizeIcon"></bi>
+  </button>
+</div>
 <div class="container">
-  <!--     <div class="font-buttons">
-    <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
-      <bi name="zoom-in" class="sizeIcon"></bi>
-    </button>
-    <button class="btn btn-secondary btnFontSize me-5" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
-      <bi name="zoom-out" class="sizeIcon"></bi>
-    </button>
-  </div> -->
   <form [formGroup]="speechForm">
-    <!--  <div *ngIf="text" class="content-text" [ngStyle]="{'font-size.px': fontSize}">{{ text }}</div> -->
-    <textarea id="textSpeech" formControlName="textSpeech" #textArea class="form-control" rows="3"
-      placeholder="Digite algo ou fale para trascrever..."></textarea>
-    <button class="btn btn-outline-dark" (click)="showKeywords = !showKeywords"
-    #tooltip="matTooltip" [matTooltip]="showKeywords ? 'Ocultar Palavras-chave' : 'Mostrar Palavras-chave'" matTooltipPosition="above">
+    <textarea #textArea id="textSpeech" formControlName="textSpeech" [style.fontSize.px]="fontSize" class="form-control"
+      rows="3" placeholder="Digite algo ou fale para trascrever..."></textarea>
+    <button class="btn btn-outline-dark" (click)="showKeywords = !showKeywords" #tooltip="matTooltip"
+      [matTooltip]="showKeywords ? 'Ocultar Palavras-chave' : 'Mostrar Palavras-chave'" matTooltipPosition="above">
       {{ showKeywords ? '🔽' : '➕' }}
     </button>
-    <div class="keywords" *ngIf="!showKeywords">
-      <button class="btn-keyword btn-outline-secondary"
-        *ngFor="let word of keywords"
-        (click)="addKeyword(word)"
-        [disabled]="isKeywordUsed(word)"
-        #tooltip="matTooltip" [matTooltip]="isKeywordUsed(word) ? 'Já inserido' : 'Adicionar'" matTooltipPosition="above"
-        >
+    <div class="keywords-container" *ngIf="!showKeywords">
+      <button class="keyword-button" *ngFor="let word of keywords" (click)="addKeyword(word)"
+        [disabled]="isKeywordUsed(word)" #tooltip="matTooltip"
+        [matTooltip]="isKeywordUsed(word) ? 'Já inserido' : 'Adicionar'" matTooltipPosition="above">
         {{ word }}
       </button>
     </div>
     <div class="buttons">
-      <button name="btnSpeak" [disabled]="!textControl?.value.trim()" *ngIf="!isListening" class="btn btn-primary"
-        (click)="speak()">🔊 Ler Texto</button>
+      <button name="btnSpeak" [disabled]="!textControl?.value.trim() " *ngIf="!isListening" class="btn btn-primary"
+        (click)="speak()">{{ isSpeaking ? '🔊 Lendo...' : '🔊 Ler Texto' }}</button>
       <button name="btnClear" [disabled]="!textControl?.value.trim() && transcript.length === 0" *ngIf="!isListening"
         class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
-      <button class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'" (click)="toggleRecognition()">
+      <button [disabled]="textControl?.value.trim()" class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'"
+        (click)="toggleRecognition()">
         {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
       </button>
     </div>

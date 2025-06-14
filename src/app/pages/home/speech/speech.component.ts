@@ -24,11 +24,12 @@ export class SpeechComponent implements OnInit, OnDestroy {
   mediaStream!: MediaStream;
 
   textSpeech = '';
-  displayText = '';
+
   recognition: any;
   isListening = false;
+  isSpeaking = false;
 
-  fontSize: number = 20;
+  fontSize = 20;
   displayedValue!: string;
   showKeywords = true;
 
@@ -54,13 +55,19 @@ export class SpeechComponent implements OnInit, OnDestroy {
       this.recognition.interimResults = true;
 
       this.recognition.onresult = (event: any) => {
+        let interimTranscript = '';
+
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcriptText = event.results[i][0].transcript.trim();
-          const style = this.getStyleByVolume();
-          this.transcript.push({ textSpeech: transcriptText, style });
+          console.log(transcriptText);
+          if (event.results[i].isFinal) {
+            this.textSpeech += transcriptText + ' ';
+          } else {
+            interimTranscript += transcriptText + ' ';
+          }
         }
 
-        const fullText = this.transcript.map((t) => t.textSpeech).join(' ');
+        const fullText = (this.textSpeech + interimTranscript).trim();
         this.textControl?.setValue(fullText);
       };
 
@@ -70,7 +77,6 @@ export class SpeechComponent implements OnInit, OnDestroy {
 
       this.recognition.onend = () => {
         this.isListening = false;
-        this.displayText = this.textSpeech;
       };
 
       this.recognition.onerror = (event: any) => {
@@ -153,23 +159,34 @@ export class SpeechComponent implements OnInit, OnDestroy {
 
   speak() {
     const texto = this.textControl?.value;
-    if (texto) {
-      const utterance = new SpeechSynthesisUtterance(texto);
-      utterance.lang = 'pt-BR';
-      speechSynthesis.speak(utterance);
+    if (!texto) return;
+
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
     }
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = 'pt-BR';
+    this.isSpeaking = true;
+
+    utterance.onend = () => {
+      this.isSpeaking = false;
+    };
+
+    utterance.onerror = () => {
+      this.isSpeaking = false;
+    };
+
+    speechSynthesis.speak(utterance);
   }
 
   toggleRecognition() {
-    if (this.isListening) {
-      this.stopRecognition();
-    } else {
-      this.startRecognition();
-    }
+    this.isListening ? this.stopRecognition() : this.startRecognition();
   }
 
   startRecognition() {
     if (this.recognition && !this.isListening) {
+      this.textSpeech = '';
       this.transcript = [];
       this.recognition.start();
       this.isListening = true;
@@ -181,7 +198,15 @@ export class SpeechComponent implements OnInit, OnDestroy {
     if (this.recognition && this.isListening) {
       this.recognition.stop();
       this.isListening = false;
+      this.resetSpeech();
     }
+  }
+
+  resetSpeech() {
+    if (speechSynthesis.speaking || speechSynthesis.pending) {
+      speechSynthesis.cancel();
+    }
+    this.isSpeaking = false;
   }
 
   focusTextArea() {
@@ -197,16 +222,14 @@ export class SpeechComponent implements OnInit, OnDestroy {
   }
 
   increaseFontSize() {
-    if (this.fontSize < 160) {
-      this.fontSize += 20; // Aumenta o tamanho da fonte em 2 pixels
+    if (this.fontSize < 80) {
+      this.fontSize += 10;
     }
   }
 
-  // Função para diminuir o tamanho da fonte
   decreaseFontSize() {
-    if (this.fontSize > 80) {
-      // Limite mínimo de tamanho da fonte
-      this.fontSize -= 20; // Diminui o tamanho da fonte em 2 pixels
+    if (this.fontSize > 20) {
+      this.fontSize -= 10;
     }
   }
 
@@ -215,5 +238,6 @@ export class SpeechComponent implements OnInit, OnDestroy {
       this.recognition.stop();
     }
     this.stopVolumeMeter();
+    this.resetSpeech();
   }
 }
