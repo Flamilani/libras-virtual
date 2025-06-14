@@ -3,7 +3,7 @@
 </card-ui>
 
 <div class="container">
-<!--     <div class="font-buttons">
+  <!--     <div class="font-buttons">
     <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
       <bi name="zoom-in" class="sizeIcon"></bi>
     </button>
@@ -11,17 +11,39 @@
       <bi name="zoom-out" class="sizeIcon"></bi>
     </button>
   </div> -->
-  <div *ngIf="text" class="content-text" [ngStyle]="{'font-size.px': fontSize}">{{ text }}</div>
-  <textarea #textArea class="form-control" rows="3" [(ngModel)]="text"
-    placeholder="Digite algo ou use transcrição por voz..."></textarea>
-
-  <div class="buttons">
-    <button *ngIf="!isListening" class="btn btn-primary" (click)="speak()">🔊 Ler Texto</button>
-    <button *ngIf="!isListening" class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
-    <button class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'" (click)="toggleRecognition()">
-      {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
+  <form [formGroup]="speechForm">
+    <!--  <div *ngIf="text" class="content-text" [ngStyle]="{'font-size.px': fontSize}">{{ text }}</div> -->
+    <textarea id="textSpeech" formControlName="textSpeech" #textArea class="form-control" rows="3"
+      placeholder="Digite algo ou fale para trascrever..."></textarea>
+    <button class="btn btn-outline-dark" (click)="showKeywords = !showKeywords"
+    #tooltip="matTooltip" [matTooltip]="showKeywords ? 'Ocultar Palavras-chave' : 'Mostrar Palavras-chave'" matTooltipPosition="above">
+      {{ showKeywords ? '🔽' : '➕' }}
     </button>
-  </div>
-
+    <div class="keywords" *ngIf="!showKeywords">
+      <button class="btn-keyword btn-outline-secondary"
+        *ngFor="let word of keywords"
+        (click)="addKeyword(word)"
+        [disabled]="isKeywordUsed(word)"
+        #tooltip="matTooltip" [matTooltip]="isKeywordUsed(word) ? 'Já inserido' : 'Adicionar'" matTooltipPosition="above"
+        >
+        {{ word }}
+      </button>
+    </div>
+    <div class="buttons">
+      <button name="btnSpeak" [disabled]="!textControl?.value.trim()" *ngIf="!isListening" class="btn btn-primary"
+        (click)="speak()">🔊 Ler Texto</button>
+      <button name="btnClear" [disabled]="!textControl?.value.trim() && transcript.length === 0" *ngIf="!isListening"
+        class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
+      <button class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'" (click)="toggleRecognition()">
+        {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
+      </button>
+    </div>
+  </form>
   <p *ngIf="isListening">🎧 Ouvindo...</p>
+  <div class="output">
+    <h4>📝 Texto Transcrito:</h4>
+    <ng-container *ngFor="let word of transcript">
+      <span [ngClass]="word.style">{{ word.textSpeech }}</span>
+    </ng-container>
+  </div>
 </div>

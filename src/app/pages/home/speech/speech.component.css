@@ -1,6 +1,10 @@
 .container {
-  max-width: 600px;
-  text-align: center;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fafafa;
 }
 
 textarea {
@@ -13,7 +17,7 @@ textarea {
 .buttons button {
   margin: 5px;
   padding: 10px 15px;
-  font-size: 1rem;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -36,4 +40,97 @@ p {
   width: 15px;
   height: 15px;
   display: inline-block;
+}
+
+.output {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 120px;
+  background: #f9f9f9;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.output span {
+  margin-right: 5px;
+  display: inline-block;
+}
+
+/* Estilos baseados no volume */
+.soft {
+  color: #007bff;
+  font-weight: normal;
+}
+
+.medium {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.loud {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.btn-keyword {
+  background-color: #017cff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.listening {
+  color: red;
+  font-weight: bold;
+}
+
+.fast {
+  color: blue;
+  font-size: 0.9rem;
+}
+
+.loud {
+  color: red;
+  font-weight: bold;
+}
+
+.slow {
+  color: green;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.keywords {
+  margin-bottom: 10px;
+  display: contents;
 }

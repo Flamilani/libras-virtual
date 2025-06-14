@@ -7,7 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CustomRouteReuseStrategy } from './shared/helpers/custom-route';
 import { RouteReuseStrategy } from '@angular/router';
@@ -19,8 +19,9 @@ import { RouteReuseStrategy } from '@angular/router';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
     HomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
