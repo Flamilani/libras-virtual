@@ -13,6 +13,12 @@
       <div class="gif-loading" *ngIf="gifLoading[i]">
         <span class="spinner"></span>
       </div>
+      <div [hidden]="gifLoading[i]">
+      <div class="message-sender sender-green" *ngIf="msg.sender === 'A'; else pessoaB">Pessoa A</div>
+      <ng-template #pessoaB>
+        <div class="message-sender sender-black">Pessoa B</div>
+      </ng-template>
+      </div>
       <img [src]="msg.gif" (load)="onGifLoad(i)" [hidden]="gifLoading[i]" class="gif" />
       <div [hidden]="gifLoading[i]" class="message" [ngClass]="{'b-message': msg.sender === 'B'}">
         <span class="message-text">{{ msg.text }}</span>

@@ -114,7 +114,7 @@ export class DialogueComponent implements OnInit {
           this.conversationEnded = true;
         }
         this.scrollToBottom();
-      }, 1200);
+      }, 600);
     }
     this.scrollToBottom();
   }
@@ -153,6 +153,6 @@ export class DialogueComponent implements OnInit {
       this.isTyping = false;
       this.showAButton = true;
       this.scrollToBottom();
-    }, 1500);
+    }, 800);
   }
 }
