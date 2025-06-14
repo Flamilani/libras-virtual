@@ -1,6 +1,5 @@
 .container {
   max-width: 600px;
-  margin: 30px auto;
   text-align: center;
 }
 
@@ -21,4 +20,20 @@ textarea {
 p {
   color: green;
   font-weight: bold;
+}
+
+.content-text {
+  text-align: justify;
+  padding: 10px;
+  background-color: #e4e4e4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.sizeIcon {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
 }

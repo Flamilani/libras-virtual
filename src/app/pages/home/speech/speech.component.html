@@ -3,17 +3,24 @@
 </card-ui>
 
 <div class="container">
-  <textarea
-    class="form-control"
-    rows="6"
-    [(ngModel)]="text"
-    placeholder="Digite algo ou use transcrição por voz..."
-  ></textarea>
+<!--     <div class="font-buttons">
+    <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+      <bi name="zoom-in" class="sizeIcon"></bi>
+    </button>
+    <button class="btn btn-secondary btnFontSize me-5" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+      <bi name="zoom-out" class="sizeIcon"></bi>
+    </button>
+  </div> -->
+  <div *ngIf="text" class="content-text" [ngStyle]="{'font-size.px': fontSize}">{{ text }}</div>
+  <textarea #textArea class="form-control" rows="3" [(ngModel)]="text"
+    placeholder="Digite algo ou use transcrição por voz..."></textarea>
 
   <div class="buttons">
-    <button class="btn btn-primary" (click)="speak()">🔊 Ler Texto</button>
-    <button class="btn btn-success" (click)="startRecognition()">🎙️ Iniciar Transcrição</button>
-    <button class="btn btn-danger" (click)="stopRecognition()">⏹️ Parar</button>
+    <button *ngIf="!isListening" class="btn btn-primary" (click)="speak()">🔊 Ler Texto</button>
+    <button *ngIf="!isListening" class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
+    <button class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'" (click)="toggleRecognition()">
+      {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
+    </button>
   </div>
 
   <p *ngIf="isListening">🎧 Ouvindo...</p>
