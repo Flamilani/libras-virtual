@@ -13,20 +13,21 @@
   <form [formGroup]="speechForm">
     <textarea #textArea id="textSpeech" formControlName="textSpeech" [style.fontSize.px]="fontSize" class="form-control"
       rows="3" placeholder="Digite algo ou fale para trascrever..."></textarea>
-    <button class="btn btn-outline-dark" (click)="showKeywords = !showKeywords" #tooltip="matTooltip"
-      [matTooltip]="showKeywords ? 'Ocultar Palavras-chave' : 'Mostrar Palavras-chave'" matTooltipPosition="above">
+    <button class="btn btn-outline-dark" (click)="showKeywords = !showKeywords">
       {{ showKeywords ? '🔽' : '➕' }}
     </button>
     <div class="keywords-container" *ngIf="!showKeywords">
       <button class="keyword-button" *ngFor="let word of keywords" (click)="addKeyword(word)"
-        [disabled]="isKeywordUsed(word)" #tooltip="matTooltip"
-        [matTooltip]="isKeywordUsed(word) ? 'Já inserido' : 'Adicionar'" matTooltipPosition="above">
+        [disabled]="isKeywordUsed(word)">
         {{ word }}
       </button>
     </div>
     <div class="buttons">
-      <button name="btnSpeak" [disabled]="!textControl?.value.trim() " *ngIf="!isListening" class="btn btn-primary"
-        (click)="speak()">{{ isSpeaking ? '🔊 Lendo...' : '🔊 Ler Texto' }}</button>
+      <button name="btnSpeak" [disabled]="!textControl?.value.trim() " *ngIf="!isListening && !isSpeaking" class="btn btn-primary"
+        (click)="speak()">🔊 Ler Texto</button>
+      <button class="btn btn-info" (click)="resetSpeech()" *ngIf="isSpeaking">
+        ⏹️ Parar
+      </button>
       <button name="btnClear" [disabled]="!textControl?.value.trim() && transcript.length === 0" *ngIf="!isListening"
         class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
       <button [disabled]="textControl?.value.trim()" class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'"

@@ -44,6 +44,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('Iniciando reconhecimento de fala...');
     const SpeechRecognition =
       (window as any).SpeechRecognition ||
       (window as any).webkitSpeechRecognition;
@@ -52,14 +53,24 @@ export class SpeechComponent implements OnInit, OnDestroy {
       this.recognition = new SpeechRecognition();
       this.recognition.lang = 'pt-BR';
       this.recognition.continuous = true;
-      this.recognition.interimResults = true;
+      this.recognition.interimResults = false;
 
       this.recognition.onresult = (event: any) => {
+        console.log('Texto transcrito:', event.results[0][0].transcript);
         let interimTranscript = '';
+
+        const currentVolume = this.getCurrentVolume();
+        const style = this.getStyleByVolume(currentVolume);
 
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcriptText = event.results[i][0].transcript.trim();
           console.log(transcriptText);
+
+          this.transcript.push({
+            textSpeech: transcriptText,
+            style: style,
+          });
+
           if (event.results[i].isFinal) {
             this.textSpeech += transcriptText + ' ';
           } else {
@@ -67,21 +78,23 @@ export class SpeechComponent implements OnInit, OnDestroy {
           }
         }
 
-        const fullText = (this.textSpeech + interimTranscript).trim();
-        this.textControl?.setValue(fullText);
+        this.updateFullText();
       };
 
       this.recognition.onstart = () => {
         this.isListening = true;
+        this.initVolumeMeter();
       };
 
       this.recognition.onend = () => {
         this.isListening = false;
+        this.stopVolumeMeter();
       };
 
       this.recognition.onerror = (event: any) => {
         console.error('Erro no reconhecimento:', event.error);
         this.isListening = false;
+        this.stopVolumeMeter();
       };
     } else {
       alert('Reconhecimento de fala não suportado neste navegador.');
@@ -98,66 +111,14 @@ export class SpeechComponent implements OnInit, OnDestroy {
   }
 
   addKeyword(word: string) {
+    console.log('Adicionando palavra:', word);
     const current = this.textControl?.value || '';
     this.textControl?.setValue((current + ' ' + word).trim());
     this.focusTextArea();
   }
 
-  getStyleByVolume(): string {
-    const volume = this.getCurrentVolume();
-
-    if (volume > 40) {
-      return 'loud'; // 🔴 Alto
-    } else if (volume > 20) {
-      return 'medium'; // 🟢 Médio
-    } else {
-      return 'soft'; // 🔵 Baixo
-    }
-  }
-
-  initVolumeMeter() {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      this.mediaStream = stream;
-      this.audioContext = new AudioContext();
-      this.analyser = this.audioContext.createAnalyser();
-      this.microphone = this.audioContext.createMediaStreamSource(stream);
-      this.analyser.fftSize = 512;
-      this.dataArray = new Uint8Array(this.analyser.fftSize);
-
-      this.microphone.connect(this.analyser);
-      this.monitorVolume();
-    });
-  }
-
-  monitorVolume() {
-    if (!this.isListening) return;
-
-    this.analyser.getByteTimeDomainData(this.dataArray);
-    requestAnimationFrame(() => this.monitorVolume());
-  }
-
-  getCurrentVolume(): number {
-    if (!this.analyser) return 0;
-
-    this.analyser.getByteTimeDomainData(this.dataArray);
-    let sum = 0;
-    for (const v of this.dataArray) {
-      const val = v - 128;
-      sum += val * val;
-    }
-    return Math.sqrt(sum / this.dataArray.length);
-  }
-
-  stopVolumeMeter() {
-    if (this.audioContext) {
-      this.audioContext.close();
-    }
-    if (this.mediaStream) {
-      this.mediaStream.getTracks().forEach((track) => track.stop());
-    }
-  }
-
   speak() {
+    console.log('Lendo texto:', this.textControl?.value);
     const texto = this.textControl?.value;
     if (!texto) return;
 
@@ -202,6 +163,61 @@ export class SpeechComponent implements OnInit, OnDestroy {
     }
   }
 
+  updateFullText() {
+    const fullText = this.transcript.map((t) => t.textSpeech).join(' ');
+    this.textControl?.setValue(fullText);
+  }
+
+  getStyleByVolume(volume: number): string {
+    if (volume > 40) {
+      return 'loud'; // 🔴 Alto
+    } else if (volume > 20) {
+      return 'medium'; // 🟢 Médio
+    } else {
+      return 'soft'; // 🔵 Baixo
+    }
+  }
+
+  initVolumeMeter() {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+      this.mediaStream = stream;
+      this.audioContext = new AudioContext();
+      this.analyser = this.audioContext.createAnalyser();
+      this.microphone = this.audioContext.createMediaStreamSource(stream);
+      this.analyser.fftSize = 512;
+      this.dataArray = new Uint8Array(this.analyser.fftSize);
+
+      this.microphone.connect(this.analyser);
+      this.monitorVolume();
+    });
+  }
+
+  monitorVolume() {
+    if (!this.isListening) return;
+    this.analyser.getByteTimeDomainData(this.dataArray);
+    requestAnimationFrame(() => this.monitorVolume());
+  }
+
+  getCurrentVolume(): number {
+    if (!this.analyser) return 0;
+    this.analyser.getByteTimeDomainData(this.dataArray);
+    let sum = 0;
+    for (const v of this.dataArray) {
+      const val = v - 128;
+      sum += val * val;
+    }
+    return Math.sqrt(sum / this.dataArray.length);
+  }
+
+  stopVolumeMeter() {
+    if (this.audioContext) {
+      this.audioContext.close();
+    }
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach((track) => track.stop());
+    }
+  }
+
   resetSpeech() {
     if (speechSynthesis.speaking || speechSynthesis.pending) {
       speechSynthesis.cancel();
@@ -219,6 +235,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
     this.textControl?.setValue('');
     this.transcript = [];
     this.focusTextArea();
+    this.resetSpeech();
   }
 
   increaseFontSize() {
