@@ -13,6 +13,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { FacialExpressionComponent } from './facial-expression/facial-expression.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
+import { SpeechComponent } from './speech/speech.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
       {
         path: 'glossario',
         component: GlossaryComponent,
+      },
+      {
+        path: 'transcricao-voz',
+        component: SpeechComponent,
       },
     ],
   },

@@ -7,6 +7,7 @@ const img04 = './../assets/imgs/saudacoes.png';
 const img05 = './../assets/imgs/quiz.png';
 const img06 = './../assets/imgs/expressoes-faciais.png';
 const img07 = './../assets/imgs/dialogo.png';
+const img08 = './../assets/imgs/transcricao-voz.png';
 
 export const cINITIALS: iInitials[] = [
   {
@@ -63,6 +64,13 @@ export const cINITIALS: iInitials[] = [
     link: '/expressoes-faciais',
     title: 'Expressões Faciais',
     image: img06,
+    active: true,
+  },
+  {
+    id: '9',
+    link: '/transcricao-voz',
+    title: 'Transcrição de Leitura por Voz',
+    image: img08,
     active: true,
   },
 ];

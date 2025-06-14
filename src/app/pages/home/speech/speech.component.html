@@ -1,0 +1,20 @@
+<card-ui [cardStyle]="'containerCard'">
+  <app-breadcrumb title="Transcrição de Leitura por Voz" link="/webapp"></app-breadcrumb>
+</card-ui>
+
+<div class="container">
+  <textarea
+    class="form-control"
+    rows="6"
+    [(ngModel)]="text"
+    placeholder="Digite algo ou use transcrição por voz..."
+  ></textarea>
+
+  <div class="buttons">
+    <button class="btn btn-primary" (click)="speak()">🔊 Ler Texto</button>
+    <button class="btn btn-success" (click)="startRecognition()">🎙️ Iniciar Transcrição</button>
+    <button class="btn btn-danger" (click)="stopRecognition()">⏹️ Parar</button>
+  </div>
+
+  <p *ngIf="isListening">🎧 Ouvindo...</p>
+</div>

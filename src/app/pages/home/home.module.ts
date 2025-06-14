@@ -24,6 +24,7 @@ import { GlossaryComponent } from './glossary/glossary.component';
 import { FacialExpressionComponent } from './facial-expression/facial-expression.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { JoyrideModule } from 'ngx-joyride';
+import { SpeechComponent } from './speech/speech.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { JoyrideModule } from 'ngx-joyride';
     GlossaryComponent,
     FacialExpressionComponent,
     DialogueComponent,
+    SpeechComponent,
   ],
   imports: [
     BrowserModule,
