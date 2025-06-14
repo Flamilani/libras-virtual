@@ -13,6 +13,12 @@
   scroll-behavior: smooth;
 }
 
+.containerDialogue {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .dialog-container {
   overflow-y: auto;
   scrollbar-width: thin;
@@ -91,7 +97,7 @@ button:hover {
 }
 
 .button-green {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
@@ -124,6 +130,13 @@ button:hover {
   font-size: 14px;
   color: #555;
   text-align: center;
+}
+
+.sizeIcon {
+  width: 30px;
+  height: 30px;
+  color: #042e68;
+  cursor: pointer;
 }
 
 .message {
@@ -201,5 +214,3 @@ button:hover {
     transform: translateY(0);
   }
 }
-
-

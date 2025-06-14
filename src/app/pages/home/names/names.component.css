@@ -113,6 +113,11 @@
   filter: invert(100%);
 }
 
+.btnInfo:disabled {
+  opacity: 0.5;
+  cursor: initial;
+}
+
 .spanName {
   margin-right: 10px;
   vertical-align: super;

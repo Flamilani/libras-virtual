@@ -23,6 +23,7 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { FacialExpressionComponent } from './facial-expression/facial-expression.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
+import { JoyrideModule } from 'ngx-joyride';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { DialogueComponent } from './dialogue/dialogue.component';
     IconsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+        JoyrideModule.forRoot(),
   ],
 })
 export class HomeModule {}

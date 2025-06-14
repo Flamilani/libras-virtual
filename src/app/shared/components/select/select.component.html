@@ -1,5 +1,5 @@
 <div class="shared-component__select">
-  <select [disabled]="disabled" class="form-select" [(ngModel)]="selectedFont" (change)="onFontChange()">
+  <select name="selectFonts" [disabled]="disabled" class="form-select" [(ngModel)]="selectedFont" (change)="onFontChange()">
     <option selected *ngFor="let font of fonts" [value]="font.style">{{ font.text }}</option>
   </select>
 </div>

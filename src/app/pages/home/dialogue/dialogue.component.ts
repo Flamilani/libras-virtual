@@ -1,17 +1,18 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   aDialogues_01,
   bDialogues_01,
 } from 'src/app/shared/constants/dialogues/dialogue-01.constant';
 import { environment } from 'src/environments/environment';
-
+import { JoyrideService } from 'ngx-joyride';
+import { cSTEPS_PARAMETERS } from 'src/app/shared/constants/steps-tour.constant';
 
 @Component({
   selector: 'app-dialogue',
   templateUrl: './dialogue.component.html',
   styleUrls: ['./dialogue.component.css'],
 })
-export class DialogueComponent {
+export class DialogueComponent implements OnInit {
   @ViewChild('bottom') bottomEl!: ElementRef;
   imgLoading = environment.imgLoading;
 
@@ -24,9 +25,27 @@ export class DialogueComponent {
   showBButton = false;
   conversationEnded = false;
 
+  joyrideStep!: string;
+  joyrideTitle!: string;
+  joyrideDescription!: string;
+
   isTyping = false;
 
   typingSender: 'A' | 'B' | null = null;
+
+  readonly stepViewData = cSTEPS_PARAMETERS;
+
+  constructor(private readonly joyrideService: JoyrideService) {}
+
+  ngOnInit(): void {
+    this.joyrideStep = this.viewSteps[0].joyrideStep;
+    this.joyrideTitle = this.viewSteps[0].title;
+    this.joyrideDescription = this.viewSteps[0].description;
+
+    window.speechSynthesis.onvoiceschanged = () => {
+      window.speechSynthesis.getVoices();
+    };
+  }
 
   private scrollToBottom() {
     setTimeout(() => {
@@ -34,6 +53,30 @@ export class DialogueComponent {
     }, 100);
   }
 
+  speakDialogue(sender: 'A' | 'B', text: string) {
+    const synth = window.speechSynthesis;
+
+    synth.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    console.log(utterance);
+
+    utterance.lang = 'pt-BR';
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    const speaker = sender === 'A' ? 'Pessoa A' : 'Pessoa B';
+    utterance.text = `${speaker}: ${text}`;
+
+    const voices = synth.getVoices();
+    const ptVoice = voices.find((v) => v.lang === 'pt-BR') || voices[0];
+
+    if (ptVoice) {
+      utterance.voice = ptVoice;
+    }
+
+    synth.speak(utterance);
+  }
 
   showNext(sender: 'A' | 'B') {
     const dialogues = sender === 'A' ? aDialogues_01 : bDialogues_01;
@@ -52,6 +95,8 @@ export class DialogueComponent {
         const msgIndex = this.combinedDialogues.length;
         this.combinedDialogues.push({ gif, text, sender });
         this.gifLoading[msgIndex] = true;
+
+        this.speakDialogue(sender, text);
 
         this.isTyping = false;
         this.typingSender = null;
@@ -72,6 +117,17 @@ export class DialogueComponent {
       }, 1200);
     }
     this.scrollToBottom();
+  }
+
+  get viewSteps() {
+    return this.stepViewData;
+  }
+
+  onClickHelp() {
+    this.joyrideService.startTour({
+      steps: ['firstStep'],
+      customTexts: { prev: '<', next: '>', done: 'Pronto' },
+    });
   }
 
   onGifLoad(index: number) {

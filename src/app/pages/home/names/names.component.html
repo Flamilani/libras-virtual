@@ -21,10 +21,10 @@
   <div class="groupNames">
     <div class="labelFontes">
     <label> <span class="spanName">{{ listNames[1].title }}</span>
-      <button *ngIf="!isMobile" class="btnInfo" (click)="openDialog(2)">
+      <button [disabled]="!nameInput" *ngIf="!isMobile" class="btnInfo" (click)="openDialog(2)">
         <img [src]="icon" alt="Libras" />
        </button>
-        <button *ngIf="isMobile" class="btnInfo" (click)="openBottomSheet(2)">
+        <button [disabled]="!nameInput" *ngIf="isMobile" class="btnInfo" (click)="openBottomSheet(2)">
         <img [src]="icon" alt="Libras" />
        </button>
     </label>
