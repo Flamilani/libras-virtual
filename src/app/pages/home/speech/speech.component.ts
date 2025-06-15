@@ -24,6 +24,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
   mediaStream!: MediaStream;
 
   textSpeech = '';
+  displayText = '';
 
   recognition: any;
   isListening = false;
@@ -38,12 +39,6 @@ export class SpeechComponent implements OnInit, OnDestroy {
   keywords = ['Olá, tudo bem?', 'Bom dia!', 'Obrigado', 'Até logo'];
 
   constructor(private fb: FormBuilder) {
-    this.speechForm = this.fb.group({
-      textSpeech: [''],
-    });
-  }
-
-  ngOnInit(): void {
     console.log('Iniciando reconhecimento de fala...');
     const SpeechRecognition =
       (window as any).SpeechRecognition ||
@@ -56,14 +51,14 @@ export class SpeechComponent implements OnInit, OnDestroy {
       this.recognition.interimResults = false;
 
       this.recognition.onresult = (event: any) => {
+        let interimTranscript = '';
+
         const currentVolume = this.getCurrentVolume();
         const style = this.getStyleByVolume(currentVolume);
 
-        for (let i = event.resultIndex; i < event.results.length; i++) {
+        /*         for (let i = event.resultIndex; i < event.results.length; i++) {
           const result = event.results[i];
           const transcriptText = result[0].transcript.trim();
-
-          console.log(transcriptText);
 
           this.transcript.push({
             textSpeech: transcriptText,
@@ -73,9 +68,18 @@ export class SpeechComponent implements OnInit, OnDestroy {
           if (result.isFinal) {
             this.textSpeech += transcriptText + ' ';
           }
+        } */
 
-          console.log('Texto transcrito:', transcriptText);
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            this.textSpeech += transcript + ' ';
+          } else {
+            interimTranscript += transcript;
+          }
         }
+
+        this.displayText = this.textSpeech + interimTranscript;
 
         this.updateFullText();
       };
@@ -104,6 +108,17 @@ export class SpeechComponent implements OnInit, OnDestroy {
     } else {
       alert('Reconhecimento de fala não suportado neste navegador.');
     }
+
+    this.speechForm = this.fb.group({
+      textSpeech: [''],
+    });
+  }
+
+  ngOnInit(): void {}
+
+  updateFullText() {
+    const fullText = this.transcript.map((t) => t.textSpeech).join(' ');
+    this.textControl?.setValue(fullText);
   }
 
   get textControl() {
@@ -169,11 +184,6 @@ export class SpeechComponent implements OnInit, OnDestroy {
       this.resetSpeech();
     }
     this.stopAllAudio();
-  }
-
-  updateFullText() {
-    const fullText = this.transcript.map((t) => t.textSpeech).join(' ');
-    this.textControl?.setValue(fullText);
   }
 
   getStyleByVolume(volume: number): string {

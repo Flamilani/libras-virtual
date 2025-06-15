@@ -1,14 +1,26 @@
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
 .cardItem {
-  display: block;
-  margin: 10px;
-  text-align: center;
+  cursor: grab;
+  padding: 10px;
+  padding-right: 0px;
+  background-color: #dcdcdc;
+  border: 1px solid #607d8b;
+  border-radius: 8px;
+}
+
+.cardItem:active {
+  cursor: grabbing;
 }
 
 .cardItem img {
   border-radius: 10px;
   width: auto;
-  height: 145px;
+  height: 130px;
   border: 2px solid #3f51b5;
 }
 
@@ -29,6 +41,7 @@
   text-align: center;
   margin: 0 auto;
   margin-top: 7px;
+  text-indent: -10px;
 }
 
 .centerCard {

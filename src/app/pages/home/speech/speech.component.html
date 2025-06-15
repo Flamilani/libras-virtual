@@ -11,8 +11,12 @@
 </div>
 <div class="container">
   <form [formGroup]="speechForm">
-    <textarea #textArea id="textSpeech" formControlName="textSpeech" [style.fontSize.px]="fontSize" class="form-control"
+
+    <textarea [readonly]="isListening" #textArea id="textSpeech"
+    [value]="displayText" formControlName="textSpeech"
+    [style.fontSize.px]="fontSize" class="form-control"
       rows="3" placeholder="Digite algo ou fale para trascrever..."></textarea>
+
     <button class="btn btn-outline-dark" (click)="showKeywords = !showKeywords">
       {{ showKeywords ? '🔽' : '➕' }}
     </button>
@@ -28,19 +32,19 @@
       <button class="btn btn-info" (click)="resetSpeech()" *ngIf="isSpeaking">
         ⏹️ Parar
       </button>
-      <button name="btnClear" [disabled]="!textControl?.value.trim() && transcript.length === 0" *ngIf="!isListening"
+      <button name="btnClear" *ngIf="textControl?.value.trim() && transcript.length === 0" [disabled]="isSpeaking"
         class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
-      <button [disabled]="textControl?.value.trim()" class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'"
+      <button *ngIf="!textControl?.value.trim()" class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'"
         (click)="toggleRecognition()">
         {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
       </button>
     </div>
   </form>
   <p *ngIf="isListening">🎧 Ouvindo...</p>
-  <div class="output">
+<!--   <div class="output">
     <h4>📝 Texto Transcrito:</h4>
     <ng-container *ngFor="let word of transcript">
       <span [ngClass]="word.style">{{ word.textSpeech }}</span>
     </ng-container>
-  </div>
+  </div> -->
 </div>

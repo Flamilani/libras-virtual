@@ -89,13 +89,13 @@ footer {
 }
 
 a {
-  color: #042e68;
+  color: #042e68 !important;
   text-decoration: none !important;
   transition: 0.5s;
 }
 
 a:hover {
-  color: #66e5f5;
+  color: #66e5f5 !important;
   transition: 0.5s;
   filter: brightness(80%);
 }

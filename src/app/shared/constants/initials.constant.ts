@@ -69,7 +69,7 @@ export const cINITIALS: iInitials[] = [
   {
     id: '9',
     link: '/transcricao-voz',
-    title: 'Transcrição de Leitura por Voz',
+    title: 'Transcrição por Voz',
     image: img08,
     active: true,
   },

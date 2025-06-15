@@ -1,10 +1,12 @@
 <card-ui [cardStyle]="'containerCard'">
-  <div *ngFor="let initial of initials">
-    <div class="cardItem" *ngIf="initial.active === true">
-      <a [routerLink]="['/' + initial.link]">
-        <img [src]="initial.image" alt="initial.title" />
-        <p>{{ initial.title }}</p>
-      </a>
+  <span cdkDropList (cdkDropListDropped)="drop($event)" class="card-list">
+    <div *ngFor="let initial of initials" class="card-initial">
+      <div class="cardItem" *ngIf="initial.active === true" cdkDrag>
+        <a [routerLink]="['/' + initial.link]">
+          <img [src]="initial.image" alt="initial.title" />
+          <p>{{ initial.title }}</p>
+        </a>
+      </div>
     </div>
-  </div>
+  </span>
 </card-ui>

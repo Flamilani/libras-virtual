@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CustomRouteReuseStrategy } from './shared/helpers/custom-route';
 import { RouteReuseStrategy } from '@angular/router';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { RouteReuseStrategy } from '@angular/router';
     HomeModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

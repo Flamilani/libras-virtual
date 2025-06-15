@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { iInitials } from 'src/app/shared/interfaces/initials.interface';
@@ -22,7 +23,7 @@ export class InitialsComponent implements OnInit {
 
   ngOnInit() {
     this.initials = this.initialsService.getInitials();
-/*     this.getLetter();
+    /*     this.getLetter();
 
     this.subscription = this.lettersStatesService.selectedValue$.subscribe(
       (letter) => {
@@ -30,13 +31,36 @@ export class InitialsComponent implements OnInit {
         this.letter = 'all';
       }
     ); */
+
+    const saved = localStorage.getItem('cardOrder');
+    if (saved) {
+      const savedIds = JSON.parse(saved) as string[];
+      const activeCards = this.initials.filter((i) => i.active);
+      this.initials = savedIds
+        .map((id) => activeCards.find((i) => i.id === id))
+        .filter((i): i is iInitials => !!i);
+      const missing = activeCards.filter((i) => !savedIds.includes(i.id));
+      this.initials = [...this.initials, ...missing];
+    } else {
+      this.initials = this.initials.filter((i) => i.active);
+    }
+  }
+
+  drop(event: CdkDragDrop<iInitials[]>): void {
+    moveItemInArray(this.initials, event.previousIndex, event.currentIndex);
+    this.saveOrder();
+  }
+
+  saveOrder(): void {
+    const order = this.initials.map((i) => i.id);
+    localStorage.setItem('cardOrder', JSON.stringify(order));
   }
 
   getLetter() {
     this.lettersStatesService.selectLetter('all');
   }
 
-/*   ngOnDestroy() {
+  /*   ngOnDestroy() {
     this.subscription.unsubscribe();
   } */
 }

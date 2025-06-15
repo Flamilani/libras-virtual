@@ -1,5 +1,5 @@
 .container {
-  max-width: 700px;
+  max-width: 660px;
   margin: 10px auto;
   padding: 20px;
   border: 2px solid #ccc;
@@ -10,6 +10,8 @@
 .font-buttons {
   display: flex;
   justify-content: right;
+  max-width: 660px;
+  margin: 10px auto;
 }
 
 textarea {
@@ -142,7 +144,9 @@ button:disabled {
   white-space: nowrap;
   gap: 12px;
   padding: 10px;
-  background-color: #f8f9fa;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #c5c5c5;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   scrollbar-width: thin;

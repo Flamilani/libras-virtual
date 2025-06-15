@@ -1,5 +1,5 @@
 export interface iInitials {
-      id: number | string;
+      id: string;
       link: string;
       title: string;
       image: string;
