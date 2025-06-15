@@ -56,14 +56,13 @@ export class SpeechComponent implements OnInit, OnDestroy {
       this.recognition.interimResults = false;
 
       this.recognition.onresult = (event: any) => {
-        console.log('Texto transcrito:', event.results[0][0].transcript);
-        let interimTranscript = '';
-
         const currentVolume = this.getCurrentVolume();
         const style = this.getStyleByVolume(currentVolume);
 
         for (let i = event.resultIndex; i < event.results.length; i++) {
-          const transcriptText = event.results[i][0].transcript.trim();
+          const result = event.results[i];
+          const transcriptText = result[0].transcript.trim();
+
           console.log(transcriptText);
 
           this.transcript.push({
@@ -71,11 +70,11 @@ export class SpeechComponent implements OnInit, OnDestroy {
             style: style,
           });
 
-          if (event.results[i].isFinal) {
+          if (result.isFinal) {
             this.textSpeech += transcriptText + ' ';
-          } else {
-            interimTranscript += transcriptText + ' ';
           }
+
+          console.log('Texto transcrito:', transcriptText);
         }
 
         this.updateFullText();
@@ -87,8 +86,14 @@ export class SpeechComponent implements OnInit, OnDestroy {
       };
 
       this.recognition.onend = () => {
+        console.warn('Reconhecimento parado');
         this.isListening = false;
         this.stopVolumeMeter();
+
+        if (this.isListening) {
+          console.log('Reiniciando reconhecimento...');
+          this.recognition.start();
+        }
       };
 
       this.recognition.onerror = (event: any) => {
@@ -146,21 +151,24 @@ export class SpeechComponent implements OnInit, OnDestroy {
   }
 
   startRecognition() {
-    if (this.recognition && !this.isListening) {
+    if (!this.isListening) {
       this.textSpeech = '';
       this.transcript = [];
-      this.recognition.start();
       this.isListening = true;
+      this.recognition.start();
+      this.initVolumeMeter();
       this.focusTextArea();
     }
   }
 
   stopRecognition() {
-    if (this.recognition && this.isListening) {
-      this.recognition.stop();
+    if (this.isListening) {
       this.isListening = false;
+      this.recognition.stop();
+      this.stopVolumeMeter();
       this.resetSpeech();
     }
+    this.stopAllAudio();
   }
 
   updateFullText() {
@@ -210,11 +218,15 @@ export class SpeechComponent implements OnInit, OnDestroy {
   }
 
   stopVolumeMeter() {
-    if (this.audioContext) {
-      this.audioContext.close();
+    if (this.audioContext && this.audioContext.state !== 'closed') {
+      this.audioContext.close().then(() => {
+        this.audioContext = undefined as any;
+      });
     }
+
     if (this.mediaStream) {
       this.mediaStream.getTracks().forEach((track) => track.stop());
+      this.mediaStream = undefined as any;
     }
   }
 
@@ -250,11 +262,45 @@ export class SpeechComponent implements OnInit, OnDestroy {
     }
   }
 
+  stopAllAudio() {
+    console.log('Parando reconhecimento e microfone...');
+
+    if (this.recognition) {
+      try {
+        this.recognition.stop();
+        console.log('Reconhecimento parado.');
+      } catch (e) {
+        console.warn('Erro ao parar reconhecimento:', e);
+      }
+    }
+
+    if (this.audioContext && this.audioContext.state !== 'closed') {
+      this.audioContext
+        .close()
+        .then(() => {
+          console.log('AudioContext fechado.');
+        })
+        .catch((e) => {
+          console.warn('Erro ao fechar AudioContext:', e);
+        });
+    }
+
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach((track) => {
+        track.stop();
+        console.log('Track parada:', track);
+      });
+      this.mediaStream = undefined as any;
+    }
+
+    this.isListening = false;
+  }
   ngOnDestroy() {
     if (this.recognition) {
       this.recognition.stop();
     }
     this.stopVolumeMeter();
     this.resetSpeech();
+    this.stopAllAudio();
   }
 }
