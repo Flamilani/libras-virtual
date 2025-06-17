@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
 import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
 import { MaterialModule } from '../modules/material/material.module';
+import { SpeechReaderComponent } from './components/speech-reader/speech-reader.component';
+import { SpeechTranscriberComponent } from './components/speech-transcriber/speech-transcriber.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { MaterialModule } from '../modules/material/material.module';
     LettersComponent,
     ModalComponent,
     MenuComponent,
-    DialogContentComponent
+    DialogContentComponent,
+    SpeechReaderComponent,
+    SpeechTranscriberComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +66,9 @@ import { MaterialModule } from '../modules/material/material.module';
     CardsGrettingComponent,
     LettersComponent,
     ModalComponent,
-    MenuComponent
+    MenuComponent,
+    SpeechReaderComponent,
+    SpeechTranscriberComponent,
   ]
 })
 export class SharedModule { }

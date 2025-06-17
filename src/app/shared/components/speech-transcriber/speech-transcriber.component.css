@@ -1,20 +1,28 @@
 .container {
-  max-width: 660px;
+  max-width: 650px;
   margin: 10px auto;
+  padding: 10px;
   border: 2px solid #ccc;
   border-radius: 12px;
   background-color: #fafafa;
 }
 
-.containerCardVoice {
-  max-width: 660px;
-  margin: 10px auto;
+.card-title-fonts {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleSpeech {
+  margin: 12px;
+  margin-bottom: 0px;
+  font-weight: 500;
+  font-size: 17px;
 }
 
 .font-buttons {
   display: flex;
   justify-content: right;
-  max-width: 660px;
+  max-width: 650px;
   margin: 10px auto;
 }
 
@@ -54,18 +62,11 @@ p {
   display: inline-block;
 }
 
-.sizeIconVoice {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  display: inline-block;
-}
-
 .output {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 15px;
-  min-height: 120px;
+  min-height: 140px;
   background: #f9f9f9;
   margin-top: 15px;
   text-align: left;
@@ -102,7 +103,7 @@ button:disabled {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .btn-keyword {

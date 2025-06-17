@@ -1,21 +1,21 @@
 .container {
-  max-width: 660px;
+  max-width: 650px;
   margin: 10px auto;
   border: 2px solid #ccc;
   border-radius: 12px;
   background-color: #fafafa;
 }
 
-.containerCardVoice {
-  max-width: 660px;
-  margin: 10px auto;
+.card-title-fonts {
+  display: flex;
+  justify-content: space-between;
 }
 
-.font-buttons {
-  display: flex;
-  justify-content: right;
-  max-width: 660px;
-  margin: 10px auto;
+.titleSpeech {
+  margin: 12px;
+  margin-bottom: 0px;
+  font-weight: 500;
+  font-size: 17px;
 }
 
 textarea {
@@ -54,13 +54,6 @@ p {
   display: inline-block;
 }
 
-.sizeIconVoice {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  display: inline-block;
-}
-
 .output {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -74,23 +67,6 @@ p {
 .output span {
   margin-right: 5px;
   display: inline-block;
-}
-
-/* Estilos baseados no volume */
-.soft {
-  color: #007bff;
-  font-weight: normal;
-}
-
-.medium {
-  color: #28a745;
-  font-weight: 500;
-}
-
-.loud {
-  color: #dc3545;
-  font-weight: bold;
-  font-size: 1.2em;
 }
 
 button:disabled {
@@ -115,40 +91,6 @@ button:disabled {
   cursor: pointer;
 }
 
-.btn-success {
-  background-color: #28a745;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-  color: black;
-}
-
-.listening {
-  color: red;
-  font-weight: bold;
-}
-
-.fast {
-  color: blue;
-  font-size: 0.9rem;
-}
-
-.loud {
-  color: red;
-  font-weight: bold;
-}
-
-.slow {
-  color: green;
-  font-size: 1.4rem;
-  letter-spacing: 2px;
-}
-
 .keywords-container {
   display: flex;
   overflow: auto;
@@ -158,7 +100,7 @@ button:disabled {
   padding-top: 2px;
   padding-bottom: 2px;
   background-color: #c5c5c5;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;

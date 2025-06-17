@@ -25,6 +25,7 @@ import { FacialExpressionComponent } from './facial-expression/facial-expression
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { JoyrideModule } from 'ngx-joyride';
 import { SpeechComponent } from './speech/speech.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SpeechComponent } from './speech/speech.component';
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
-        JoyrideModule.forRoot(),
+    LeafletModule,
+    JoyrideModule.forRoot(),
   ],
 })
 export class HomeModule {}

@@ -14,6 +14,7 @@ import { FacialExpressionComponent } from './facial-expression/facial-expression
 import { GlossaryComponent } from './glossary/glossary.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { SpeechComponent } from './speech/speech.component';
+import { MapsComponent } from './maps/maps.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
       {
         path: 'transcricao-voz',
         component: SpeechComponent,
+      },
+      {
+        path: 'mapas',
+        component: MapsComponent,
       },
     ],
   },

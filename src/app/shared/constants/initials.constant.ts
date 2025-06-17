@@ -8,6 +8,7 @@ const img05 = './../assets/imgs/quiz.png';
 const img06 = './../assets/imgs/expressoes-faciais.png';
 const img07 = './../assets/imgs/dialogo.png';
 const img08 = './../assets/imgs/transcricao-voz.png';
+const img09 = './../assets/imgs/mapas.png';
 
 export const cINITIALS: iInitials[] = [
   {
@@ -72,5 +73,12 @@ export const cINITIALS: iInitials[] = [
     title: 'Transcrição por Voz',
     image: img08,
     active: true,
+  },
+    {
+    id: '10',
+    link: '/mapas',
+    title: 'Mapas',
+    image: img09,
+    active: false,
   },
 ];
