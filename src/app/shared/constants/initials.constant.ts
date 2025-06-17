@@ -79,6 +79,6 @@ export const cINITIALS: iInitials[] = [
     link: '/mapas',
     title: 'Mapas',
     image: img09,
-    active: true,
+    active: false,
   },
 ];
