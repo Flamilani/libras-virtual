@@ -25,6 +25,7 @@ import { FacialExpressionComponent } from './facial-expression/facial-expression
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { JoyrideModule } from 'ngx-joyride';
 import { SpeechComponent } from './speech/speech.component';
+import { CdkDrag, DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { SpeechComponent } from './speech/speech.component';
     GlossaryComponent,
     FacialExpressionComponent,
     DialogueComponent,
-    SpeechComponent,
+    SpeechComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +57,7 @@ import { SpeechComponent } from './speech/speech.component';
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
+    DragDropModule,
     JoyrideModule.forRoot(),
   ],
 })

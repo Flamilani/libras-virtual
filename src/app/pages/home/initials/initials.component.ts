@@ -1,8 +1,9 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { iInitials } from 'src/app/shared/interfaces/initials.interface';
 import { DatasService } from 'src/app/shared/services/datas.service';
+import { EditModeService } from 'src/app/shared/services/edit-mode.service';
 import { LettersStatesService } from 'src/app/shared/states/letters-states/letters-states.service';
 
 @Component({
@@ -14,15 +15,23 @@ export class InitialsComponent implements OnInit {
   public initials: iInitials[] = [];
   selectedValue$: Observable<string> = this.lettersStatesService.selectedValue$;
   letter: string = 'all';
+  editMode = false;
   private subscription!: Subscription;
 
   constructor(
     private initialsService: DatasService,
-    private lettersStatesService: LettersStatesService
+    private lettersStatesService: LettersStatesService,
+    private editModeService: EditModeService
   ) {}
 
   ngOnInit() {
-    this.initials = this.initialsService.getInitials();
+    this.initials = this.initialsService.getInitials().filter((initial) => ({
+      ...initial,
+      active: true,
+    }));
+    this.editModeService.editMode$.subscribe((mode) => (this.editMode = mode));
+
+    this.loadOrder();
     /*     this.getLetter();
 
     this.subscription = this.lettersStatesService.selectedValue$.subscribe(
@@ -31,8 +40,10 @@ export class InitialsComponent implements OnInit {
         this.letter = 'all';
       }
     ); */
+  }
 
-    const saved = localStorage.getItem('cardOrder');
+  loadOrder(): void {
+   const saved = localStorage.getItem('cardOrder');
     if (saved) {
       const savedIds = JSON.parse(saved) as string[];
       const activeCards = this.initials.filter((i) => i.active);
@@ -46,7 +57,7 @@ export class InitialsComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<iInitials[]>): void {
+  drop(event: CdkDragDrop<any[]>): void {
     moveItemInArray(this.initials, event.previousIndex, event.currentIndex);
     this.saveOrder();
   }

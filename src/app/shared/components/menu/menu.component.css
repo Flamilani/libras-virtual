@@ -9,11 +9,16 @@
 .btn-menu {
   color: #28166f;
   border: none;
+  margin-top: 8px;
 }
 
 .sizeIcon {
-  height: 35px;
-  width: 35px;
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  top: -7px;
+  right: 7px;
 }
 
 .menu a.menuSpc {

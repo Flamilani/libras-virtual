@@ -7,11 +7,12 @@
 }
 
 .divHeader {
-/*   width: 100%;
+  /*   width: 100%;
   max-width: 690px; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  width: 540px;
 }
 
 .divHeader.h1 {
@@ -41,5 +42,6 @@ h1 span {
 
   .header .logo {
     width: 220px;
+    margin-top: 10px;
   }
 }

@@ -1,13 +1,14 @@
 .card-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 10px;
 }
 
 .cardItem {
   cursor: grab;
   padding: 10px;
   padding-right: 0px;
+  padding-bottom: 5px;
   background-color: #dcdcdc;
   border: 1px solid #607d8b;
   border-radius: 8px;
@@ -42,6 +43,11 @@
   margin: 0 auto;
   margin-top: 7px;
   text-indent: -10px;
+}
+
+.cdk-drag-disabled {
+  background-color: transparent;
+  border: none;
 }
 
 .centerCard {
