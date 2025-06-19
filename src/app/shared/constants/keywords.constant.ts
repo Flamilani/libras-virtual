@@ -5,7 +5,6 @@ export const Keywords = [
   'Boa noite',
   'Obrigado',
   'Desculpe',
-  'Tchau',
   'Por favor',
   'Até logo',
 ];

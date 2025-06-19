@@ -68,7 +68,6 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
   }
 
   speak() {
-    console.log('Lendo texto:', this.textControl?.value);
     const texto = this.textControl?.value;
     if (!texto) return;
 
@@ -77,6 +76,7 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
     }
 
     const utterance = new SpeechSynthesisUtterance(texto);
+    console.log(utterance);
     utterance.lang = 'pt-BR';
     this.isSpeaking = true;
 

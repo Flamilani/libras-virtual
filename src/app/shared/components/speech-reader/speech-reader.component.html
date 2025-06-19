@@ -18,17 +18,19 @@
   <form [formGroup]="speechForm">
     <textarea [readonly]="isListening" #textArea id="textSpeech" [value]="displayText" formControlName="textSpeech"
       [style.fontSize.px]="fontSize" class="form-control" rows="8" placeholder="Digite o texto para ler..."></textarea>
-
-   <button class="btn btn-outline-secondary" (click)="showKeywords = !showKeywords">
-  <bi name="caret-up-fill" class="sizeIcon" *ngIf="showKeywords"></bi>
-  <bi name="caret-down-fill" class="sizeIcon" *ngIf="!showKeywords"></bi>
-</button>
-    <div class="keywords-container" *ngIf="!showKeywords">
-      <button class="keyword-button" *ngFor="let word of keywords" (click)="addKeyword(word)"
-        [disabled]="isKeywordUsed(word)">
-        {{ word }}
+    <div class="displayWords">
+      <button class="btn btn-outline-secondary" (click)="showKeywords = !showKeywords">
+        <bi name="caret-up-fill" class="sizeIcon" *ngIf="showKeywords"></bi>
+        <bi name="caret-down-fill" class="sizeIcon" *ngIf="!showKeywords"></bi>
       </button>
+      <div class="keywords-container" *ngIf="!showKeywords">
+        <button class="keyword-button" *ngFor="let word of keywords" (click)="addKeyword(word)"
+          [disabled]="isKeywordUsed(word)">
+          {{ word }}
+        </button>
+      </div>
     </div>
+
     <div class="buttons">
       <button name="btnSpeak" [disabled]="!textControl?.value.trim() " *ngIf="!isListening && !isSpeaking"
         class="btn btn-primary" (click)="speak()">🔊 Ler </button>

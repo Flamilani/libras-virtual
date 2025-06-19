@@ -17,12 +17,20 @@
       </ng-template>
       <app-speech-transcriber></app-speech-transcriber>
     </mat-tab>
-        <mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <bi name="chat-left-text" class="sizeIconVoice me-2"></bi>
+        <span *ngIf="!isMobile">Leitura por Palavras</span>
+      </ng-template>
+      <app-speech-keywords></app-speech-keywords>
+    </mat-tab>
+    <mat-tab>
       <ng-template mat-tab-label>
         <bi name="camera-fill" class="sizeIconVoice me-2"></bi>
-        <span *ngIf="!isMobile">Captura de Imagem</span>
+        <span *ngIf="!isMobile">Captura de Texto</span>
       </ng-template>
       <app-speech-ocr></app-speech-ocr>
     </mat-tab>
+
   </mat-tab-group>
 </div>

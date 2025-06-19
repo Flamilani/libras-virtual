@@ -21,6 +21,7 @@ import { MaterialModule } from '../modules/material/material.module';
 import { SpeechReaderComponent } from './components/speech-reader/speech-reader.component';
 import { SpeechTranscriberComponent } from './components/speech-transcriber/speech-transcriber.component';
 import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component';
+import { SpeechKeywordsComponent } from './components/speech-keywords/speech-keywords.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component
     DialogContentComponent,
     SpeechReaderComponent,
     SpeechTranscriberComponent,
-    SpeechOcrComponent
+    SpeechOcrComponent,
+    SpeechKeywordsComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component
     MenuComponent,
     SpeechReaderComponent,
     SpeechTranscriberComponent,
-    SpeechOcrComponent
+    SpeechOcrComponent,
+    SpeechKeywordsComponent
   ]
 })
 export class SharedModule { }

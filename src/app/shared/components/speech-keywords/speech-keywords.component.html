@@ -1,0 +1,30 @@
+<div class="card-title-fonts">
+  <div class="titleSpeech">
+    <span *ngIf="isMobile">
+      Leitura por Palavras
+    </span>
+  </div>
+</div>
+<div class="container">
+  <div class="buttons">
+    <button class="btn btn-outline-primary btnWords"
+      [ngClass]="showDeleteAll ? { 'btn-outline-danger': 'btn-outline-primary' } : {}"
+      *ngFor="let word of keywords; let i = index" (click)="speak(word)">🔊 {{ word
+      }} <span *ngIf="showDeleteAll" (click)="deleteWord(i)"> X </span></button>
+  </div>
+</div>
+<div class="displayWords">
+  <button class="btn btn-outline-secondary" (click)="showAddKeywords = !showAddKeywords">
+    <bi name="caret-up-fill" class="sizeIcon" *ngIf="showAddKeywords"></bi>
+    <bi name="caret-down-fill" class="sizeIcon" *ngIf="!showAddKeywords"></bi>
+  </button>
+  <div class="keywords-container" *ngIf="!showAddKeywords">
+    <input class="form-control me-3" type="text" [(ngModel)]="newWord" placeholder="Adicionar Nova Palavra">
+    <button class="btn btn-success" (click)="addWord()">
+      <bi name="plus-lg" class="sizeIcon"></bi>
+    </button>
+    <button class="btn btn-danger ms-3" (click)="showDeleteAll = !showDeleteAll">
+      🗑️
+    </button>
+  </div>
+</div>
