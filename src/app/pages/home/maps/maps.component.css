@@ -12,3 +12,8 @@
 img {
   border-radius: 8px;
 }
+
+#map {
+  height: 500px;
+  width: 100%;
+}

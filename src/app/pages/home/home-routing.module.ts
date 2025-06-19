@@ -70,7 +70,7 @@ const routes: Routes = [
         component: GlossaryComponent,
       },
       {
-        path: 'transcricao-voz',
+        path: 'assistente-voz',
         component: SpeechComponent,
       },
       {

@@ -1,17 +1,24 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-speech-transcriber',
   templateUrl: './speech-transcriber.component.html',
-  styleUrls: ['./speech-transcriber.component.css']
+  styleUrls: ['./speech-transcriber.component.css'],
 })
 export class SpeechTranscriberComponent implements OnInit, OnDestroy {
   @ViewChild('textArea') textArea!: ElementRef;
 
   isMobile: boolean = true;
-  transcript: { textSpeech: string; style: string }[] = [];
-
+ // transcript: { textSpeech: string; style: string }[] = [];
+  transcript: string = '';
   audioContext!: AudioContext;
   analyser!: AnalyserNode;
   dataArray!: Uint8Array;
@@ -30,7 +37,6 @@ export class SpeechTranscriberComponent implements OnInit, OnDestroy {
   speechForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    console.log('Iniciando reconhecimento de fala...');
     const SpeechRecognition =
       (window as any).SpeechRecognition ||
       (window as any).webkitSpeechRecognition;
@@ -61,18 +67,25 @@ export class SpeechTranscriberComponent implements OnInit, OnDestroy {
           }
         } */
 
-        for (let i = event.resultIndex; i < event.results.length; i++) {
+  /*       for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
           if (event.results[i].isFinal) {
             this.textSpeech += transcript + ' ';
           } else {
             interimTranscript += transcript;
           }
+        } */
+
+            this.recognition.onresult = (event: any) => {
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const text = event.results[i][0].transcript.trim();
+          this.transcript += (this.transcript ? ' ' : '') + text;
         }
+      };
 
-        this.displayText = this.textSpeech + interimTranscript;
+   //     this.displayText = this.textSpeech + interimTranscript;
 
-        this.updateFullText();
+     //   this.updateFullText();
       };
 
       this.recognition.onstart = () => {
@@ -81,12 +94,10 @@ export class SpeechTranscriberComponent implements OnInit, OnDestroy {
       };
 
       this.recognition.onend = () => {
-        console.warn('Reconhecimento parado');
         this.isListening = false;
         this.stopVolumeMeter();
 
         if (this.isListening) {
-          console.log('Reiniciando reconhecimento...');
           this.recognition.start();
         }
       };
@@ -106,26 +117,36 @@ export class SpeechTranscriberComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-     this.checkIfMobile();
+    this.checkIfMobile();
   }
-
+/*
   updateFullText() {
     const fullText = this.transcript.map((t) => t.textSpeech).join(' ');
     this.textControl?.setValue(fullText);
-  }
+  } */
 
   get textControl() {
     return this.speechForm.get('textSpeech');
   }
-
+/*
   toggleRecognition() {
     this.isListening ? this.stopRecognition() : this.startRecognition();
+  } */
+
+
+  toggleListening() {
+    if (this.isListening) {
+      this.recognition.stop();
+    } else {
+      this.transcript = '';
+      this.recognition.start();
+    }
   }
 
   startRecognition() {
     if (!this.isListening) {
       this.textSpeech = '';
-      this.transcript = [];
+      this.transcript = '';
       this.isListening = true;
       this.recognition.start();
       this.initVolumeMeter();
@@ -212,7 +233,7 @@ export class SpeechTranscriberComponent implements OnInit, OnDestroy {
 
   clearText() {
     this.textControl?.setValue('');
-    this.transcript = [];
+    this.transcript = '';
     this.focusTextArea();
     this.resetSpeech();
   }
@@ -263,17 +284,17 @@ export class SpeechTranscriberComponent implements OnInit, OnDestroy {
     this.isListening = false;
   }
 
-    @HostListener('window:resize', ['$event'])
-    onResize(event: Event) {
-      this.checkIfMobile();
-    }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkIfMobile();
+  }
 
-    checkIfMobile() {
+  checkIfMobile() {
     this.isMobile = window.innerWidth <= 768;
   }
 
   ngOnDestroy() {
-    if (this.recognition) {
+    if (this.isListening) {
       this.recognition.stop();
     }
     this.stopVolumeMeter();

@@ -3,7 +3,7 @@
 </card-ui>
 <div class="containerCardVoice">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-    <mat-tab>
+    <mat-tab class="mb-3">
       <ng-template mat-tab-label>
         <bi name="volume-up" class="sizeIconVoice"></bi>
         <span *ngIf="!isMobile">Leitura de Texto</span>
@@ -16,6 +16,13 @@
         <span *ngIf="!isMobile">Transcrição de Voz</span>
       </ng-template>
       <app-speech-transcriber></app-speech-transcriber>
+    </mat-tab>
+        <mat-tab>
+      <ng-template mat-tab-label>
+        <bi name="eye" class="sizeIconVoice me-2"></bi>
+        <span *ngIf="!isMobile">Captura de Imagem</span>
+      </ng-template>
+      <app-speech-ocr></app-speech-ocr>
     </mat-tab>
   </mat-tab-group>
 </div>

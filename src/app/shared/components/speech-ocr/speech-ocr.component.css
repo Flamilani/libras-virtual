@@ -1,0 +1,54 @@
+.container {
+  max-width: 650px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fafafa;
+}
+
+.card-title-fonts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.titleSpeech {
+  margin: 12px;
+  margin-bottom: 0px;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.font-buttons {
+  display: flex;
+  justify-content: right;
+  max-width: 650px;
+  margin: 10px auto;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttons button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.sizeIcon {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+}
+
+.spinner-border {
+  margin-top: 5px;
+  margin-left: 5px;
+}

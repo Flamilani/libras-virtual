@@ -1,0 +1,39 @@
+<div class="card-title-fonts">
+  <div class="titleSpeech">
+    <span *ngIf="isMobile">
+      Captura de Imagem
+    </span>
+  </div>
+  <div>
+    <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+      <bi name="zoom-in" class="sizeIcon"></bi>
+    </button>
+    <button class="btn btn-secondary btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+      <bi name="zoom-out" class="sizeIcon"></bi>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+    <form [formGroup]="speechForm">
+  <input formControlName="inputFile" class="form-control" type="file" accept="image/*" (change)="onFileSelected($event)" />
+  <div *ngIf="isProcessing">
+    <div class="spinner-border" role="status">
+    </div> Processando imagem...
+  </div>
+  <!--     <textarea #textArea id="textSpeech" formControlName="textSpeech" [style.fontSize.px]="fontSize" class="form-control"
+      rows="4" placeholder="Texto capturado aparecerá aqui..."></textarea> -->
+
+    <textarea #textArea id="textResult" formControlName="textResult" [(ngModel)]="textResult" [style.fontSize.px]="fontSize" class="form-control"
+      rows="6" cols="50" placeholder="Texto capturado aparecerá aqui..."></textarea>
+  </form>
+  <div class="buttons">
+    <button name="btnSpeak" [disabled]="!textControl?.value.trim() " *ngIf="!isListening && !isSpeaking"
+      class="btn btn-primary" (click)="speakText()">🔊 Ler Texto</button>
+    <button class="btn btn-info" (click)="resetSpeech()" *ngIf="isSpeaking">
+      ⏹️ Parar
+    </button>
+    <button name="btnClear" *ngIf="textControl?.value.trim()" [disabled]="isSpeaking" class="btn btn-warning"
+      (click)="clearText()">🧹 Limpar Texto</button>
+  </div>
+</div>

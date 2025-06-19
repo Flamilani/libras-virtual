@@ -15,12 +15,12 @@
 </div>
 <div class="container">
   <form [formGroup]="speechForm">
-    <h4>📝 Texto Transcrito:</h4>
-    <div class="output">
+   <!--  <h4>📝 Texto Transcrito:</h4> -->
+<!--     <div class="output">
       <ng-container *ngFor="let word of transcript">
         <span [ngClass]="word.style">{{ word.textSpeech }}</span>
       </ng-container>
-    </div>
+    </div> -->
     <!--  <textarea [readonly]="isListening" #textArea id="textSpeech"
     [value]="displayText" formControlName="textSpeech"
     [style.fontSize.px]="fontSize" class="form-control"
@@ -28,7 +28,7 @@
  -->
     <div class="buttons">
       <button *ngIf="!textControl?.value.trim()" class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'"
-        (click)="toggleRecognition()">
+        (click)="toggleListening()">
         {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
       </button>
     </div>
