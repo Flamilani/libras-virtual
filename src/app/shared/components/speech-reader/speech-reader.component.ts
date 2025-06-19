@@ -28,7 +28,7 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
   isListening = false;
   isSpeaking = false;
 
-  fontSize = 20;
+  fontSize = 15;
   displayedValue!: string;
   showKeywords = true;
 
@@ -64,7 +64,7 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
     console.log('Adicionando palavra:', word);
     const current = this.textControl?.value || '';
     this.textControl?.setValue((current + ' ' + word).trim());
-    this.focusTextArea();
+   // this.focusTextArea();
   }
 
   speak() {
@@ -134,14 +134,14 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
   }
 
   increaseFontSize() {
-    if (this.fontSize < 80) {
-      this.fontSize += 10;
+    if (this.fontSize < 75) {
+      this.fontSize += 5;
     }
   }
 
   decreaseFontSize() {
-    if (this.fontSize > 20) {
-      this.fontSize -= 10;
+    if (this.fontSize > 15) {
+      this.fontSize -= 5;
     }
   }
 

@@ -5,18 +5,18 @@
     </span>
   </div>
   <div>
-    <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+    <button class="btn btn-secondary btn-sm mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
       <bi name="zoom-in" class="sizeIcon"></bi>
     </button>
-    <button class="btn btn-secondary btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+    <button class="btn btn-secondary btn-sm btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
       <bi name="zoom-out" class="sizeIcon"></bi>
     </button>
   </div>
 </div>
 <div class="container">
   <form [formGroup]="speechForm">
-   <!--  <h4>📝 Texto Transcrito:</h4> -->
-<!--     <div class="output">
+    <!--  <h4>📝 Texto Transcrito:</h4> -->
+    <!--     <div class="output">
       <ng-container *ngFor="let word of transcript">
         <span [ngClass]="word.style">{{ word.textSpeech }}</span>
       </ng-container>
@@ -28,13 +28,15 @@
  -->
     <div class="buttons">
       <button *ngIf="!textControl?.value.trim()" class="btn" [ngClass]="isListening ? 'btn-danger' : 'btn-success'"
-        (click)="toggleListening()">
-        {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar Transcrição' }}
+        (click)="toggleRecognition()">
+        {{ isListening ? '⏹️ Parar' : '🎙️ Iniciar' }}
       </button>
     </div>
   </form>
   <p *ngIf="isListening">🎧 Ouvindo...</p>
-  <div class="output">
+  <textarea #textArea rows="9" [(ngModel)]="textSpeech" [style.fontSize.px]="fontSize" class="form-control"
+    [readonly]="!isListening" placeholder="Use transcrição por voz..."></textarea>
+<!--   <div class="output">
     <p>{{ transcript || 'Aguardando fala...' }}</p>
-  </div>
+  </div> -->
 </div>

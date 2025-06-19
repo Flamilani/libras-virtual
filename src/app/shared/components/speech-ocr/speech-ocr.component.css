@@ -37,9 +37,6 @@ textarea {
 
 .buttons button {
   margin: 5px;
-  padding: 10px 15px;
-  font-size: 15px;
-  cursor: pointer;
 }
 
 .sizeIcon {
@@ -51,4 +48,20 @@ textarea {
 .spinner-border {
   margin-top: 5px;
   margin-left: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.camera-container {
+  position: relative;
+}
+
+video {
+  width: 100%;
+  border: 2px solid #042e68;
+  border-radius: 5px;
 }

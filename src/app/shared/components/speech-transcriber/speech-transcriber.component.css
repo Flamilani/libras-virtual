@@ -37,8 +37,6 @@ textarea {
 
 .buttons button {
   margin: 5px;
-  padding: 10px 15px;
-  font-size: 15px;
   cursor: pointer;
 }
 
@@ -104,7 +102,6 @@ button:disabled {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 10px;
 }
 
 .btn-keyword {

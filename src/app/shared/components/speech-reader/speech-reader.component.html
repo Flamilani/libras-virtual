@@ -5,10 +5,10 @@
     </span>
   </div>
   <div>
-    <button class="btn btn-secondary mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+    <button class="btn btn-secondary btn-sm mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
       <bi name="zoom-in" class="sizeIcon"></bi>
     </button>
-    <button class="btn btn-secondary btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+    <button class="btn btn-secondary btn-sm btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
       <bi name="zoom-out" class="sizeIcon"></bi>
     </button>
   </div>
@@ -17,7 +17,7 @@
 <div class="container">
   <form [formGroup]="speechForm">
     <textarea [readonly]="isListening" #textArea id="textSpeech" [value]="displayText" formControlName="textSpeech"
-      [style.fontSize.px]="fontSize" class="form-control" rows="4" placeholder="Digite o texto para ler..."></textarea>
+      [style.fontSize.px]="fontSize" class="form-control" rows="8" placeholder="Digite o texto para ler..."></textarea>
 
    <button class="btn btn-outline-secondary" (click)="showKeywords = !showKeywords">
   <bi name="caret-up-fill" class="sizeIcon" *ngIf="showKeywords"></bi>
@@ -31,12 +31,12 @@
     </div>
     <div class="buttons">
       <button name="btnSpeak" [disabled]="!textControl?.value.trim() " *ngIf="!isListening && !isSpeaking"
-        class="btn btn-primary" (click)="speak()">🔊 Ler Texto</button>
+        class="btn btn-primary" (click)="speak()">🔊 Ler </button>
       <button class="btn btn-info" (click)="resetSpeech()" *ngIf="isSpeaking">
         ⏹️ Parar
       </button>
       <button name="btnClear" *ngIf="textControl?.value.trim() && transcript.length === 0" [disabled]="isSpeaking"
-        class="btn btn-warning" (click)="clearText()">🧹 Limpar Texto</button>
+        class="btn btn-warning" (click)="clearText()">🧹 Limpar </button>
     </div>
   </form>
 </div>
