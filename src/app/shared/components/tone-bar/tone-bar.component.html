@@ -1,0 +1,7 @@
+<div class="tone-bar-container">
+  <div *ngIf="!showTone" class="tone-bar-background"></div>
+
+  <div *ngIf="showTone" class="tone-bar-fill" [ngClass]="toneColorClass"
+    [style.transform]="'scale(' + baseScale + ', 1)'">
+  </div>
+</div>

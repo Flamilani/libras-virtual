@@ -10,9 +10,14 @@
     <button class="btn btn-outline-primary btnWords"
       [ngClass]="showDeleteAll ? { 'btn-outline-danger': 'btn-outline-primary' } : {}"
       *ngFor="let word of keywords; let i = index" (click)="speak(word)">🔊 {{ word
-      }} <span *ngIf="showDeleteAll" (click)="deleteWord(i)"> X </span></button>
+      }} <button class="btn btn-danger btn-sm" *ngIf="showDeleteAll" (click)="deleteWord(i)"> X </button></button>
   </div>
 </div>
+<app-tone-bar
+  [pitch]="pitch"
+  [showTone]="showTone"
+  [baseScale]="baseScale">
+</app-tone-bar>
 <div class="displayWords">
   <button class="btn btn-outline-secondary" (click)="showAddKeywords = !showAddKeywords">
     <bi name="caret-up-fill" class="sizeIcon" *ngIf="showAddKeywords"></bi>

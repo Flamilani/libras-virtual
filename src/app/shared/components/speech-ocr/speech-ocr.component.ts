@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  NgZone,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -30,10 +31,16 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
   isListening = false;
   cameraOn = false;
 
+  pitch = 1;
+  showTone = false;
+  toneColorClass = '';
+  toneLabel = '';
+  baseScale = 1;
+
   private stream: MediaStream | null = null;
   private utterance: SpeechSynthesisUtterance | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ngZone: NgZone) {
     this.speechForm = this.fb.group({
       textResult: [''],
       inputFile: [''],
@@ -155,6 +162,19 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
     }
   }
 
+  updateToneVisual() {
+    if (this.pitch < 0.9) {
+      this.baseScale = 0.7;
+      this.toneColorClass = 'tone-low';
+    } else if (this.pitch <= 1.4) {
+      this.baseScale = 1;
+      this.toneColorClass = 'tone-normal';
+    } else {
+      this.baseScale = 1.3;
+      this.toneColorClass = 'tone-high';
+    }
+  }
+
   speakText() {
     if (this.isSpeaking) {
       window.speechSynthesis.cancel();
@@ -163,11 +183,31 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
     }
     this.utterance = new SpeechSynthesisUtterance(this.textResult);
     this.utterance.lang = 'pt-BR';
-    this.utterance.onend = () => {
-      this.isSpeaking = false;
-    };
-    window.speechSynthesis.speak(this.utterance);
+    this.utterance.pitch = this.pitch;
     this.isSpeaking = true;
+
+    this.utterance.onstart = () => {
+      this.ngZone.run(() => {
+        this.updateToneVisual();
+        this.showTone = true;
+      });
+    };
+
+    this.utterance.onend = () => {
+      this.ngZone.run(() => {
+        this.isSpeaking = false;
+        this.showTone = false;
+      });
+    };
+
+    this.utterance.onerror = () => {
+      this.ngZone.run(() => {
+        this.isSpeaking = false;
+        this.showTone = false;
+      });
+    };
+
+    window.speechSynthesis.speak(this.utterance);
   }
 
   resetSpeech() {

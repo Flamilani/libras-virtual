@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  NgZone,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -33,10 +34,15 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
   showKeywords = true;
 
   speechForm!: FormGroup;
-
   keywords = Keywords;
 
-  constructor(private fb: FormBuilder) {
+  pitch = 1;
+  showTone = false;
+  toneColorClass = '';
+  toneLabel = '';
+  baseScale = 1;
+
+  constructor(private fb: FormBuilder, private ngZone: NgZone) {
     this.speechForm = this.fb.group({
       textSpeech: [''],
     });
@@ -64,28 +70,41 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
     console.log('Adicionando palavra:', word);
     const current = this.textControl?.value || '';
     this.textControl?.setValue((current + ' ' + word).trim());
-   // this.focusTextArea();
+    // this.focusTextArea();
   }
 
   speak() {
     const texto = this.textControl?.value;
     if (!texto) return;
 
-    if (speechSynthesis.speaking) {
-      speechSynthesis.cancel();
-    }
+    this.stop();
 
     const utterance = new SpeechSynthesisUtterance(texto);
     console.log(utterance);
+
     utterance.lang = 'pt-BR';
+    utterance.pitch = this.pitch;
     this.isSpeaking = true;
 
+    utterance.onstart = () => {
+      this.ngZone.run(() => {
+        this.updateToneVisual();
+        this.showTone = true;
+      });
+    };
+
     utterance.onend = () => {
-      this.isSpeaking = false;
+      this.ngZone.run(() => {
+        this.isSpeaking = false;
+        this.showTone = false;
+      });
     };
 
     utterance.onerror = () => {
-      this.isSpeaking = false;
+      this.ngZone.run(() => {
+        this.isSpeaking = false;
+        this.showTone = false;
+      });
     };
 
     speechSynthesis.speak(utterance);
@@ -118,6 +137,7 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
       speechSynthesis.cancel();
     }
     this.isSpeaking = false;
+    this.showTone = false;
   }
 
   focusTextArea() {
@@ -142,6 +162,26 @@ export class SpeechReaderComponent implements OnInit, OnDestroy {
   decreaseFontSize() {
     if (this.fontSize > 15) {
       this.fontSize -= 5;
+    }
+  }
+
+  updateToneVisual() {
+    if (this.pitch < 0.9) {
+      this.baseScale = 0.7;
+      this.toneColorClass = 'tone-low';
+    } else if (this.pitch <= 1.4) {
+      this.baseScale = 1;
+      this.toneColorClass = 'tone-normal';
+    } else {
+      this.baseScale = 1.3;
+      this.toneColorClass = 'tone-high';
+    }
+  }
+
+  stop() {
+    if (speechSynthesis.speaking || speechSynthesis.pending) {
+      speechSynthesis.cancel();
+      this.showTone = false;
     }
   }
 

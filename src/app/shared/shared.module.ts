@@ -22,6 +22,7 @@ import { SpeechReaderComponent } from './components/speech-reader/speech-reader.
 import { SpeechTranscriberComponent } from './components/speech-transcriber/speech-transcriber.component';
 import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component';
 import { SpeechKeywordsComponent } from './components/speech-keywords/speech-keywords.component';
+import { ToneBarComponent } from './components/tone-bar/tone-bar.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SpeechKeywordsComponent } from './components/speech-keywords/speech-key
     SpeechReaderComponent,
     SpeechTranscriberComponent,
     SpeechOcrComponent,
-    SpeechKeywordsComponent
+    SpeechKeywordsComponent,
+    ToneBarComponent
   ],
   imports: [
     CommonModule,

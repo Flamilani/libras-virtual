@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, NgZone, OnInit } from '@angular/core';
 import { Keywords } from '../../constants/keywords.constant';
 
 @Component({
@@ -9,11 +9,18 @@ import { Keywords } from '../../constants/keywords.constant';
 export class SpeechKeywordsComponent implements OnInit {
   isMobile: boolean = true;
   fontSize = 15;
-  utterance!: SpeechSynthesisUtterance;
   showAddKeywords = true;
   keywords = Keywords;
   newWord: string = '';
   showDeleteAll = false;
+
+  pitch = 1;
+  showTone = false;
+  toneColorClass = '';
+  toneLabel = '';
+  baseScale = 1;
+
+  constructor(private ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.checkIfMobile();
@@ -69,21 +76,52 @@ export class SpeechKeywordsComponent implements OnInit {
   }
 
   speak(text: string) {
-    this.stop(); // Garante que não sobrepõe
+    this.stop();
 
-    this.utterance = new SpeechSynthesisUtterance(text);
-    console.log(this.utterance);
-    this.utterance.lang = 'pt-BR';
-    this.utterance.rate = 1;
-    this.utterance.pitch = 1;
-    this.utterance.volume = 1;
+    const utterance = new SpeechSynthesisUtterance(text);
+    console.log(utterance);
 
-    speechSynthesis.speak(this.utterance);
+    utterance.lang = 'pt-BR';
+    utterance.pitch = this.pitch;
+
+    utterance.onstart = () => {
+      this.ngZone.run(() => {
+        this.updateToneVisual();
+        this.showTone = true;
+      });
+    };
+    utterance.onend = () => {
+      this.ngZone.run(() => {
+        this.showTone = false;
+      });
+    };
+
+    utterance.onpause = () => {
+      this.ngZone.run(() => {
+        this.showTone = false;
+      });
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  updateToneVisual() {
+    if (this.pitch < 0.9) {
+      this.toneColorClass = 'tone-low';
+      this.baseScale = 0.7;
+    } else if (this.pitch >= 0.9 && this.pitch <= 1.4) {
+      this.toneColorClass = 'tone-normal';
+      this.baseScale = 1;
+    } else {
+      this.toneColorClass = 'tone-high';
+      this.baseScale = 1.3;
+    }
   }
 
   stop() {
     if (speechSynthesis.speaking || speechSynthesis.pending) {
       speechSynthesis.cancel();
+      this.showTone = false;
     }
   }
 }
