@@ -3,8 +3,8 @@ import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
-  template: `<app-update-popup></app-update-popup
-    ><router-outlet></router-outlet>`,
+  template: `<!-- <app-update-popup></app-update-popup
+    > --><router-outlet></router-outlet>`,
 })
 export class AppComponent  {
   constructor(private swUpdate: SwUpdate) {
