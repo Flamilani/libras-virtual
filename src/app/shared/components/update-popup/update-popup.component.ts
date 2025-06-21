@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UpdateService } from '../../services/update.service';
+import { appVersion } from 'src/environments/version';
 
 @Component({
   selector: 'app-update-popup',
@@ -8,6 +9,7 @@ import { UpdateService } from '../../services/update.service';
 })
 export class UpdatePopupComponent implements OnInit {
   show = false;
+  version = appVersion;
 
   constructor(private updateService: UpdateService) {}
 
