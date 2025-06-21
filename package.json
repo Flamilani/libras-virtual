@@ -1,11 +1,16 @@
 {
-  "name": "app-libras-ng",
-  "version": "0.0.0",
+  "name": "libras-virtual",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "release": "npm version patch && npm run build && git push && git push --tags",
+    "preversion": "node version-update.js",
+    "version": "echo ✔️ Atualizando versão para %npm_package_version%",
+    "postversion": "git add . && git commit -m \"🔖 Release %npm_package_version%\" && git tag v%npm_package_version%",
+    "prebuild": "node version-update.js",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
+    "start": "ng serve",
     "test": "ng test"
   },
   "private": true,

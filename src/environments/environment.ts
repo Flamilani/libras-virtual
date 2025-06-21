@@ -12,14 +12,6 @@ export const environment = {
   imagePath,
   imgLoading,
   iconSign,
-  firebase: {
-    apiKey: "AIzaSyAi_8seHoUwv3etTCUoKxmqL43pl9lZGQc",
-/*     authDomain: "app-librasvideos.firebaseapp.com",
-    projectId: "app-librasvideos",
-    storageBucket: "app-librasvideos.appspot.com",
-    messagingSenderId: "1016087581420",
-    appId: "1:1016087581420:web:ec2da0dbe5b67d9bdb4bc9" */
-  }
 };
 
 /*
