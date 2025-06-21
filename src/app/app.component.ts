@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`
+  template: `<app-update-popup></app-update-popup><router-outlet></router-outlet>`
 })
 export class AppComponent {
   title = 'app-libras-ng';

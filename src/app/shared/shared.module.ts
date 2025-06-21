@@ -23,6 +23,7 @@ import { SpeechTranscriberComponent } from './components/speech-transcriber/spee
 import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component';
 import { SpeechKeywordsComponent } from './components/speech-keywords/speech-keywords.component';
 import { ToneBarComponent } from './components/tone-bar/tone-bar.component';
+import { UpdatePopupComponent } from './components/update-popup/update-popup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ToneBarComponent } from './components/tone-bar/tone-bar.component';
     SpeechTranscriberComponent,
     SpeechOcrComponent,
     SpeechKeywordsComponent,
-    ToneBarComponent
+    ToneBarComponent,
+    UpdatePopupComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +78,8 @@ import { ToneBarComponent } from './components/tone-bar/tone-bar.component';
     SpeechReaderComponent,
     SpeechTranscriberComponent,
     SpeechOcrComponent,
-    SpeechKeywordsComponent
+    SpeechKeywordsComponent,
+    UpdatePopupComponent
   ]
 })
 export class SharedModule { }
