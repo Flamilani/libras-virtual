@@ -1,0 +1,37 @@
+<card-ui [cardStyle]="'containerCardNames justifyContentStart'">
+  <app-breadcrumb title="Caça-Palavras" link="/jogos"></app-breadcrumb>
+</card-ui>
+<div class="selectFont">
+ <component-select [disabled]="false" (fontChange)="handleFontChange($event)"></component-select>
+</div>
+ <content-ui [cardStyle]="'contentCard centerCard'">
+<div class="grid" [ngClass]="selectedFont">
+  <div
+    *ngFor="let row of grid; let rowIndex = index"
+    class="row">
+ <div
+  *ngFor="let cell of row; let colIndex = index"
+  class="cell"
+  [class.selected]="cell.selected"
+  [class.found]="cell.foundIn.length > 0"
+  (click)="selectCell(rowIndex, colIndex)">
+  {{ cell.letter }}
+</div>
+  </div>
+</div>
+
+<div class="words">
+  <h3>Palavras a encontrar:</h3>
+  <ul>
+    <li *ngFor="let word of words">
+      <span [class.found-word]="foundWords.includes(word)">
+        {{ word }}
+      </span>
+    </li>
+  </ul>
+</div>
+
+  <div class="actions" *ngIf="foundWords.length === words.length">
+    <button (click)="restartGame()">🔄 Fazer de Novo</button>
+  </div>
+</content-ui>

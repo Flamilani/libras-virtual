@@ -9,6 +9,7 @@ const img06 = './../assets/imgs/expressoes-faciais.png';
 const img07 = './../assets/imgs/dialogo.png';
 const img08 = './../assets/imgs/transcricao-voz.png';
 const img09 = './../assets/imgs/mapas.png';
+const img10 = './../assets/imgs/jogos.png';
 
 export const cINITIALS: iInitials[] = [
   {
@@ -80,5 +81,12 @@ export const cINITIALS: iInitials[] = [
     title: 'Mapas',
     image: img09,
     active: false,
+  },
+      {
+    id: '11',
+    link: '/jogos',
+    title: 'Jogos',
+    image: img10,
+    active: true,
   },
 ];

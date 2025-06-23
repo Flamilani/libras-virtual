@@ -24,6 +24,7 @@ import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component
 import { SpeechKeywordsComponent } from './components/speech-keywords/speech-keywords.component';
 import { ToneBarComponent } from './components/tone-bar/tone-bar.component';
 import { UpdatePopupComponent } from './components/update-popup/update-popup.component';
+import { GameWordSearchComponent } from './components/game-word-search/game-word-search.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UpdatePopupComponent } from './components/update-popup/update-popup.com
     SpeechOcrComponent,
     SpeechKeywordsComponent,
     ToneBarComponent,
-    UpdatePopupComponent
+    UpdatePopupComponent,
+    GameWordSearchComponent
   ],
   imports: [
     CommonModule,

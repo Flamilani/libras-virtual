@@ -19,6 +19,7 @@ import { Options } from '../constants/options.constant';
 import { OptionsAlphabet } from '../constants/options-alphabet.constant';
 import { cNames } from '../constants/names.constant';
 import { iNames } from '../interfaces/names.interface';
+import { cGAMES } from '../constants/games-list.constant';
 
 @Injectable({
   providedIn: 'root',
@@ -30,10 +31,9 @@ export class DatasService {
   listFonts = Options;
   listOptinsAlphabet = OptionsAlphabet;
   listNames = cNames;
+  listGames = cGAMES;
 
-  private namesSubject = new BehaviorSubject<iNames[]>(
-    this.listNames
-  );
+  private namesSubject = new BehaviorSubject<iNames[]>(this.listNames);
 
   private letterSource = new BehaviorSubject<string | null>(null);
   letter$ = this.letterSource.asObservable();
@@ -106,5 +106,9 @@ export class DatasService {
 
   getGrettings() {
     return this.listGrettings;
+  }
+
+  getGames() {
+    return this.listGames;
   }
 }

@@ -15,6 +15,8 @@ import { GlossaryComponent } from './glossary/glossary.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { SpeechComponent } from './speech/speech.component';
 import { MapsComponent } from './maps/maps.component';
+import { GamesComponent } from './games/games.component';
+import { GameWordSearchComponent } from 'src/app/shared/components/game-word-search/game-word-search.component';
 
 const routes: Routes = [
   {
@@ -72,6 +74,14 @@ const routes: Routes = [
       {
         path: 'assistente-voz',
         component: SpeechComponent,
+      },
+      {
+        path: 'jogos',
+        component: GamesComponent,
+      },
+      {
+        path: 'caca-palavras',
+        component: GameWordSearchComponent,
       },
       {
         path: 'mapas',
