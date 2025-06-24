@@ -154,7 +154,6 @@ export class GameWordSearchComponent implements OnInit {
 
   selectCell(row: number, col: number) {
     const cell = this.grid[row][col];
-
     if (
       cell.foundIn.length > 0 &&
       this.foundWords.length === this.words.length
@@ -173,6 +172,7 @@ export class GameWordSearchComponent implements OnInit {
       cell.selected = true;
     }
 
+    navigator.vibrate([100]);
     this.checkSelection();
   }
 

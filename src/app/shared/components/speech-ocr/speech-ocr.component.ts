@@ -90,37 +90,48 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
     if (this.stream) {
       this.stream.getTracks().forEach((track) => track.stop());
       this.stream = null;
+      this.cameraOn = false;
     }
     this.cameraOn = false;
   }
 
-  capture() {
+  async capture() {
     const video = this.video.nativeElement;
     const canvas = this.canvas.nativeElement;
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
     const context = canvas.getContext('2d');
-    if (context) {
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      this.isProcessing = true;
+    if (!context) {
+      console.error('Contexto canvas não disponível');
+      return;
+    }
 
-      canvas.toBlob((blob) => {
-        if (blob) {
-          Tesseract.recognize(blob, 'por', {
-            logger: (m) => console.log(m),
-          })
-            .then(({ data: { text } }) => {
-              this.textResult = text;
-              this.isProcessing = false;
-              this.stopCamera();
-            })
-            .catch((err) => {
-              console.error(err);
-              this.isProcessing = false;
-            });
-        }
-      }, 'image/png');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    this.isProcessing = true;
+
+    try {
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, 'image/png')
+      );
+
+      if (!blob) {
+        console.error('Falha ao gerar imagem do canvas');
+        return;
+      }
+
+      const result = await Tesseract.recognize(blob, 'por', {
+        logger: (m) => console.log(m),
+      });
+
+      const texto = result.data.text;
+      console.log('Texto OCR:', texto);
+      this.speechForm.get('textResult')?.setValue(texto);
+    } catch (error) {
+      console.error('Erro no OCR:', error);
+    } finally {
+      this.isProcessing = false;
+      this.stopCamera(); // 🔴 Sempre desliga após terminar
     }
   }
 
@@ -132,7 +143,8 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
         logger: (m) => console.log(m),
       })
         .then(({ data: { text } }) => {
-          this.textResult = text;
+          console.log('Texto OCR:', text);
+          this.speechForm.get('textResult')?.setValue(text);
           this.isProcessing = false;
         })
         .catch((err) => {
@@ -182,6 +194,8 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
       return;
     }
     this.utterance = new SpeechSynthesisUtterance(this.textResult);
+    console.log(this.utterance);
+    console.log(this.textResult);
     this.utterance.lang = 'pt-BR';
     this.utterance.pitch = this.pitch;
     this.isSpeaking = true;
