@@ -61,6 +61,6 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "leaflet": "^1.9.4",
     "ngx-joyride": "^2.5.0",
-    "typescript": "~5.1.3"
+    "typescript": "5.2"
   }
 }
