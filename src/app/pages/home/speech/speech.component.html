@@ -6,28 +6,36 @@
     <mat-tab class="mb-3">
       <ng-template mat-tab-label>
         <bi name="volume-up-fill" class="sizeIconVoice"></bi>
-        <span *ngIf="!isMobile">Leitura de Texto</span>
+        @if (!isMobile) {
+          <span>Leitura de Texto</span>
+        }
       </ng-template>
       <app-speech-reader></app-speech-reader>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
         <bi name="mic-fill" class="sizeIconVoice"></bi>
-        <span *ngIf="!isMobile">Transcrição de Voz</span>
+        @if (!isMobile) {
+          <span>Transcrição de Voz</span>
+        }
       </ng-template>
       <app-speech-transcriber></app-speech-transcriber>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
         <bi name="chat-left-text" class="sizeIconVoice me-2"></bi>
-        <span *ngIf="!isMobile">Leitura por Palavras</span>
+        @if (!isMobile) {
+          <span>Leitura por Palavras</span>
+        }
       </ng-template>
       <app-speech-keywords></app-speech-keywords>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
         <bi name="camera-fill" class="sizeIconVoice me-2"></bi>
-        <span *ngIf="!isMobile">Captura de Texto</span>
+        @if (!isMobile) {
+          <span>Captura de Texto</span>
+        }
       </ng-template>
       <app-speech-ocr></app-speech-ocr>
     </mat-tab>

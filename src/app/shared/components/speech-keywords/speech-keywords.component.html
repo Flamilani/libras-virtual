@@ -1,16 +1,22 @@
 <div class="card-title-fonts">
   <div class="titleSpeech">
-    <span *ngIf="isMobile">
-      Leitura por Palavras
-    </span>
+    @if (isMobile) {
+      <span>
+        Leitura por Palavras
+      </span>
+    }
   </div>
 </div>
 <div class="container">
   <div class="buttons">
-    <button class="btn btn-outline-primary btnWords"
-      [ngClass]="showDeleteAll ? { 'btn-outline-danger': 'btn-outline-primary' } : {}"
-      *ngFor="let word of keywords; let i = index" (click)="speak(word)">🔊 {{ word
-      }} <button class="btn btn-danger btn-sm" *ngIf="showDeleteAll" (click)="deleteWord(i)"> X </button></button>
+    @for (word of keywords; track word; let i = $index) {
+      <button class="btn btn-outline-primary btnWords"
+        [ngClass]="showDeleteAll ? { 'btn-outline-danger': 'btn-outline-primary' } : {}"
+        (click)="speak(word)">🔊 {{ word
+        }} @if (showDeleteAll) {
+        <button class="btn btn-danger btn-sm" (click)="deleteWord(i)"> X </button>
+      }</button>
+    }
   </div>
 </div>
 <app-tone-bar
@@ -20,16 +26,22 @@
 </app-tone-bar>
 <div class="displayWords">
   <button class="btn btn-outline-secondary" (click)="showAddKeywords = !showAddKeywords">
-    <bi name="caret-up-fill" class="sizeIcon" *ngIf="showAddKeywords"></bi>
-    <bi name="caret-down-fill" class="sizeIcon" *ngIf="!showAddKeywords"></bi>
+    @if (showAddKeywords) {
+      <bi name="caret-up-fill" class="sizeIcon"></bi>
+    }
+    @if (!showAddKeywords) {
+      <bi name="caret-down-fill" class="sizeIcon"></bi>
+    }
   </button>
-  <div class="keywords-container" *ngIf="!showAddKeywords">
-    <input class="form-control me-3" type="text" [(ngModel)]="newWord" placeholder="Adicionar Nova Palavra">
-    <button class="btn btn-success" (click)="addWord()">
-      <bi name="plus-lg" class="sizeIcon"></bi>
-    </button>
-    <button class="btn btn-danger ms-3" (click)="showDeleteAll = !showDeleteAll">
-      🗑️
-    </button>
-  </div>
+  @if (!showAddKeywords) {
+    <div class="keywords-container">
+      <input class="form-control me-3" type="text" [(ngModel)]="newWord" placeholder="Adicionar Nova Palavra">
+      <button class="btn btn-success" (click)="addWord()">
+        <bi name="plus-lg" class="sizeIcon"></bi>
+      </button>
+      <button class="btn btn-danger ms-3" (click)="showDeleteAll = !showDeleteAll">
+        🗑️
+      </button>
+    </div>
+  }
 </div>

@@ -10,10 +10,10 @@
       <bi name="zoom-out" class="sizeIcon"></bi>
     </button>
   </div>
-<component-select
-[disabled]="!displayedValue"
-(fontChange)="handleFontChange($event)"
-></component-select>
+  <component-select
+    [disabled]="!displayedValue"
+    (fontChange)="handleFontChange($event)"
+  ></component-select>
 </div>
 <content-ui [cardStyle]="'containerCardNumbers'">
 
@@ -24,21 +24,24 @@
       [ngStyle]="{'font-size.px': fontSize}"
       [(ngModel)]="displayedValue"
       readonly
-    />
-    <div class="buttons">
-      <div *ngFor="let row of numbers" class="button-row">
-        <button
-          *ngFor="let num of row"
-          (click)="addNumber(num)"
-          class="btn btn-secondary btnNumbers"
-        >
-          {{ num }}
-        </button>
-      </div>
-      <div class="btnLast">
-        <button class="btn btn-secondary btnNumbers" (click)="addNumber('0')">0</button>
-        <button class="btn btn-light btnNumbers" (click)="clearInput()">C</button>
+      />
+      <div class="buttons">
+        @for (row of numbers; track row) {
+          <div class="button-row">
+            @for (num of row; track num) {
+              <button
+                (click)="addNumber(num)"
+                class="btn btn-secondary btnNumbers"
+                >
+                {{ num }}
+              </button>
+            }
+          </div>
+        }
+        <div class="btnLast">
+          <button class="btn btn-secondary btnNumbers" (click)="addNumber('0')">0</button>
+          <button class="btn btn-light btnNumbers" (click)="clearInput()">C</button>
+        </div>
       </div>
     </div>
-  </div>
-</content-ui>
+  </content-ui>

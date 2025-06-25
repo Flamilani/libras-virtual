@@ -1,8 +1,10 @@
 <div class="card-title-fonts">
   <div class="titleSpeech">
-    <span *ngIf="isMobile">
-      Captura de Texto
-    </span>
+    @if (isMobile) {
+      <span>
+        Captura de Texto
+      </span>
+    }
   </div>
   <div>
     <button class="btn btn-secondary btn-sm mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
@@ -16,35 +18,47 @@
 
 <div class="container">
   <form [formGroup]="speechForm">
-    <div *ngIf="cameraOn" class="camera-container">
-      <video #video autoplay playsinline></video>
-      <canvas #canvas hidden></canvas>
-    </div>
+    @if (cameraOn) {
+      <div class="camera-container">
+        <video #video autoplay playsinline></video>
+        <canvas #canvas hidden></canvas>
+      </div>
+    }
     <div class="buttons">
-      <button class="btn btn-primary btn-sm mb-2" (click)="startCamera()" *ngIf="!cameraOn">📷 Ligar Câmera</button>
-      <ng-container *ngIf="cameraOn">
+      @if (!cameraOn) {
+        <button class="btn btn-primary btn-sm mb-2" (click)="startCamera()">📷 Ligar Câmera</button>
+      }
+      @if (cameraOn) {
         <button class="btn btn-info btn-sm mb-2" (click)="capture()">📸 Capturar</button>
         <button class="btn btn-outline-danger btn-sm mb-2" (click)="stopCamera()">🔴 Desligar Câmera</button>
-      </ng-container>
+      }
     </div>
     <input formControlName="inputFile" class="form-control form-control-sm" type="file" accept="image/*"
       (change)="onFileSelected($event)" />
-    <div *ngIf="isProcessing">
-      <div class="spinner-border" role="status">
-      </div> Processando imagem...
-    </div>
+    @if (isProcessing) {
+      <div>
+        <div class="spinner-border" role="status">
+        </div> Processando imagem...
+      </div>
+    }
     <textarea #textArea id="textResult" formControlName="textResult"
       [style.fontSize.px]="fontSize" class="form-control" rows="6" [readOnly]="isListening"
-      placeholder="Texto capturado aparecerá aqui..."></textarea>
+    placeholder="Texto capturado aparecerá aqui..."></textarea>
   </form>
   <div class="buttons">
-    <button name="btnSpeak" [disabled]="!textControl?.value.trim()" *ngIf="!isListening && !isSpeaking"
+    @if (!isListening && !isSpeaking) {
+      <button name="btnSpeak" [disabled]="!textControl?.value.trim()"
       class="btn btn-primary" (click)="speakText()">🔊 Ler </button>
-    <button class="btn btn-info" (click)="resetSpeech()" *ngIf="isSpeaking">
-      ⏹️ Parar
-    </button>
-    <button name="btnClear" *ngIf="textControl?.value.trim()" [disabled]="isSpeaking" class="btn btn-warning"
+    }
+    @if (isSpeaking) {
+      <button class="btn btn-info" (click)="resetSpeech()">
+        ⏹️ Parar
+      </button>
+    }
+    @if (textControl?.value.trim()) {
+      <button name="btnClear" [disabled]="isSpeaking" class="btn btn-warning"
       (click)="clearText()">🧹 Limpar </button>
+    }
   </div>
 </div>
 <app-tone-bar

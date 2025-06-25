@@ -1,16 +1,17 @@
 <div class="spaceBottom">
-  <div class="letter" *ngIf="type !== 'datilologia'; else template">
-    <a routerLinkActive="router-link-active">
-      <span class="fontLibrasA fontSizeA"> ABC </span>
-    </a>
-    <span class="fontSizeB fontBack"> ABC </span>
-  </div>
-  <ng-template #template>
+  @if (type !== 'datilologia') {
+    <div class="letter">
+      <a routerLinkActive="router-link-active">
+        <span class="fontLibrasA fontSizeA"> ABC </span>
+      </a>
+      <span class="fontSizeB fontBack"> ABC </span>
+    </div>
+  } @else {
     <div class="letter">
       <span class="fontLibrasA fontSizeA fontBack"> ABC </span>
       <a routerLinkActive="router-link-active">
         <span class="fontSizeB"> ABC </span>
       </a>
     </div>
-  </ng-template>
+  }
 </div>

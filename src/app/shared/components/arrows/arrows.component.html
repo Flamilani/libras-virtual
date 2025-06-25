@@ -1,8 +1,12 @@
 <div class="navigation-buttons">
-  <button class="btn btn-link" *ngIf="!isFirstLetter()" (click)="previousLetter(routerLink)">
-    <bi name="arrow-left" class="sizeIconArrow"></bi>
-  </button>
-  <button class="btn btn-link" *ngIf="!isLastLetter()" (click)="nextLetter(routerLink)">
-    <bi name="arrow-right" class="sizeIconArrow"></bi>
-  </button>
+  @if (!isFirstLetter()) {
+    <button class="btn btn-link" (click)="previousLetter(routerLink)">
+      <bi name="arrow-left" class="sizeIconArrow"></bi>
+    </button>
+  }
+  @if (!isLastLetter()) {
+    <button class="btn btn-link" (click)="nextLetter(routerLink)">
+      <bi name="arrow-right" class="sizeIconArrow"></bi>
+    </button>
+  }
 </div>

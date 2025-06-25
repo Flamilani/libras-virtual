@@ -1,13 +1,15 @@
 <card-ui [cardStyle]="'containerCard'">
   <div cdkDropList [cdkDropListData]="initials" (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="!editMode"
     class="card-list">
-    <div *ngFor="let initial of initials" class="card-initial">
-      <div class="cardItem" cdkDrag [cdkDragDisabled]="!editMode">
-        <a [routerLink]="initial.link" [class.disable-click]="editMode">
-          <img [src]="initial.image" alt="initial.title" />
-          <p>{{ initial.title }}</p>
-        </a>
+    @for (initial of initials; track initial) {
+      <div class="card-initial">
+        <div class="cardItem" cdkDrag [cdkDragDisabled]="!editMode">
+          <a [routerLink]="initial.link" [class.disable-click]="editMode">
+            <img [src]="initial.image" alt="initial.title" />
+            <p>{{ initial.title }}</p>
+          </a>
+        </div>
       </div>
-    </div>
+    }
   </div>
 </card-ui>

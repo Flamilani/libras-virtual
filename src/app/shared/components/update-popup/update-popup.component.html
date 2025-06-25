@@ -1,6 +1,8 @@
-<div class="update-popup" *ngIf="show">
-  <div class="popup-content">
-    <p>🚀 Uma nova versão {{ version }} está disponível!</p>
-    <button (click)="reloadApp()">Atualizar Agora</button>
+@if (show) {
+  <div class="update-popup">
+    <div class="popup-content">
+      <p>🚀 Uma nova versão {{ version }} está disponível!</p>
+      <button (click)="reloadApp()">Atualizar Agora</button>
+    </div>
   </div>
-</div>
+}

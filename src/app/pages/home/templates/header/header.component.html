@@ -1,6 +1,8 @@
-<header class="header" *ngIf="router.url === '/webapp'">
-  <div class="divHeader">
-    <a routerLink="/home"><img class="logo" [src]="logo" alt="Logo Libras Virtual" /></a>
-    <app-menu></app-menu>
-  </div>
-</header>
+@if (router.url === '/webapp') {
+  <header class="header">
+    <div class="divHeader">
+      <a routerLink="/home"><img class="logo" [src]="logo" alt="Logo Libras Virtual" /></a>
+      <app-menu></app-menu>
+    </div>
+  </header>
+}

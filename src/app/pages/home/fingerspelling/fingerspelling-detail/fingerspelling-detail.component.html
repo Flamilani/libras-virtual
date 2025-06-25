@@ -9,13 +9,17 @@
   <div class="resultLetter cardLetters" [ngClass]="selectedFont">
     {{ this.selectedLetter }}
   </div>
-<!--     <app-arrows [routerLink]="letterArrow"></app-arrows> -->
+  <!--     <app-arrows [routerLink]="letterArrow"></app-arrows> -->
   <div class="navigation-buttons">
-    <button class="btn btn-link" *ngIf="!isFirstLetter()" (click)="previousLetter()">
-      <bi name="arrow-left" class="sizeIconArrow"></bi>
-    </button>
-    <button class="btn btn-link" *ngIf="!isLastLetter()" (click)="nextLetter()">
-      <bi name="arrow-right" class="sizeIconArrow"></bi>
-    </button>
+    @if (!isFirstLetter()) {
+      <button class="btn btn-link" (click)="previousLetter()">
+        <bi name="arrow-left" class="sizeIconArrow"></bi>
+      </button>
+    }
+    @if (!isLastLetter()) {
+      <button class="btn btn-link" (click)="nextLetter()">
+        <bi name="arrow-right" class="sizeIconArrow"></bi>
+      </button>
+    }
   </div>
 </content-ui>

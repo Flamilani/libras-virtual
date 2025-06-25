@@ -2,36 +2,42 @@
   <app-breadcrumb title="Caça-Palavras" link="/jogos"></app-breadcrumb>
 </card-ui>
 <div class="selectFont">
- <component-select [disabled]="false" (fontChange)="handleFontChange($event)"></component-select>
+  <component-select [disabled]="false" (fontChange)="handleFontChange($event)"></component-select>
 </div>
- <content-ui [cardStyle]="'contentCard centerCard'">
-<div class="grid" [ngClass]="selectedFont">
-  <div
-    *ngFor="let row of grid; let rowIndex = index"
-    class="row">
- <div
-  *ngFor="let cell of row; let colIndex = index"
-  class="cell"
-  [class.selected]="cell.selected"
-  [class.found]="cell.foundIn.length > 0"
-  (click)="selectCell(rowIndex, colIndex)">
-  {{ cell.letter }}
-</div>
+<content-ui [cardStyle]="'contentCard centerCard'">
+  <div class="grid" [ngClass]="selectedFont">
+    @for (row of grid; track row; let rowIndex = $index) {
+      <div
+        class="row">
+        @for (cell of row; track cell; let colIndex = $index) {
+          <div
+            class="cell"
+            [class.selected]="cell.selected"
+            [class.found]="cell.foundIn.length > 0"
+            (click)="selectCell(rowIndex, colIndex)">
+            {{ cell.letter }}
+          </div>
+        }
+      </div>
+    }
   </div>
-</div>
 
-<div class="words">
-  <h3>Palavras a encontrar:</h3>
-  <ul>
-    <li *ngFor="let word of words">
-      <span [class.found-word]="foundWords.includes(word)">
-        {{ word }}
-      </span>
-    </li>
-  </ul>
-</div>
-
-  <div class="actions" *ngIf="foundWords.length === words.length">
-    <button (click)="restartGame()">🔄 Fazer de Novo</button>
+  <div class="words">
+    <h3>Palavras a encontrar:</h3>
+    <ul>
+      @for (word of words; track word) {
+        <li>
+          <span [class.found-word]="foundWords.includes(word)">
+            {{ word }}
+          </span>
+        </li>
+      }
+    </ul>
   </div>
+
+  @if (foundWords.length === words.length) {
+    <div class="actions">
+      <button (click)="restartGame()">🔄 Fazer de Novo</button>
+    </div>
+  }
 </content-ui>

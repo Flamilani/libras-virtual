@@ -3,13 +3,15 @@
 </card-ui>
 <card-ui [cardStyle]="'containerCard'">
   <div class="card-list">
-    <div *ngFor="let game of games" class="card-initial">
-      <div class="cardItem">
-        <a [routerLink]="game.link">
-          <img [src]="game.image" alt="game.title" />
-          <p>{{ game.title }}</p>
-        </a>
+    @for (game of games; track game) {
+      <div class="card-initial">
+        <div class="cardItem">
+          <a [routerLink]="game.link">
+            <img [src]="game.image" alt="game.title" />
+            <p>{{ game.title }}</p>
+          </a>
+        </div>
       </div>
-    </div>
+    }
   </div>
 </card-ui>

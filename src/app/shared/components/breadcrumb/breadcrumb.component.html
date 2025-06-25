@@ -1,6 +1,8 @@
-<div class="sectionTop" *ngIf="title !== ''">
-  <a class="linkTop" [routerLink]="[link]">
-    <bi name="arrow-left-circle-fill" class="sizeIcon"></bi>
-  </a>
-  <span>{{ title }}</span>
-</div>
+@if (title !== '') {
+  <div class="sectionTop">
+    <a class="linkTop" [routerLink]="[link]">
+      <bi name="arrow-left-circle-fill" class="sizeIcon"></bi>
+    </a>
+    <span>{{ title }}</span>
+  </div>
+}

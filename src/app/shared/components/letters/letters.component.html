@@ -2,24 +2,28 @@
   <div class="row">
     <div class="col">
       <select name="selectFonts" class="form-select selectFonts" [(ngModel)]="selectedValue" (change)="changeLetters(selectedValue)">
-        <option *ngFor="let option of optionsAlphabet" [value]="option.value" [value]="option.value">{{ option.text }}</option>
+        @for (option of optionsAlphabet; track option) {
+          <option [value]="option.value" [value]="option.value">{{ option.text }}</option>
+        }
       </select>
     </div>
     <div class="col">
-     <span class="font-buttons">
-    <button class="btn btn-secondary btn-sm mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
-      <bi name="zoom-in" class="sizeIcon"></bi>
-    </button>
-    <button class="btn btn-secondary btn-sm btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
-      <bi name="zoom-out" class="sizeIcon"></bi>
-    </button>
-  </span>
+      <span class="font-buttons">
+        <button class="btn btn-secondary btn-sm mx-2" aria-label="Aumentar Fonte" (click)="increaseFontSize()">
+          <bi name="zoom-in" class="sizeIcon"></bi>
+        </button>
+        <button class="btn btn-secondary btn-sm btnFontSize" aria-label="Diminuir Fonte" (click)="decreaseFontSize()">
+          <bi name="zoom-out" class="sizeIcon"></bi>
+        </button>
+      </span>
     </div>
   </div>
 </div>
 <section [ngClass]="[cardStyle, fontClass]">
-  <span [ngStyle]="{'font-size.px': fontSize}" *ngFor="let alpha of alphabet">
-    <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"
+  @for (alpha of alphabet; track alpha) {
+    <span [ngStyle]="{'font-size.px': fontSize}">
+      <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"
       (click)="selectLetter(alpha)" class="fontClass">{{ alpha.letter }}</a>
-  </span>
+    </span>
+  }
 </section>
