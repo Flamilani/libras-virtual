@@ -5,7 +5,6 @@ import { HeaderComponent } from './templates/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
-import { IconsModule } from 'src/app/modules/icons/icons.module';
 import { InitialsComponent } from './initials/initials.component';
 import { RouterModule } from '@angular/router';
 import { FingerspellingComponent } from './fingerspelling/fingerspelling.component';
@@ -25,7 +24,7 @@ import { FacialExpressionComponent } from './facial-expression/facial-expression
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { JoyrideModule } from 'ngx-joyride';
 import { SpeechComponent } from './speech/speech.component';
-import { CdkDrag, DragDropModule } from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GamesComponent } from './games/games.component';
 
 @NgModule({
@@ -55,7 +54,6 @@ import { GamesComponent } from './games/games.component';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    IconsModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule,

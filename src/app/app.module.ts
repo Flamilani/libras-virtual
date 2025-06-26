@@ -9,8 +9,6 @@ import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { CustomRouteReuseStrategy } from './shared/helpers/custom-route';
-import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +29,6 @@ import { RouteReuseStrategy } from '@angular/router';
     }),
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy },
   ],
   bootstrap: [AppComponent],
 })
