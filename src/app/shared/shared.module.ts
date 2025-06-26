@@ -17,7 +17,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
 import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
-import { MaterialModule } from '../modules/material/material.module';
+
 import { SpeechReaderComponent } from './components/speech-reader/speech-reader.component';
 import { SpeechTranscriberComponent } from './components/speech-transcriber/speech-transcriber.component';
 import { SpeechOcrComponent } from './components/speech-ocr/speech-ocr.component';
@@ -27,7 +27,13 @@ import { UpdatePopupComponent } from './components/update-popup/update-popup.com
 import { GameWordSearchComponent } from './components/game-word-search/game-word-search.component';
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    IconsModule,
+    OverlayModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
     CardUIComponent,
     ContentUiComponent,
     SelectComponent,
@@ -47,24 +53,14 @@ import { GameWordSearchComponent } from './components/game-word-search/game-word
     SpeechKeywordsComponent,
     ToneBarComponent,
     UpdatePopupComponent,
-    GameWordSearchComponent
-  ],
-  imports: [
-    CommonModule,
-    IconsModule,
-    OverlayModule,
-    ReactiveFormsModule,
-    RouterModule,
-    FormsModule,
-    MaterialModule,
-  ],
-  exports: [
+    GameWordSearchComponent,
+],
+    exports: [
     IconsModule,
     OverlayModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    MaterialModule,
     CardUIComponent,
     ContentUiComponent,
     SelectComponent,
@@ -82,6 +78,6 @@ import { GameWordSearchComponent } from './components/game-word-search/game-word
     SpeechOcrComponent,
     SpeechKeywordsComponent,
     UpdatePopupComponent
-  ]
+]
 })
 export class SharedModule { }

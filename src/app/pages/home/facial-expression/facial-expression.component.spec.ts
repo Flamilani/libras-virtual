@@ -8,8 +8,8 @@ describe('FacialExpressionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FacialExpressionComponent]
-    });
+    imports: [FacialExpressionComponent]
+});
     fixture = TestBed.createComponent(FacialExpressionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

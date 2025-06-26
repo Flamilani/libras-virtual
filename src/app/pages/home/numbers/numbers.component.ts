@@ -1,9 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { NgClass, NgStyle } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
+import { SelectComponent } from '../../../shared/components/select/select.component';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-numbers',
-  templateUrl: './numbers.component.html',
-  styleUrls: ['./numbers.component.css'],
+    selector: 'app-numbers',
+    templateUrl: './numbers.component.html',
+    styleUrls: ['./numbers.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        BootstrapIconsModule,
+        SelectComponent,
+        ContentUiComponent,
+        ReactiveFormsModule,
+        NgClass,
+        NgStyle,
+        FormsModule,
+    ],
 })
 export class NumbersComponent implements OnInit {
   title: string = 'Números em Libras';

@@ -8,8 +8,8 @@ describe('SpeechReaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SpeechReaderComponent]
-    });
+    imports: [SpeechReaderComponent]
+});
     fixture = TestBed.createComponent(SpeechReaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

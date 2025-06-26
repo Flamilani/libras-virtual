@@ -8,8 +8,8 @@ describe('GameWordSearchComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GameWordSearchComponent]
-    });
+    imports: [GameWordSearchComponent]
+});
     fixture = TestBed.createComponent(GameWordSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

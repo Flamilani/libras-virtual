@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 
 @Component({
-  selector: 'app-arrows',
-  templateUrl: './arrows.component.html',
-  styleUrls: ['./arrows.component.css'],
+    selector: 'app-arrows',
+    templateUrl: './arrows.component.html',
+    styleUrls: ['./arrows.component.css'],
+    standalone: true,
+    imports: [BootstrapIconsModule],
 })
 export class ArrowsComponent implements OnInit {
   selectedLetter: string = '';

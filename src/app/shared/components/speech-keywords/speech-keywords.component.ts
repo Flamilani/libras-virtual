@@ -1,10 +1,22 @@
 import { Component, HostListener, NgZone, OnInit } from '@angular/core';
 import { Keywords } from '../../constants/keywords.constant';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { ToneBarComponent } from '../tone-bar/tone-bar.component';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-speech-keywords',
-  templateUrl: './speech-keywords.component.html',
-  styleUrls: ['./speech-keywords.component.css'],
+    selector: 'app-speech-keywords',
+    templateUrl: './speech-keywords.component.html',
+    styleUrls: ['./speech-keywords.component.css'],
+    standalone: true,
+    imports: [
+        NgClass,
+        ToneBarComponent,
+        BootstrapIconsModule,
+        ReactiveFormsModule,
+        FormsModule,
+    ],
 })
 export class SpeechKeywordsComponent implements OnInit {
   isMobile: boolean = true;

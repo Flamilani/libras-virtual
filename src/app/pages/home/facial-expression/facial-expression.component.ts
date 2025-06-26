@@ -1,10 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as faceapi from 'face-api.js';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-facial-expression',
-  templateUrl: './facial-expression.component.html',
-  styleUrls: ['./facial-expression.component.css'],
+    selector: 'app-facial-expression',
+    templateUrl: './facial-expression.component.html',
+    styleUrls: ['./facial-expression.component.css'],
+    standalone: true,
+    imports: [CardUIComponent, BreadcrumbComponent],
 })
 export class FacialExpressionComponent implements OnInit, OnDestroy {
   private mediaStream: MediaStream | null = null;

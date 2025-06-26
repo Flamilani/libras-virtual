@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NameStatesService } from '../../states/name-states/name-states.service';
 import { Words } from '../../constants/words.constant';
+import { NgClass } from '@angular/common';
+import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
+import { SelectComponent } from '../select/select.component';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 interface Cell {
   letter: string;
@@ -9,9 +14,17 @@ interface Cell {
 }
 
 @Component({
-  selector: 'app-game-word-search',
-  templateUrl: './game-word-search.component.html',
-  styleUrls: ['./game-word-search.component.css'],
+    selector: 'app-game-word-search',
+    templateUrl: './game-word-search.component.html',
+    styleUrls: ['./game-word-search.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        SelectComponent,
+        ContentUiComponent,
+        NgClass,
+    ],
 })
 export class GameWordSearchComponent implements OnInit {
   gridSize = 6;

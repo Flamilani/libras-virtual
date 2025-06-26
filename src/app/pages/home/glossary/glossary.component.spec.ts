@@ -8,8 +8,8 @@ describe('GlossaryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GlossaryComponent]
-    });
+    imports: [GlossaryComponent]
+});
     fixture = TestBed.createComponent(GlossaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

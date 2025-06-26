@@ -8,13 +8,21 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import * as Tesseract from 'tesseract.js';
+import { ToneBarComponent } from '../tone-bar/tone-bar.component';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 
 @Component({
-  selector: 'app-speech-ocr',
-  templateUrl: './speech-ocr.component.html',
-  styleUrls: ['./speech-ocr.component.css'],
+    selector: 'app-speech-ocr',
+    templateUrl: './speech-ocr.component.html',
+    styleUrls: ['./speech-ocr.component.css'],
+    standalone: true,
+    imports: [
+        BootstrapIconsModule,
+        ReactiveFormsModule,
+        ToneBarComponent,
+    ],
 })
 export class SpeechOcrComponent implements OnInit, OnDestroy {
   @ViewChild('video') video!: ElementRef<HTMLVideoElement>;

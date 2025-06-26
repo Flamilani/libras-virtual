@@ -1,10 +1,14 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-maps',
-  templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css'],
+    selector: 'app-maps',
+    templateUrl: './maps.component.html',
+    styleUrls: ['./maps.component.css'],
+    standalone: true,
+    imports: [CardUIComponent, BreadcrumbComponent],
 })
 export class MapsComponent implements AfterViewInit {
   private map!: L.Map;

@@ -4,13 +4,27 @@ import {
   bDialogues_01,
 } from 'src/app/shared/constants/dialogues/dialogue-01.constant';
 import { environment } from 'src/environments/environment';
-import { JoyrideService } from 'ngx-joyride';
+import { JoyrideService, JoyrideModule } from 'ngx-joyride';
 import { cSTEPS_PARAMETERS } from 'src/app/shared/constants/steps-tour.constant';
+import { NgClass } from '@angular/common';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { MatTooltip } from '@angular/material/tooltip';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-dialogue',
-  templateUrl: './dialogue.component.html',
-  styleUrls: ['./dialogue.component.css'],
+    selector: 'app-dialogue',
+    templateUrl: './dialogue.component.html',
+    styleUrls: ['./dialogue.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        MatTooltip,
+        BootstrapIconsModule,
+        JoyrideModule,
+        NgClass,
+    ],
 })
 export class DialogueComponent implements OnInit {
   @ViewChild('bottom') bottomEl!: ElementRef;

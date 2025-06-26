@@ -8,8 +8,8 @@ describe('AlphabetDetailComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AlphabetDetailComponent]
-    });
+    imports: [AlphabetDetailComponent]
+});
     fixture = TestBed.createComponent(AlphabetDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

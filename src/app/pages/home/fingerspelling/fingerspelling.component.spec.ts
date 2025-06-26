@@ -8,8 +8,8 @@ describe('FingerspellingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FingerspellingComponent]
-    });
+    imports: [FingerspellingComponent]
+});
     fixture = TestBed.createComponent(FingerspellingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -9,11 +9,22 @@ import { iAlphabet } from 'src/app/shared/interfaces/alphabet.inteface';
 import { DatasService } from 'src/app/shared/services/datas.service';
 import { Router } from '@angular/router';
 import { LettersStatesService } from '../../states/letters-states/letters-states.service';
+import { NgClass, NgStyle } from '@angular/common';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-letters',
-  templateUrl: './letters.component.html',
-  styleUrls: ['./letters.component.css'],
+    selector: 'app-letters',
+    templateUrl: './letters.component.html',
+    styleUrls: ['./letters.component.css'],
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        BootstrapIconsModule,
+        NgClass,
+        NgStyle,
+    ],
 })
 export class LettersComponent {
   @Input() cardStyle!: string;

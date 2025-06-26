@@ -1,9 +1,12 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-tone-bar',
-  templateUrl: './tone-bar.component.html',
-  styleUrls: ['./tone-bar.component.css'],
+    selector: 'app-tone-bar',
+    templateUrl: './tone-bar.component.html',
+    styleUrls: ['./tone-bar.component.css'],
+    standalone: true,
+    imports: [NgClass],
 })
 export class ToneBarComponent {
   @Input() pitch: number = 1;

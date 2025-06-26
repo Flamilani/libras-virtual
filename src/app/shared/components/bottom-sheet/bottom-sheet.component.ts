@@ -15,11 +15,14 @@ import {
 import { iNames } from '../../interfaces/names.interface';
 import { Observable, Subscription } from 'rxjs';
 import { NameStatesService } from '../../states/name-states/name-states.service';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'component-bottom-sheet',
-  templateUrl: './bottom-sheet.component.html',
-  styleUrls: ['./bottom-sheet.component.css'],
+    selector: 'component-bottom-sheet',
+    templateUrl: './bottom-sheet.component.html',
+    styleUrls: ['./bottom-sheet.component.css'],
+    standalone: true,
+    imports: [NgClass],
 })
 export class BottomSheetComponent implements OnDestroy {
   showName$: Observable<string> = this.nameState.showName$;

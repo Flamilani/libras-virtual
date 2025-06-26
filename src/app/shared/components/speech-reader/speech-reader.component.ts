@@ -7,13 +7,21 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Keywords } from '../../constants/keywords.constant';
+import { ToneBarComponent } from '../tone-bar/tone-bar.component';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 
 @Component({
-  selector: 'app-speech-reader',
-  templateUrl: './speech-reader.component.html',
-  styleUrls: ['./speech-reader.component.css'],
+    selector: 'app-speech-reader',
+    templateUrl: './speech-reader.component.html',
+    styleUrls: ['./speech-reader.component.css'],
+    standalone: true,
+    imports: [
+        BootstrapIconsModule,
+        ReactiveFormsModule,
+        ToneBarComponent,
+    ],
 })
 export class SpeechReaderComponent implements OnInit, OnDestroy {
   @ViewChild('textArea') textArea!: ElementRef;

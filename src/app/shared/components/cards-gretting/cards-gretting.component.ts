@@ -3,9 +3,10 @@ import { iGretting } from 'src/app/shared/interfaces/gretting.interface';
 import { DatasService } from 'src/app/shared/services/datas.service';
 
 @Component({
-  selector: 'app-cards-gretting',
-  templateUrl: './cards-gretting.component.html',
-  styleUrls: ['./cards-gretting.component.css'],
+    selector: 'app-cards-gretting',
+    templateUrl: './cards-gretting.component.html',
+    styleUrls: ['./cards-gretting.component.css'],
+    standalone: true,
 })
 export class CardsGrettingComponent implements OnInit {
   loading = true;

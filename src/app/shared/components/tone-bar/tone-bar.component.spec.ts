@@ -8,8 +8,8 @@ describe('ToneBarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ToneBarComponent]
-    });
+    imports: [ToneBarComponent]
+});
     fixture = TestBed.createComponent(ToneBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

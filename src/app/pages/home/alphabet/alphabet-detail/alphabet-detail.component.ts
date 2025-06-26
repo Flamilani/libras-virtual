@@ -1,10 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { CardsComponent } from '../../../../shared/components/cards/cards.component';
+import { ContentUiComponent } from '../../../../components/UI/content-ui/content-ui.component';
+import { BreadcrumbComponent } from '../../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-alphabet-detail',
-  templateUrl: './alphabet-detail.component.html',
-  styleUrls: ['./alphabet-detail.component.css'],
+    selector: 'app-alphabet-detail',
+    templateUrl: './alphabet-detail.component.html',
+    styleUrls: ['./alphabet-detail.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        ContentUiComponent,
+        CardsComponent,
+        BootstrapIconsModule,
+    ],
 })
 export class AlphabetDetailComponent implements OnInit {
   title: string = 'Alfabeto em Português';

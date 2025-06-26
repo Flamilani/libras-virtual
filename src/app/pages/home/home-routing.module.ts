@@ -26,14 +26,17 @@ const routes: Routes = [
       {
         path: 'webapp',
         component: InitialsComponent,
+        data: { animation: 'HomePage' },
       },
       {
         path: 'datilologia',
         component: FingerspellingComponent,
+        data: { animation: 'FingerspellingPage' },
       },
       {
         path: 'datilologia/:id',
         component: FingerspellingDetailComponent,
+        data: { animation: 'FingerspellingPage' },
       },
       {
         path: 'alfabeto',

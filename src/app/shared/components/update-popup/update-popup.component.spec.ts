@@ -8,8 +8,8 @@ describe('UpdatePopupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UpdatePopupComponent]
-    });
+    imports: [UpdatePopupComponent]
+});
     fixture = TestBed.createComponent(UpdatePopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

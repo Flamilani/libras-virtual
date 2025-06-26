@@ -1,15 +1,24 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { iInitials } from 'src/app/shared/interfaces/initials.interface';
 import { DatasService } from 'src/app/shared/services/datas.service';
 import { EditModeService } from 'src/app/shared/services/edit-mode.service';
 import { LettersStatesService } from 'src/app/shared/states/letters-states/letters-states.service';
+import { RouterLink } from '@angular/router';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-initials',
-  templateUrl: './initials.component.html',
-  styleUrls: ['./initials.component.css'],
+    selector: 'app-initials',
+    templateUrl: './initials.component.html',
+    styleUrls: ['./initials.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        CdkDropList,
+        CdkDrag,
+        RouterLink,
+    ],
 })
 export class InitialsComponent implements OnInit {
   public initials: iInitials[] = [];

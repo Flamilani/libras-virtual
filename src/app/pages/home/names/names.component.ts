@@ -7,11 +7,27 @@ import { iNames } from 'src/app/shared/interfaces/names.interface';
 import { DatasService } from 'src/app/shared/services/datas.service';
 import { NameStatesService } from 'src/app/shared/states/name-states/name-states.service';
 import { environment } from 'src/environments/environment';
+import { NgClass } from '@angular/common';
+import { SelectComponent } from '../../../shared/components/select/select.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-names',
-  templateUrl: './names.component.html',
-  styleUrls: ['./names.component.css'],
+    selector: 'app-names',
+    templateUrl: './names.component.html',
+    styleUrls: ['./names.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        ContentUiComponent,
+        ReactiveFormsModule,
+        FormsModule,
+        SelectComponent,
+        NgClass,
+    ],
 })
 export class NamesComponent implements OnInit {
   title: string = 'Nome em Libras';

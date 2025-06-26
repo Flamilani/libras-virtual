@@ -2,11 +2,24 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { LettersStatesService } from 'src/app/shared/states/letters-states/letters-states.service';
+import { LettersComponent } from '../../../shared/components/letters/letters.component';
+import { CardsComponent } from '../../../shared/components/cards/cards.component';
+import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-alphabet',
-  templateUrl: './alphabet.component.html',
-  styleUrls: ['./alphabet.component.css'],
+    selector: 'app-alphabet',
+    templateUrl: './alphabet.component.html',
+    styleUrls: ['./alphabet.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        ContentUiComponent,
+        CardsComponent,
+        LettersComponent,
+    ],
 })
 export class AlphabetComponent implements OnInit, OnDestroy {
   selectedLetter: string = '';

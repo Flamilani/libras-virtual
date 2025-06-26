@@ -3,9 +3,10 @@ import { DialogRef } from 'src/app/shared/cdk/dialog/dialog-ref';
 import { DIALOG_DATA } from 'src/app/shared/cdk/dialog/dialog-tokens';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+    selector: 'app-modal',
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.css'],
+    standalone: true
 })
 export class ModalComponent {
   constructor(

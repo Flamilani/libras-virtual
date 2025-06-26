@@ -8,8 +8,8 @@ describe('CardsGrettingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CardsGrettingComponent]
-    });
+    imports: [CardsGrettingComponent]
+});
     fixture = TestBed.createComponent(CardsGrettingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

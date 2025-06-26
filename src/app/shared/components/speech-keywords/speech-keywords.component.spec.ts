@@ -8,8 +8,8 @@ describe('SpeechKeywordsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SpeechKeywordsComponent]
-    });
+    imports: [SpeechKeywordsComponent]
+});
     fixture = TestBed.createComponent(SpeechKeywordsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -2,11 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryResult } from 'src/app/shared/interfaces/quiz/category-result.interface';
 import { Question } from 'src/app/shared/interfaces/quiz/question.interface';
 import { QuizService } from 'src/app/shared/services/quiz.service';
+import { NgClass } from '@angular/common';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css'],
+    selector: 'app-quiz',
+    templateUrl: './quiz.component.html',
+    styleUrls: ['./quiz.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        NgClass,
+    ],
 })
 export class QuizComponent implements OnInit {
   title: string = 'Quiz';

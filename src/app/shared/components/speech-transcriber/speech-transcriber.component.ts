@@ -6,12 +6,21 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 
 @Component({
-  selector: 'app-speech-transcriber',
-  templateUrl: './speech-transcriber.component.html',
-  styleUrls: ['./speech-transcriber.component.css'],
+    selector: 'app-speech-transcriber',
+    templateUrl: './speech-transcriber.component.html',
+    styleUrls: ['./speech-transcriber.component.css'],
+    standalone: true,
+    imports: [
+        BootstrapIconsModule,
+        ReactiveFormsModule,
+        NgClass,
+        FormsModule,
+    ],
 })
 export class SpeechTranscriberComponent implements OnInit, OnDestroy {
   @ViewChild('textArea') textArea!: ElementRef;

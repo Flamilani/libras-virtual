@@ -11,11 +11,26 @@ import { Observable, Subscription } from 'rxjs';
 import { BottomSheetService } from 'src/app/shared/services/bottom-sheet.service';
 import { DatasService } from 'src/app/shared/services/datas.service';
 import { LettersStatesService } from 'src/app/shared/states/letters-states/letters-states.service';
+import { LettersComponent } from '../../../shared/components/letters/letters.component';
+import { SelectComponent } from '../../../shared/components/select/select.component';
+import { CardsComponent } from '../../../shared/components/cards/cards.component';
+import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
+import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 
 @Component({
-  selector: 'app-fingerspelling',
-  templateUrl: './fingerspelling.component.html',
-  styleUrls: ['./fingerspelling.component.css'],
+    selector: 'app-fingerspelling',
+    templateUrl: './fingerspelling.component.html',
+    styleUrls: ['./fingerspelling.component.css'],
+    standalone: true,
+    imports: [
+        CardUIComponent,
+        BreadcrumbComponent,
+        ContentUiComponent,
+        CardsComponent,
+        SelectComponent,
+        LettersComponent,
+    ],
 })
 export class FingerspellingComponent implements OnInit {
   showFonts = true;

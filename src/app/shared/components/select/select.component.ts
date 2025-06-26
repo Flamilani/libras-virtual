@@ -2,11 +2,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Options } from '../../constants/options.constant';
 import { DatasService } from '../../services/datas.service';
 import { LettersStatesService } from '../../states/letters-states/letters-states.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'component-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.css'],
+    selector: 'component-select',
+    templateUrl: './select.component.html',
+    styleUrls: ['./select.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, FormsModule],
 })
 export class SelectComponent implements OnInit {
   selectedFont = 'fontLibrasA'; // valor padrão

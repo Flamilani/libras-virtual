@@ -3,9 +3,10 @@ import { UpdateService } from '../../services/update.service';
 import { appVersion } from 'src/environments/version';
 
 @Component({
-  selector: 'app-update-popup',
-  templateUrl: './update-popup.component.html',
-  styleUrls: ['./update-popup.component.css']
+    selector: 'app-update-popup',
+    templateUrl: './update-popup.component.html',
+    styleUrls: ['./update-popup.component.css'],
+    standalone: true
 })
 export class UpdatePopupComponent implements OnInit {
   show = false;
