@@ -1,6 +1,6 @@
 {
   "name": "libras-virtual",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "scripts": {
     "ng": "ng",
     "release": "npm version patch && npm run build && git push && git push --tags",
@@ -33,7 +33,7 @@
     "@ng-web-apis/common": "^4.11.1",
     "@ng-web-apis/speech": "^4.11.1",
     "@popperjs/core": "^2.11.6",
-    "@types/gsap": "^3.0.0",
+    "angular-animations": "^0.11.0",
     "bootstrap": "^5.3.3",
     "face-api.js": "^0.22.2",
     "jquery": "^3.7.1",

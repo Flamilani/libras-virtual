@@ -52,6 +52,7 @@ body.base-root {
 
 main {
   min-height: calc(100vh - 58px);
+  overflow: hidden;
 }
 
 article {

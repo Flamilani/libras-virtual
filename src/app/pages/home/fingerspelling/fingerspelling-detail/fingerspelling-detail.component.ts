@@ -51,9 +51,6 @@ export class FingerspellingDetailComponent implements OnInit {
   letters!: any;
   showFonts = true;
   alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  isZoomed = false;
-  slideDirection: 'left' | 'right' = 'right';
-  currentIndex = 0;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -67,10 +64,6 @@ export class FingerspellingDetailComponent implements OnInit {
         this.router.navigate([this.link, this.selectedLetter]);
       }
     });
-  }
-
-  toggleZoom() {
-    this.isZoomed = !this.isZoomed;
   }
 
   get letterArrow(): string {
@@ -88,23 +81,19 @@ export class FingerspellingDetailComponent implements OnInit {
   previousLetter() {
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index > 0) {
-      this.slideDirection = 'left';
       this.selectedLetter = this.alphabet[index - 1];
       this.router.navigate([this.link, this.selectedLetter]);
       //    this.updateModalContent();
     }
-    this.isZoomed = !this.isZoomed;
   }
 
   // Muda para a próxima letra
   nextLetter() {
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index < this.alphabet.length - 1) {
-      this.slideDirection = 'right';
       this.selectedLetter = this.alphabet[index + 1];
       this.router.navigate([this.link, this.selectedLetter]);
     }
-    this.isZoomed = !this.isZoomed;
   }
 
   isFirstLetter(): boolean {

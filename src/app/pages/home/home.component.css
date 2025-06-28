@@ -20,3 +20,7 @@
       max-width: 365px;
   }
 }
+
+main.header-hidden {
+  transition: margin-top 0.3s ease;
+}

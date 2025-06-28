@@ -1,8 +1,6 @@
-@if (router.url === '/webapp') {
-  <header class="header">
+   <header class="header" [ngStyle]="{ position: isWebAppRoute ? 'relative' : '', display: isWebAppRoute ? 'flex' : 'none' }">
     <div class="divHeader">
       <a routerLink="/home"><img class="logo" [src]="logo" alt="Logo Libras Virtual" /></a>
       <app-menu></app-menu>
     </div>
   </header>
-}

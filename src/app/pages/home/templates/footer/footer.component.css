@@ -8,15 +8,15 @@ footer {
 }
 
 footer svg {
-    color: darkcyan;
-    font-size: 20px;
-    vertical-align: sub;
-    margin-right: 5px;
+  color: darkcyan;
+  font-size: 20px;
+  vertical-align: sub;
+  margin-right: 5px;
 }
 
 footer span {
-    display: inline-flex;
-    margin-top: 3px;
+  display: inline-flex;
+  margin-top: 3px;
 }
 
 .sizeIcon {

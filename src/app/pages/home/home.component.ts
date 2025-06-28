@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from './templates/footer/footer.component';
-import { ChildrenOutletContexts, RouterOutlet } from '@angular/router';
+import {
+  ChildrenOutletContexts,
+  NavigationEnd,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { HeaderComponent } from './templates/header/header.component';
-import { slideInAnimation } from 'src/app/shared/animations/animations';
+import { directionalSlideAnimation, zoomFadeAnimation } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +15,11 @@ import { slideInAnimation } from 'src/app/shared/animations/animations';
   styleUrls: ['./home.component.css'],
   standalone: true,
   imports: [HeaderComponent, RouterOutlet, FooterComponent],
-  animations: [slideInAnimation],
+  animations: [directionalSlideAnimation],
 })
 export class HomeComponent {
-  constructor(private contexts: ChildrenOutletContexts) {}
+  constructor(private contexts: ChildrenOutletContexts) {
+  }
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[

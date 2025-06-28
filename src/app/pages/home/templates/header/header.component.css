@@ -6,9 +6,21 @@
   color: #fff;
 }
 
+.absolute-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.relative-header {
+  position: relative;
+  z-index: 100;
+}
+
+
 .divHeader {
-  /*   width: 100%;
-  max-width: 690px; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

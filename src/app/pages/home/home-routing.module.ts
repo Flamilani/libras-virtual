@@ -36,15 +36,17 @@ const routes: Routes = [
       {
         path: 'datilologia/:id',
         component: FingerspellingDetailComponent,
-        data: { animation: 'FingerspellingPage' },
+        data: { animation: 'FingerspellingDetailPage' },
       },
       {
         path: 'alfabeto',
         component: AlphabetComponent,
+        data: { animation: 'AlphabetPage' },
       },
       {
         path: 'alfabeto/:id',
         component: AlphabetDetailComponent,
+        data: { animation: 'AlphabetDetailPage' },
       },
       {
         path: 'nomes',
@@ -81,10 +83,12 @@ const routes: Routes = [
       {
         path: 'jogos',
         component: GamesComponent,
+        data: { animation: 'GamesPage' },
       },
       {
         path: 'caca-palavras',
         component: GameWordSearchComponent,
+        data: { animation: 'GameWordSearchPage' },
       },
       {
         path: 'mapas',

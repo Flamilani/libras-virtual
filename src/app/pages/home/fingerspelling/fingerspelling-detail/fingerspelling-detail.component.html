@@ -11,15 +11,21 @@
   </div>
   <!--     <app-arrows [routerLink]="letterArrow"></app-arrows> -->
   <div class="navigation-buttons">
-    @if (!isFirstLetter()) {
+      <div class="row">
+    <div class="col">
+         @if (!isFirstLetter()) {
       <button class="btn btn-link" (click)="previousLetter()">
-        <bi name="arrow-left" class="sizeIconArrow"></bi>
+        <bi name="arrow-left-circle-fill" class="sizeIconArrow"></bi>
       </button>
     }
-    @if (!isLastLetter()) {
+    </div>
+    <div class="col">
+          @if (!isLastLetter()) {
       <button class="btn btn-link" (click)="nextLetter()">
-        <bi name="arrow-right" class="sizeIconArrow"></bi>
+        <bi name="arrow-right-circle-fill" class="sizeIconArrow"></bi>
       </button>
     }
+    </div>
+  </div>
   </div>
 </content-ui>
