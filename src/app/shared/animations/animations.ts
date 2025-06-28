@@ -168,7 +168,7 @@ export const zoomFadeAnimation = trigger('routeAnimations', [
 
 export const directionalSlideAnimation = trigger('routeAnimations', [
   // (⬅️ slide da esquerda) - HomePage
-  transition('* => HomePage', [
+/*   transition('* => HomePage', [
     style({ position: 'relative' }),
     query(
       ':enter, :leave',
@@ -204,6 +204,51 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
           animate(
             '500ms ease-out',
             style({ transform: 'translateX(0%)', opacity: 1 })
+          ),
+        ],
+        { optional: true }
+      ),
+    ]),
+  ]), */
+
+    transition('* => HomePage', [
+    style({ position: 'relative' }),
+    query(
+      ':enter, :leave',
+      [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+        }),
+      ],
+      { optional: true }
+    ),
+
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.9)' })], {
+      optional: true,
+    }),
+
+    query(':leave', animateChild(), { optional: true }),
+
+    group([
+      query(
+        ':leave',
+        [
+          animate(
+            '600ms ease-in',
+            style({ opacity: 0, transform: 'scale(0.7)' })
+          ),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          animate(
+            '600ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
           ),
         ],
         { optional: true }

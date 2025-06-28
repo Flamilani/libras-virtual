@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
       transition(':leave', [
         animate(
           '300ms ease-out',
-          style({ transform: 'translateY(-100%)', opacity: 0 })
+          style({ transform: 'translateY(100%)', opacity: 0 })
         ),
       ]),
     ]),
