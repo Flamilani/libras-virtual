@@ -20,7 +20,7 @@
               "leaflet",
               "tesseract.js"
             ],
-            "outputPath": "dist/",
+            "outputPath": "dist/build/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -57,7 +57,13 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -65,7 +71,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -111,7 +123,7 @@
         "deploy": {
           "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "outputPath": "dist/",
+            "outputPath": "dist/build/",
             "netlifyToken": "nfp_FwsntwWFsmgbCnXFU9x5R8toecCQULFR442e",
             "siteId": "13cc73da-d71e-48d1-80cf-86cd3ed77fb2"
           }
