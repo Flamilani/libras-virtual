@@ -1,6 +1,6 @@
 {
   "name": "libras-virtual",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "scripts": {
     "ng": "ng",
     "release": "npm version patch && npm run build && git push && git push --tags",
@@ -8,7 +8,8 @@
     "version": "echo ✔️ Atualizando versão para %npm_package_version%",
     "postversion": "git add . && git commit -m \"🔖 Release %npm_package_version%\" && git tag v%npm_package_version%",
     "prebuild": "node version-update.js",
-    "build": "ng build --configuration production",
+    "build-dev": "ng build --configuration development",
+    "build-prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "start": "ng serve",
     "test": "ng test"
@@ -45,6 +46,7 @@
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^17.0.2",
     "@angular-devkit/build-angular": "^17.3.17",
     "@angular/cli": "^17.3.17",
     "@angular/compiler-cli": "^17.3.12",

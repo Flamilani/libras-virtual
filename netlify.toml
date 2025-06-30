@@ -1,5 +1,5 @@
 [build]
-  publish = "dist"
+  publish = "dist/build"
   command = "ng build --configuration production"
 
 [functions]
@@ -30,3 +30,27 @@
   for = "/*.@(js|css|woff2|png|jpg|jpeg|svg)"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# ========================
+# Configuração de ambiente por branch
+# ========================
+
+# Ambiente para branch "dev"
+[context.dev]
+  command = "ng build --configuration development"
+
+# Ambiente para branch "staging"
+[context.staging]
+  command = "ng build --configuration development"
+
+# Ambiente para deploy preview (ex: Pull Request)
+[context.deploy-preview]
+  command = "ng build --configuration development"
+
+# Ambiente local (usado com netlify dev)
+[context.branch-deploy]
+  command = "ng build --configuration development"
+
+# Ambiente de produção (branch principal)
+[context.production]
+  environment = { NG_APP_API_URL = "https://api.meusite.com" }
