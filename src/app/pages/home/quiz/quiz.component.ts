@@ -20,7 +20,7 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
 export class QuizComponent implements OnInit {
   title: string = 'Quiz';
   styles: string = 'sectionTop';
-  link: string = '/webapp';
+  link: string = '/';
 
   categories: string[] = [];
   selectedCategories: string[] = [];

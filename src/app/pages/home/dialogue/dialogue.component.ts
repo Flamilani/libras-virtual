@@ -11,6 +11,7 @@ import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 import { MatTooltip } from '@angular/material/tooltip';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
 
 @Component({
     selector: 'app-dialogue',
@@ -29,6 +30,7 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
 export class DialogueComponent implements OnInit {
   @ViewChild('bottom') bottomEl!: ElementRef;
   imgLoading = environment.imgLoading;
+  title = StringsNamesUrl.dialogo;
 
   combinedDialogues: { gif: string; text: string; sender: 'A' | 'B' }[] = [];
   loading = true;

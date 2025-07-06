@@ -17,6 +17,8 @@ import { SpeechComponent } from './speech/speech.component';
 import { MapsComponent } from './maps/maps.component';
 import { GamesComponent } from './games/games.component';
 import { GameWordSearchComponent } from 'src/app/shared/components/game-word-search/game-word-search.component';
+import { processString } from 'src/app/shared/utils/convert-urls';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
 
 const routes: Routes = [
   {
@@ -24,17 +26,17 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'webapp',
+        path: '',
         component: InitialsComponent,
         data: { animation: 'HomePage' },
       },
       {
-        path: 'datilologia',
+        path: processString(StringsNamesUrl.datilologia),
         component: FingerspellingComponent,
         data: { animation: 'FingerspellingPage' },
       },
       {
-        path: 'datilologia/:id',
+        path: `${processString(StringsNamesUrl.datilologia)}/:id`,
         component: FingerspellingDetailComponent,
         data: { animation: 'FingerspellingDetailPage' },
       },
@@ -49,39 +51,39 @@ const routes: Routes = [
         data: { animation: 'AlphabetDetailPage' },
       },
       {
-        path: 'nomes',
+        path: processString(StringsNamesUrl.nomes),
         component: NamesComponent,
       },
       {
-        path: 'numeros',
+        path: processString(StringsNamesUrl.numeros),
         component: NumbersComponent,
       },
       {
-        path: 'saudacoes',
+        path: processString(StringsNamesUrl.saudacoes),
         component: GrettingComponent,
       },
       {
-        path: 'quiz',
+        path: processString(StringsNamesUrl.quiz),
         component: QuizComponent,
       },
       {
-        path: 'dialogo',
+        path: processString(StringsNamesUrl.dialogo),
         component: DialogueComponent,
       },
       {
-        path: 'expressoes-faciais',
+        path: processString(StringsNamesUrl.expressoesFaciais),
         component: FacialExpressionComponent,
       },
       {
-        path: 'glossario',
+        path: processString(StringsNamesUrl.glossario),
         component: GlossaryComponent,
       },
       {
-        path: 'assistente-voz',
+        path: processString(StringsNamesUrl.assistenteVoz),
         component: SpeechComponent,
       },
       {
-        path: 'jogos',
+        path: processString(StringsNamesUrl.jogos),
         component: GamesComponent,
         data: { animation: 'GamesPage' },
       },

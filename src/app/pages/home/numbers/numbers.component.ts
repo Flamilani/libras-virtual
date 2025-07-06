@@ -27,7 +27,7 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
 export class NumbersComponent implements OnInit {
   title: string = 'Números em Libras';
   styles: string = 'sectionTop';
-  link: string = '/webapp';
+  link: string = '/';
   enabled: boolean = true;
   selectedFont!: string;
   fullInputValue: string = ''; // Armazena todos os números inseridos

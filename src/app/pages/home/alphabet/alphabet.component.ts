@@ -26,7 +26,7 @@ export class AlphabetComponent implements OnInit, OnDestroy {
 
   title: string = 'Alfabeto em Português';
   styles: string = 'sectionTop';
-  link: string = '/webapp';
+  link: string = '/';
   noFont = '';
 
   alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');

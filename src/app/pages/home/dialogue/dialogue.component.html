@@ -1,5 +1,5 @@
 <card-ui [cardStyle]="'containerCard'">
-  <app-breadcrumb title="Diálogo em Libras" link="/webapp"></app-breadcrumb>
+  <app-breadcrumb [title]="title" link="/"></app-breadcrumb>
 </card-ui>
 <div class="containerDialogue">
   <a #tooltip="matTooltip" matTooltip="Ajuda" matTooltipPosition="above" (click)="onClickHelp()">

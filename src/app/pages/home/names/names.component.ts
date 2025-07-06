@@ -32,7 +32,7 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
 export class NamesComponent implements OnInit {
   title: string = 'Nome em Libras';
   styles: string = 'sectionTop';
-  link: string = '/webapp';
+  link: string = '/';
 
   listNames = this.datasService.listNames;
   nameInput!: string;
