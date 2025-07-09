@@ -1,9 +1,10 @@
-import { iInitials } from "../interfaces/initials.interface";
-import { processString } from "../utils/convert-urls";
-import { StringsNamesUrl } from "./strings-url/strings-names";
+import { iInitials } from '../interfaces/initials.interface';
+import { processString } from '../utils/convert-urls';
+import { StringsNamesUrl } from './strings-url/strings-names';
 
 const img01 = './../../../assets/imgs/nomes.png';
 const img02 = './../../../assets/imgs/numeros.png';
+const img03 = './../../../assets/imgs/saudacoes.png';
 
 export const cInitialLibras: iInitials[] = [
   {
@@ -20,4 +21,11 @@ export const cInitialLibras: iInitials[] = [
     image: img02,
     active: true,
   },
-]
+  {
+    id: '3',
+    link: `/${processString(StringsNamesUrl.saudacoes)}`,
+    title: StringsNamesUrl.saudacoes,
+    image: img03,
+    active: true,
+  },
+];

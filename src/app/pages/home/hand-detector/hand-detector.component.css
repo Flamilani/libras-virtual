@@ -7,11 +7,12 @@
 canvas {
   border: 1px solid #ccc;
   margin-top: 1rem;
+  overflow: hidden;
 }
 
 .gesture {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 20px;
   position: relative;
   bottom: 75px;
   background-color: #ccc;

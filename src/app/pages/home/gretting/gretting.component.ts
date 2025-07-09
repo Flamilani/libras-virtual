@@ -4,6 +4,7 @@ import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
 import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
+import { processString } from 'src/app/shared/utils/convert-urls';
 
 @Component({
     selector: 'app-gretting',
@@ -13,8 +14,8 @@ import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-na
     imports: [CardUIComponent, BreadcrumbComponent, ContentUiComponent, CardsGrettingComponent]
 })
 export class GrettingComponent {
-  title: string = StringsNamesUrl.saudacoes;
+  title: string = StringsNamesUrl.saudacoes + ' em Libras';
   styles: string = "sectionTop";
-  link: string = "/";
+  link = `/${processString(StringsNamesUrl.fundamentoLibras)}`;
 
 }

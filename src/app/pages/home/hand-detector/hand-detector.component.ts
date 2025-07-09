@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -64,6 +65,22 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.camera.start();
   }
 
+  adjustCanvasSize(): void {
+    const canvas = this.canvas.nativeElement;
+    const video = this.video.nativeElement;
+
+    if (video.videoWidth && video.videoHeight) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      canvas.style.width = `${video.clientWidth}px`;
+      canvas.style.height = `${video.clientHeight}px`;
+    }
+
+    console.log(canvas.width, canvas.height);
+    console.log(canvas.style.width, canvas.style.height);
+  }
+
   drawResults(results: any) {
     const canvasEl = this.canvas.nativeElement;
     const canvasCtx = canvasEl.getContext('2d');
@@ -89,7 +106,7 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
         });
 
         // 🟨 Debug visual com rótulos por dedo
- /*        const drawLabel = (text: string, x: number, y: number) => {
+        /*        const drawLabel = (text: string, x: number, y: number) => {
           canvasCtx.font = '12px Arial';
           canvasCtx.fillStyle = 'gray';
           canvasCtx.fillText(text, x, y);
@@ -191,7 +208,7 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
       this.isFingerFolded(16, 14, landmarks) &&
       this.isFingerFolded(20, 18, landmarks);
 
-      console.log(indicadorParaCima, polegarAfastado, outrosDobrados);
+    console.log(indicadorParaCima, polegarAfastado, outrosDobrados);
 
     return indicadorParaCima && polegarAfastado && outrosDobrados;
   }
@@ -267,4 +284,9 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
       this.camera.stop();
     }
   }
+
+/*   @HostListener('window:resize')
+  onResize() {
+    this.adjustCanvasSize();
+  } */
 }
