@@ -6,6 +6,8 @@ import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui
 import { SelectComponent } from '../select/select.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from '../../constants/strings-url/strings-names';
+import { processString } from '../../utils/convert-urls';
 
 interface Cell {
   letter: string;
@@ -35,6 +37,9 @@ export class GameWordSearchComponent implements OnInit {
   selectedCells: { row: number; col: number }[] = [];
   nameInput!: string;
   selectedFont: string = 'fontLibrasA';
+
+  title = processString(StringsNamesUrl.cacasPalavras);
+  link = `/${processString(StringsNamesUrl.jogos)}`;
 
   constructor(private nameStatesService: NameStatesService) {}
 

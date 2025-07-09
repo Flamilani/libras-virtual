@@ -6,6 +6,8 @@ import { SelectComponent } from '../../../shared/components/select/select.compon
 import { BootstrapIconsModule } from 'ng-bootstrap-icons';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
+import { processString } from 'src/app/shared/utils/convert-urls';
 
 @Component({
     selector: 'app-numbers',
@@ -27,7 +29,8 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
 export class NumbersComponent implements OnInit {
   title: string = 'Números em Libras';
   styles: string = 'sectionTop';
-  link: string = '/';
+  link = `/${processString(StringsNamesUrl.fundamentoLibras)}`;
+
   enabled: boolean = true;
   selectedFont!: string;
   fullInputValue: string = ''; // Armazena todos os números inseridos

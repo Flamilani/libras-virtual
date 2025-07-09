@@ -1,5 +1,5 @@
 <card-ui [cardStyle]="'containerCardNames justifyContentStart'">
-  <app-breadcrumb title="Caça-Palavras" link="/jogos"></app-breadcrumb>
+  <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
 </card-ui>
 <div class="selectFont">
   <component-select [disabled]="false" (fontChange)="handleFontChange($event)"></component-select>

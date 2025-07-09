@@ -1,5 +1,6 @@
 export class StringsNamesUrl {
   static glossario = 'Glossário';
+  static fundamentoLibras = 'Fundamento de Libras';
   static datilologia = 'Datilologia';
   static alfabeto = 'Alfabeto';
   static nomes = 'Nomes';
@@ -11,5 +12,8 @@ export class StringsNamesUrl {
   static transcricaoVoz = 'Transcrição de Voz';
   static mapas = 'Mapas';
   static jogos = 'Jogos';
+  static cacasPalavras = 'Caca-Palavras';
   static assistenteVoz = 'Assistente de Voz';
+  static detector = 'Detecção de Mão';
+  static visorComputacional = 'Visão Computacional (IA)';
 }

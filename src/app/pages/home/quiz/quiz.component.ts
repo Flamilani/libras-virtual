@@ -5,6 +5,8 @@ import { QuizService } from 'src/app/shared/services/quiz.service';
 import { NgClass } from '@angular/common';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
+import { processString } from 'src/app/shared/utils/convert-urls';
 
 @Component({
     selector: 'app-quiz',
@@ -18,9 +20,9 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
     ],
 })
 export class QuizComponent implements OnInit {
-  title: string = 'Quiz';
   styles: string = 'sectionTop';
-  link: string = '/';
+  title: string = processString(StringsNamesUrl.quiz);
+  link = `/${processString(StringsNamesUrl.jogos)}`;
 
   categories: string[] = [];
   selectedCategories: string[] = [];

@@ -19,6 +19,9 @@ import { GamesComponent } from './games/games.component';
 import { GameWordSearchComponent } from 'src/app/shared/components/game-word-search/game-word-search.component';
 import { processString } from 'src/app/shared/utils/convert-urls';
 import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
+import { HandDetectorComponent } from './hand-detector/hand-detector.component';
+import { ComputerVisonComponent } from './computer-vison/computer-vison.component';
+import { InitialLibrasComponent } from './initial-libras/initial-libras.component';
 
 const routes: Routes = [
   {
@@ -88,9 +91,21 @@ const routes: Routes = [
         data: { animation: 'GamesPage' },
       },
       {
-        path: 'caca-palavras',
+        path: processString(StringsNamesUrl.cacasPalavras),
         component: GameWordSearchComponent,
         data: { animation: 'GameWordSearchPage' },
+      },
+      {
+        path: processString(StringsNamesUrl.detector),
+        component: HandDetectorComponent,
+      },
+      {
+        path: processString(StringsNamesUrl.visorComputacional),
+        component: ComputerVisonComponent,
+      },
+      {
+        path: processString(StringsNamesUrl.fundamentoLibras),
+        component: InitialLibrasComponent,
       },
       {
         path: 'mapas',
