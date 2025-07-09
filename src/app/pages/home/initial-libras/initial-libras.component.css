@@ -1,0 +1,55 @@
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.cardItem {
+  cursor: grab;
+  padding: 10px;
+  padding-right: 0px;
+  padding-bottom: 5px;
+  border-radius: 8px;
+}
+
+.cardItem:active {
+  cursor: grabbing;
+}
+
+.cardItem img {
+  border-radius: 10px;
+  width: auto;
+  height: 130px;
+  border: 2px solid #3f51b5;
+}
+
+.cardItem .icon {
+  border-radius: 10px;
+  width: auto;
+  height: 130px;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #3f51b5;
+  font-size: 40px;
+}
+
+.cardItem p {
+  width: 140px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 7px;
+  text-indent: -10px;
+}
+
+.centerCard {
+  justify-content: center;
+}
+
+@media only screen and (max-width: 667px) {
+  .containerCard {
+    width: auto;
+    max-width: 350px;
+  }
+}

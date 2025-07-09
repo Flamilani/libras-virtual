@@ -299,33 +299,35 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
     ]),
   ]),
 
- // (⬅️ slide da esquerda) - HomePage
-  transition('* => FingerspellingPage', [
+      // Zoom-fade padrão para outras rotas
+  transition('* => FingerspellingDetailPage', [
     style({ position: 'relative' }),
     query(
       ':enter, :leave',
       [
         style({
           position: 'absolute',
-          width: '100%',
           top: 0,
           left: 0,
+          width: '100%',
         }),
       ],
       { optional: true }
     ),
 
-    query(':enter', [style({ transform: 'translateX(-100%)', opacity: 0 })], {
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.9)' })], {
       optional: true,
     }),
+
+    query(':leave', animateChild(), { optional: true }),
 
     group([
       query(
         ':leave',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(100%)', opacity: 0 })
+            '600ms ease-in',
+            style({ opacity: 0, transform: 'scale(0.7)' })
           ),
         ],
         { optional: true }
@@ -334,41 +336,43 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
         ':enter',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(0%)', opacity: 1 })
+            '600ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
           ),
         ],
         { optional: true }
       ),
     ]),
   ]),
-  // (➡️ slide da direita) - HomePage
-  transition('AlphabetDetailPage => *', [
+  // Zoom-fade padrão para outras rotas
+  transition('FingerspellingDetailPage <=> *', [
     style({ position: 'relative' }),
     query(
       ':enter, :leave',
       [
         style({
           position: 'absolute',
-          width: '100%',
           top: 0,
           left: 0,
+          width: '100%',
         }),
       ],
       { optional: true }
     ),
 
-    query(':enter', [style({ transform: 'translateX(100%)', opacity: 0 })], {
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.8)' })], {
       optional: true,
     }),
+
+    query(':leave', animateChild(), { optional: true }),
 
     group([
       query(
         ':leave',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(-100%)', opacity: 0 })
+            '800ms ease-out',
+            style({ opacity: 0, transform: 'scale(1.2)' })
           ),
         ],
         { optional: true }
@@ -377,16 +381,17 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
         ':enter',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(0%)', opacity: 1 })
+            '800ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
           ),
         ],
         { optional: true }
       ),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 
- // (⬅️ slide da esquerda) - HomePage
+    // Zoom-fade padrão para outras rotas
   transition('* => AlphabetDetailPage', [
     style({ position: 'relative' }),
     query(
@@ -394,25 +399,27 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
       [
         style({
           position: 'absolute',
-          width: '100%',
           top: 0,
           left: 0,
+          width: '100%',
         }),
       ],
       { optional: true }
     ),
 
-    query(':enter', [style({ transform: 'translateX(-100%)', opacity: 0 })], {
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.9)' })], {
       optional: true,
     }),
+
+    query(':leave', animateChild(), { optional: true }),
 
     group([
       query(
         ':leave',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(100%)', opacity: 0 })
+            '600ms ease-in',
+            style({ opacity: 0, transform: 'scale(0.7)' })
           ),
         ],
         { optional: true }
@@ -421,41 +428,43 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
         ':enter',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(0%)', opacity: 1 })
+            '600ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
           ),
         ],
         { optional: true }
       ),
     ]),
   ]),
-  // (➡️ slide da direita) - HomePage
-  transition('FingerspellingPage => *', [
+  // Zoom-fade padrão para outras rotas
+  transition('AlphabetDetailPage <=> *', [
     style({ position: 'relative' }),
     query(
       ':enter, :leave',
       [
         style({
           position: 'absolute',
-          width: '100%',
           top: 0,
           left: 0,
+          width: '100%',
         }),
       ],
       { optional: true }
     ),
 
-    query(':enter', [style({ transform: 'translateX(100%)', opacity: 0 })], {
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.8)' })], {
       optional: true,
     }),
+
+    query(':leave', animateChild(), { optional: true }),
 
     group([
       query(
         ':leave',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(-100%)', opacity: 0 })
+            '800ms ease-out',
+            style({ opacity: 0, transform: 'scale(1.2)' })
           ),
         ],
         { optional: true }
@@ -464,12 +473,105 @@ export const directionalSlideAnimation = trigger('routeAnimations', [
         ':enter',
         [
           animate(
-            '500ms ease-out',
-            style({ transform: 'translateX(0%)', opacity: 1 })
+            '800ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
           ),
         ],
         { optional: true }
       ),
+      query('@*', animateChild(), { optional: true }),
+    ]),
+  ]),
+
+ // Zoom-fade padrão para outras rotas
+    transition('* => FingerspellingPage', [
+    style({ position: 'relative' }),
+    query(
+      ':enter, :leave',
+      [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+        }),
+      ],
+      { optional: true }
+    ),
+
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.9)' })], {
+      optional: true,
+    }),
+
+    query(':leave', animateChild(), { optional: true }),
+
+    group([
+      query(
+        ':leave',
+        [
+          animate(
+            '600ms ease-in',
+            style({ opacity: 0, transform: 'scale(0.7)' })
+          ),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          animate(
+            '600ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
+          ),
+        ],
+        { optional: true }
+      ),
+    ]),
+  ]),
+  // Zoom-fade padrão para outras rotas
+  transition('FingerspellingPage <=> *', [
+    style({ position: 'relative' }),
+    query(
+      ':enter, :leave',
+      [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+        }),
+      ],
+      { optional: true }
+    ),
+
+    query(':enter', [style({ opacity: 0, transform: 'scale(0.8)' })], {
+      optional: true,
+    }),
+
+    query(':leave', animateChild(), { optional: true }),
+
+    group([
+      query(
+        ':leave',
+        [
+          animate(
+            '800ms ease-out',
+            style({ opacity: 0, transform: 'scale(1.2)' })
+          ),
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          animate(
+            '800ms ease-out',
+            style({ opacity: 1, transform: 'scale(1)' })
+          ),
+        ],
+        { optional: true }
+      ),
+      query('@*', animateChild(), { optional: true }),
     ]),
   ]),
 

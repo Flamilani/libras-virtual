@@ -26,6 +26,7 @@ import { JoyrideModule } from 'ngx-joyride';
 import { SpeechComponent } from './speech/speech.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GamesComponent } from './games/games.component';
+import { HandDetectorComponent } from './hand-detector/hand-detector.component';
 
 @NgModule({
     imports: [
@@ -57,6 +58,7 @@ import { GamesComponent } from './games/games.component';
         DialogueComponent,
         SpeechComponent,
         GamesComponent,
+        HandDetectorComponent
     ],
 })
 export class HomeModule {}

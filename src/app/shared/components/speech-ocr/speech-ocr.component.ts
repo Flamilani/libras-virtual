@@ -195,41 +195,41 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
     }
   }
 
-  speakText() {
-    if (this.isSpeaking) {
-      window.speechSynthesis.cancel();
-      this.isSpeaking = false;
-      return;
-    }
-    this.utterance = new SpeechSynthesisUtterance(this.textResult);
-    console.log(this.utterance);
-    console.log(this.textResult);
-    this.utterance.lang = 'pt-BR';
-    this.utterance.pitch = this.pitch;
+  speak() {
+    const texto = this.textControl?.value;
+    if (!texto) return;
+
+    this.stop();
+
+    const utterance = new SpeechSynthesisUtterance(texto);
+    console.log(utterance);
+
+    utterance.lang = 'pt-BR';
+    utterance.pitch = this.pitch;
     this.isSpeaking = true;
 
-    this.utterance.onstart = () => {
+    utterance.onstart = () => {
       this.ngZone.run(() => {
         this.updateToneVisual();
         this.showTone = true;
       });
     };
 
-    this.utterance.onend = () => {
+    utterance.onend = () => {
       this.ngZone.run(() => {
         this.isSpeaking = false;
         this.showTone = false;
       });
     };
 
-    this.utterance.onerror = () => {
+    utterance.onerror = () => {
       this.ngZone.run(() => {
         this.isSpeaking = false;
         this.showTone = false;
       });
     };
 
-    window.speechSynthesis.speak(this.utterance);
+    speechSynthesis.speak(utterance);
   }
 
   resetSpeech() {
@@ -250,5 +250,12 @@ export class SpeechOcrComponent implements OnInit, OnDestroy {
     this.inputFile?.setValue('');
     this.focusTextArea();
     this.resetSpeech();
+  }
+
+    stop() {
+    if (speechSynthesis.speaking || speechSynthesis.pending) {
+      speechSynthesis.cancel();
+      this.showTone = false;
+    }
   }
 }

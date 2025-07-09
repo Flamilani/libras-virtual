@@ -20,6 +20,8 @@ import { OptionsAlphabet } from '../constants/options-alphabet.constant';
 import { cNames } from '../constants/names.constant';
 import { iNames } from '../interfaces/names.interface';
 import { cGAMES } from '../constants/games-list.constant';
+import { cComputerVisor } from '../constants/computer-visor-list.constant';
+import { cInitialLibras } from '../constants/initial-libras.constant';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +34,8 @@ export class DatasService {
   listOptinsAlphabet = OptionsAlphabet;
   listNames = cNames;
   listGames = cGAMES;
+  listComputerVisor = cComputerVisor;
+  listInitialLibras = cInitialLibras;
 
   private namesSubject = new BehaviorSubject<iNames[]>(this.listNames);
 
@@ -110,5 +114,13 @@ export class DatasService {
 
   getGames() {
     return this.listGames;
+  }
+
+  getComputerVisor() {
+    return this.listComputerVisor;
+  }
+
+  getInitialLibras() {
+    return this.listInitialLibras;
   }
 }

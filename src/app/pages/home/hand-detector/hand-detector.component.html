@@ -1,0 +1,10 @@
+<card-ui [cardStyle]="'containerCardNumbers justifyContentStart'">
+  <app-breadcrumb [title]="title" link="/"></app-breadcrumb>
+</card-ui>
+<div class="container">
+    <video #video autoplay muted playsinline width="640" height="480" style="display: none;"></video>
+  <canvas #canvas width="640" height="480"></canvas>
+  <div class="gesture">
+    Sinal detectado: <strong>{{ detectedGesture }}</strong>
+  </div>
+</div>
