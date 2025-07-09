@@ -40,7 +40,7 @@ export class HeaderComponent {
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
     ).subscribe(() => {
-      this.isWebAppRoute = this.router.url === '/webapp';
+      this.isWebAppRoute = this.router.url === '/';
     });
   }
 }

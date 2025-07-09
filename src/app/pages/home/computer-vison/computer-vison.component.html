@@ -3,12 +3,12 @@
 </card-ui>
 <card-ui [cardStyle]="'containerCard'">
   <div class="card-list">
-    @for (game of games; track game) {
+    @for (comp of computer; track comp) {
       <div class="card-initial">
         <div class="cardItem">
-          <a [routerLink]="game.link">
-            <img [src]="game.image" alt="game.title" />
-            <p>{{ game.title }}</p>
+          <a [routerLink]="comp.link">
+            <img [src]="comp.image" alt="comp.title" />
+            <p>{{ comp.title }}</p>
           </a>
         </div>
       </div>

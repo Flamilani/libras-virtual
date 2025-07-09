@@ -9,4 +9,5 @@ export const environment = {
   imagePath,
   imgLoading,
   iconSign,
+  baseUrl: 'http://localhost:4200'
 };

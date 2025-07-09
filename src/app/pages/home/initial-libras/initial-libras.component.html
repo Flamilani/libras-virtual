@@ -3,15 +3,16 @@
 </card-ui>
 <card-ui [cardStyle]="'containerCard'">
   <div class="card-list">
-    @for (game of games; track game) {
+    @for (sign of libras; track sign) {
       <div class="card-initial">
         <div class="cardItem">
-          <a [routerLink]="game.link">
-            <img [src]="game.image" alt="game.title" />
-            <p>{{ game.title }}</p>
+          <a [routerLink]="sign.link">
+            <img [src]="sign.image" alt="sign.title" />
+            <p>{{ sign.title }}</p>
           </a>
         </div>
       </div>
     }
   </div>
 </card-ui>
+

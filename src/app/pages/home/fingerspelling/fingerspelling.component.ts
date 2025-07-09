@@ -17,6 +17,7 @@ import { CardsComponent } from '../../../shared/components/cards/cards.component
 import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
 
 @Component({
     selector: 'app-fingerspelling',
@@ -39,9 +40,9 @@ export class FingerspellingComponent implements OnInit {
 
   isOpen: boolean = true;
 
-  title: string = 'Datilologia em Libras';
+  title: string = StringsNamesUrl.datilologia + ' em Libras';
   styles: string = 'sectionTop';
-  link: string = '/webapp';
+  link: string = '/';
 
   selectedFont!: string;
   letters!: any;

@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as faceapi from 'face-api.js';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
+import { processString } from 'src/app/shared/utils/convert-urls';
 
 @Component({
     selector: 'app-facial-expression',
@@ -12,6 +14,8 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
 })
 export class FacialExpressionComponent implements OnInit, OnDestroy {
   private mediaStream: MediaStream | null = null;
+  title = StringsNamesUrl.expressoesFaciais;
+  link = `/${processString(StringsNamesUrl.visorComputacional)}`;
 
   currentExpression: string = '';
 

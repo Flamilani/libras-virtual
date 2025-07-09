@@ -3,6 +3,7 @@ import { CardsGrettingComponent } from '../../../shared/components/cards-grettin
 import { ContentUiComponent } from '../../../components/UI/content-ui/content-ui.component';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
+import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-names';
 
 @Component({
     selector: 'app-gretting',
@@ -12,8 +13,8 @@ import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.componen
     imports: [CardUIComponent, BreadcrumbComponent, ContentUiComponent, CardsGrettingComponent]
 })
 export class GrettingComponent {
-  title: string = "Saudações em Libras";
+  title: string = StringsNamesUrl.saudacoes;
   styles: string = "sectionTop";
-  link: string = "/webapp";
+  link: string = "/";
 
 }
