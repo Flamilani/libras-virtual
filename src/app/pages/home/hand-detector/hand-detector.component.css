@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
 }
 
 
@@ -25,19 +24,26 @@ video, canvas {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 50vh;
   object-fit: scale-down;
-  border: 2px solid #ccc;
 }
 
 canvas {
   pointer-events: none;
+  object-fit: contain;
 }
 
-@media only screen and (max-width: 667px) {
+@media only screen and (max-width: 360px) {
   canvas {
     width: 100%;
     max-width: 100%;
+    object-fit: cover;
+    height: 65vh;
+  }
+
+  .gesture {
+    position: relative;
+    bottom: -160px;
   }
 }
 
