@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as faceapi from 'face-api.js';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { CardUIComponent } from '../../../components/UI/card-ui/card-ui.component';
@@ -6,14 +6,18 @@ import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-na
 import { processString } from 'src/app/shared/utils/convert-urls';
 
 @Component({
-    selector: 'app-facial-expression',
-    templateUrl: './facial-expression.component.html',
-    styleUrls: ['./facial-expression.component.css'],
-    standalone: true,
-    imports: [CardUIComponent, BreadcrumbComponent],
+  selector: 'app-facial-expression',
+  templateUrl: './facial-expression.component.html',
+  styleUrls: ['./facial-expression.component.css'],
+  standalone: true,
+  imports: [CardUIComponent, BreadcrumbComponent],
 })
 export class FacialExpressionComponent implements OnInit, OnDestroy {
+  @ViewChild('video', { static: true }) videoRef!: ElementRef<HTMLVideoElement>;
+  @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+
   private mediaStream: MediaStream | null = null;
+
   title = StringsNamesUrl.expressoesFaciais;
   link = `/${processString(StringsNamesUrl.visorComputacional)}`;
 
@@ -49,18 +53,24 @@ export class FacialExpressionComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     await this.loadModels();
-    const video = document.getElementById('video') as HTMLVideoElement;
+
+    const video = this.videoRef.nativeElement;
+    const canvas = this.canvasRef.nativeElement;
+
     this.startVideo(video);
 
-    video.addEventListener('play', () => {
-      const canvas = faceapi.createCanvasFromMedia(video);
-      canvas.setAttribute('id', 'overlay');
-      document.getElementById('video-container')?.append(canvas);
+    video.onloadedmetadata = () => {
+      const displaySize = {
+        width: video.videoWidth,
+        height: video.videoHeight,
+      };
 
-      const displaySize = { width: video.width, height: video.height };
+      canvas.width = displaySize.width;
+      canvas.height = displaySize.height;
+
       faceapi.matchDimensions(canvas, displaySize);
 
-      setInterval(async () => {
+      const update = async () => {
         const detections = await faceapi
           .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
           .withFaceExpressions();
@@ -70,22 +80,26 @@ export class FacialExpressionComponent implements OnInit, OnDestroy {
         if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
         faceapi.draw.drawDetections(canvas, resized);
 
-        if (detections[0]) {
+        if (detections.length > 0) {
           const expressions = detections[0].expressions;
-          const sorted = Object.entries(expressions).sort(
-            (a, b) => b[1] - a[1]
-          );
+          const sorted = Object.entries(expressions).sort((a, b) => b[1] - a[1]);
           this.currentExpression = sorted[0][0];
+        } else {
+          this.currentExpression = '';
         }
-      }, 1000);
-    });
+
+        requestAnimationFrame(update);
+      };
+
+      update();
+    };
   }
 
   ngOnDestroy() {
-  if (this.mediaStream) {
-    this.mediaStream.getTracks().forEach(track => track.stop());
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach((track) => track.stop());
+    }
   }
-}
 
   async loadModels() {
     const MODEL_URL = '/assets/models';
@@ -95,13 +109,13 @@ export class FacialExpressionComponent implements OnInit, OnDestroy {
     ]);
   }
 
-startVideo(video: HTMLVideoElement) {
-  navigator.mediaDevices
-    .getUserMedia({ video: true })
-    .then((stream) => {
-      video.srcObject = stream;
-      this.mediaStream = stream;
-    })
-    .catch((err) => console.error('Error accessing webcam: ', err));
-}
+  startVideo(video: HTMLVideoElement) {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+        this.mediaStream = stream;
+      })
+      .catch((err) => console.error('Error accessing webcam: ', err));
+  }
 }

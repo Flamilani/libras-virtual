@@ -28,7 +28,6 @@ export class ArrowsComponent implements OnInit {
   }
 
   previousLetter(link: unknown) {
-    console.log(this.selectedLetter);
     const index = this.alphabet.indexOf(this.selectedLetter);
     if (index > 0) {
       this.selectedLetter = this.alphabet[index - 1];
