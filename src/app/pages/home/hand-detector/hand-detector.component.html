@@ -1,12 +1,15 @@
 <card-ui [cardStyle]="'containerCardNumbers justifyContentStart'">
   <app-breadcrumb [title]="title" [link]="link"></app-breadcrumb>
 </card-ui>
-<div class="container">
-    <video #video autoplay muted playsinline style="display: none;"></video>
-  <canvas #canvas width="640" height="480"></canvas>
-   @if (detectedGesture) {
-      <div class="gesture">
-    Sinal detectado: <strong>{{ detectedGesture }}</strong>
+<div class="containerHand">
+  <div id="video-wrapper">
+    <video #video autoplay muted playsinline></video>
+    <canvas #canvas></canvas>
   </div>
-   }
+
+  @if (detectedGesture) {
+    <div class="gesture">
+      Sinal detectado: <strong>{{ detectedGesture }}</strong>
+    </div>
+  }
 </div>

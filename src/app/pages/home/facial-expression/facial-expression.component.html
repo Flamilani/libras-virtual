@@ -3,7 +3,8 @@
 </card-ui>
 <div class="containerFacial">
   <div id="video-container">
-    <video id="video" width="640" height="480" autoplay muted></video>
+     <video #video autoplay muted playsinline></video>
+    <canvas #canvas></canvas>
   </div>
   @if (currentLabelPt) {
     <h2 class="expressions">
@@ -11,8 +12,8 @@
     </h2>
   }
   @if (!currentLabelPt) {
-    <h2 class="alert alert-info text-center mt-3">
+    <h3 class="alert alert-info text-center mt-1">
       Aproxime-se ao sensor para detectar expressões faciais
-    </h2>
+    </h3>
   }
 </div>

@@ -24,8 +24,8 @@ import { processString } from 'src/app/shared/utils/convert-urls';
   styleUrl: './hand-detector.component.css',
 })
 export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
-  @ViewChild('canvas') canvas!: ElementRef<HTMLCanvasElement>;
+   @ViewChild('video', { static: true }) videoRef!: ElementRef<HTMLVideoElement>;
+  @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private camera!: Camera;
   private mediaStream: MediaStream | null = null;
@@ -36,6 +36,8 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
   detectedGesture: string = '';
 
   private lastGestureDetected: string = '';
+  private animationFrameId: number | null = null;
+  private lastResults: any = null;
 
   ngOnInit(): void {}
 
@@ -54,9 +56,14 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     hands.onResults((results) => this.drawResults(results));
 
-    this.camera = new Camera(this.video.nativeElement, {
+ /*    this.videoRef.nativeElement.onloadedmetadata = () => {
+      this.adjustCanvasSize();
+    }; */
+
+    this.camera = new Camera(this.videoRef.nativeElement, {
       onFrame: async () => {
-        await hands.send({ image: this.video.nativeElement });
+        this.adjustCanvasSize();
+        await hands.send({ image: this.videoRef.nativeElement });
       },
       width: 640,
       height: 480,
@@ -65,24 +72,42 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.camera.start();
   }
 
-  adjustCanvasSize(): void {
-    const canvas = this.canvas.nativeElement;
-    const video = this.video.nativeElement;
-
-    if (video.videoWidth && video.videoHeight) {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-
-      canvas.style.width = `${video.clientWidth}px`;
-      canvas.style.height = `${video.clientHeight}px`;
+  scheduleDraw() {
+    if (this.animationFrameId !== null) {
+      cancelAnimationFrame(this.animationFrameId);
     }
 
-    console.log(canvas.width, canvas.height);
-    console.log(canvas.style.width, canvas.style.height);
+    this.animationFrameId = requestAnimationFrame(() => {
+      if (this.lastResults) {
+        this.drawResults(this.lastResults);
+      }
+    });
+  }
+
+  adjustCanvasSize(): void {
+    const canvas = this.canvasRef.nativeElement;
+    const video = this.videoRef.nativeElement;
+
+    const videoWidth = video.videoWidth;
+    const videoHeight = video.videoHeight;
+
+    if (!videoWidth || !videoHeight) return;
+
+    // Tamanho real do canvas (pixels)
+    canvas.width = videoWidth;
+    canvas.height = videoHeight;
+
+    // Tamanho visual do canvas (estilo)
+/*     const rect = video.getBoundingClientRect();
+
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    canvas.style.left = `${rect.left}px`;
+    canvas.style.top = `${rect.top}px`; */
   }
 
   drawResults(results: any) {
-    const canvasEl = this.canvas.nativeElement;
+    const canvasEl = this.canvasRef.nativeElement;
     const canvasCtx = canvasEl.getContext('2d');
     if (!canvasCtx) return;
 
@@ -208,8 +233,6 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
       this.isFingerFolded(16, 14, landmarks) &&
       this.isFingerFolded(20, 18, landmarks);
 
-    console.log(indicadorParaCima, polegarAfastado, outrosDobrados);
-
     return indicadorParaCima && polegarAfastado && outrosDobrados;
   }
 
@@ -285,7 +308,7 @@ export class HandDetectorComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-/*   @HostListener('window:resize')
+  /*   @HostListener('window:resize')
   onResize() {
     this.adjustCanvasSize();
   } */
