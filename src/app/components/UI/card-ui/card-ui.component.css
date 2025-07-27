@@ -1,5 +1,4 @@
 .containerCard {
-  display: flex;
   flex-wrap: wrap;
   width: 100%;
   max-width: 500px;
@@ -26,28 +25,24 @@
 }
 
 .containerCardNumbers {
-  display: flex;
   width: 100%;
   max-width: 435px;
   margin: 0 auto;
 }
 
 .containerCardNames {
-  display: flex;
   width: 100%;
   max-width: 468px;
   margin: 0 auto;
 }
 
 .containerCardFinger {
-  display: flex;
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
 }
 
 .containerCardVoice {
-  display: flex;
   width: 100%;
   max-width: 520px;
   margin: 0 auto;

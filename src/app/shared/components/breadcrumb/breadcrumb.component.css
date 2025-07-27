@@ -1,10 +1,11 @@
-.btnInfo, .btnInfoSheet {
+.btnInfo,
+.btnInfoSheet {
   vertical-align: super;
   cursor: pointer;
-  border: 2px solid #3F51B5;
+  border: 2px solid #3f51b5;
   border-radius: 50%;
   padding: 5px;
-  background: #2196F3;
+  background: #2196f3;
   color: #fff;
 }
 
@@ -22,6 +23,15 @@
   display: inline-block;
 }
 
+.sizeIconShare {
+  width: 25px;
+  height: 25px;
+  display: block;
+  float: inline-end;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
 .sectionTop {
   width: 100%;
   margin: 0 auto;
@@ -31,10 +41,10 @@
 
 @media only screen and (max-width: 667px) {
   .btnInfo {
-      display: none;
+    display: none;
   }
 
   .btnInfoSheet {
-      display: inline;
+    display: inline;
   }
 }
