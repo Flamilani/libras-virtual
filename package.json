@@ -1,6 +1,6 @@
 {
   "name": "libras-virtual",
-  "version": "2.4.7",
+  "version": "2.5.0",
   "scripts": {
     "ng": "ng",
     "release": "npm version patch && npm run build && git push && git push --tags",
@@ -34,6 +34,7 @@
     "@mediapipe/camera_utils": "^0.3.1675466862",
     "@mediapipe/drawing_utils": "^0.3.1675466124",
     "@mediapipe/hands": "^0.4.1675469240",
+    "@mediapipe/tasks-vision": "^0.10.22-rc.20250304",
     "@ng-web-apis/common": "^4.11.1",
     "@ng-web-apis/speech": "^4.11.1",
     "@popperjs/core": "^2.11.6",
