@@ -51,7 +51,7 @@ body.base-root {
 }
 
 main {
-  min-height: calc(100vh - 58px);
+  min-height: calc(100vh - 75px);
   overflow: hidden;
 }
 
