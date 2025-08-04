@@ -40,6 +40,9 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
   private webcamRunning = false;
   private lastVideoTime = -1;
   private animationId: number | null = null;
+  private lastSpokenGesture: string = '';
+  private lastSpeakTime: number = 0;
+  private minSpeakInterval: number = 2000;
 
   async ngOnInit(): Promise<void> {
     await this.createGestureRecognizer();
@@ -172,9 +175,23 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
             emoji = '🖐️';
         }
 
-        gestureOutput.className = `gesture-output ${cssClass}`
+        const outputText = `${emoji} Sinal: ${translatedGesture} | Lado: ${translatedHand}`;
+        gestureOutput.className = `gesture-output ${cssClass}`;
         gestureOutput.style.display = 'block';
-        gestureOutput.innerText = `${emoji} Sinal: ${translatedGesture} | Lado: ${translatedHand}`;
+        gestureOutput.innerText = outputText;
+
+        const now = Date.now();
+        const normalizedGestureKey = `${categoryName}_${handedness}`
+          .toLowerCase()
+          .trim();
+        if (
+          normalizedGestureKey !== this.lastSpokenGesture ||
+          now - this.lastSpeakTime > this.minSpeakInterval
+        ) {
+          this.lastSpokenGesture = normalizedGestureKey;
+          this.lastSpeakTime = now;
+          this.speak(outputText);
+        }
       } else {
         gestureOutput.style.display = 'none';
       }
@@ -198,6 +215,16 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
+  }
+
+  speak(text: string) {
+    if (text === this.lastSpokenGesture) return;
+    this.lastSpokenGesture = text;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR';
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
   }
 
   @HostListener('window:resize')
