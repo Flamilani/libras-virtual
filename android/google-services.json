@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "83178259535",
+    "project_id": "libras-virtual",
+    "storage_bucket": "libras-virtual.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83178259535:android:b2fed38a784b2d28b9d63a",
+        "android_client_info": {
+          "package_name": "com.librasvirtual.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNEQbIGjn5rcGHplXeKo2tXJ0rx1jAltg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
