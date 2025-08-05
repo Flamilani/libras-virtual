@@ -2,7 +2,7 @@
     "apps":
     [
         {
-            "appId": "com.librasvirtual.app",
+            "appId": "ea50e588",
             "root": "dist/build",
             "dependencyInstallCommand": "npm install",
             "webBuildCommand": "npm run build --prod",
