@@ -5,7 +5,7 @@
             "appId": "ea50e588",
             "root": "dist/build",
             "dependencyInstallCommand": "npm ci",
-            "webBuildCommand": "npm run build --prod",
+            "webBuildCommand": "./node_modules/.bin/ng build --configuration production --verbose",
             "androidPath": "android"
         }
     ]
