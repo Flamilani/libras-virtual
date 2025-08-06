@@ -23,7 +23,7 @@
               "leaflet",
               "tesseract.js"
             ],
-            "outputPath": "dist/build/",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -126,7 +126,7 @@
         "deploy": {
           "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "outputPath": "dist/build/",
+            "outputPath": "dist",
             "netlifyToken": "nfp_FwsntwWFsmgbCnXFU9x5R8toecCQULFR442e",
             "siteId": "13cc73da-d71e-48d1-80cf-86cd3ed77fb2"
           }
