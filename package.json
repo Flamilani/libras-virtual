@@ -9,7 +9,7 @@
     "postversion": "git add . && git commit -m \"🔖 Release %npm_package_version%\" && git tag v%npm_package_version%",
     "prebuild": "node version-update.js",
     "build-dev": "ng build --configuration development",
-    "build-prod": "ng build --configuration production",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "start": "ng serve",
     "test": "ng test"

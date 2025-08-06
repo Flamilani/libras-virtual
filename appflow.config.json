@@ -2,10 +2,11 @@
     "apps":
     [
         {
-            "appId": "com.librasvirtual.app",
+            "appId": "ea50e588",
             "root": "dist/build",
             "dependencyInstallCommand": "npm ci",
-            "webBuildCommand": "npm run build-prod"
+            "webBuildCommand": "npm run build --prod",
+            "androidPath": "android"
         }
     ]
 }
