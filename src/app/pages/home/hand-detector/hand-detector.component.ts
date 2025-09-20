@@ -31,6 +31,8 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
   canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('output', { static: true })
   gestureOutputRef!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('outputOnly', { static: true })
+  gestureOnlyOutputRef!: ElementRef<HTMLParagraphElement>;
 
   title = StringsNamesUrl.detector;
   link = `/${processString(StringsNamesUrl.visorComputacional)}`;
@@ -81,6 +83,7 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
     const canvas = this.canvasRef.nativeElement;
     const canvasCtx = canvas.getContext('2d')!;
     const gestureOutput = this.gestureOutputRef.nativeElement;
+    const gestureOnlyOutput = this.gestureOnlyOutputRef.nativeElement;
 
     if (this.runningMode === 'IMAGE') {
       this.runningMode = 'VIDEO';
@@ -124,8 +127,8 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
       };
 
       const handednessTranslations: { [key: string]: string } = {
-        Left: 'Esquerda',
-        Right: 'Direita',
+        Left: 'Esquerdo',
+        Right: 'Direito',
       };
 
       if (results.gestures.length > 0) {
@@ -175,10 +178,14 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
             emoji = '🖐️';
         }
 
-        const outputText = `${emoji} Sinal: ${translatedGesture} | Lado: ${translatedHand}`;
+        const outputText = `${translatedGesture} | Lado ${translatedHand}`;
         gestureOutput.className = `gesture-output ${cssClass}`;
         gestureOutput.style.display = 'block';
         gestureOutput.innerText = outputText;
+
+        const outputOnlyText = emoji;
+        gestureOnlyOutput.style.display = 'block';
+        gestureOnlyOutput.innerText = outputOnlyText;
 
         const now = Date.now();
         const normalizedGestureKey = `${categoryName}_${handedness}`
@@ -194,6 +201,7 @@ export class HandDetectorComponent implements OnInit, OnDestroy {
         }
       } else {
         gestureOutput.style.display = 'none';
+        gestureOnlyOutput.style.display = 'none';
       }
     }
 
