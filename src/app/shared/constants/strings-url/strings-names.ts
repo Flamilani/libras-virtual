@@ -15,5 +15,6 @@ export class StringsNamesUrl {
   static cacasPalavras = 'Caca-Palavras';
   static assistenteVoz = 'Assistente de Voz';
   static detector = 'Detecção de Mão';
+  static detectorDatilologia = 'Detecção de Datilologia';
   static visorComputacional = 'Visão Computacional (IA)';
 }

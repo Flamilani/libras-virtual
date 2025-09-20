@@ -52,6 +52,18 @@ video {
   width: 100%;
 }
 
+.outputOnly {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: calc(8px + 1.2vw);
+  text-align: center;
+  z-index: 999;
+  position: absolute;
+  bottom: 0px;
+  opacity: 0.8;
+  width: 100%;
+}
+
 @media only screen and (max-width: 360px) {
   canvas {
     width: 100%;
@@ -86,6 +98,26 @@ video {
   text-align: center;
   background-color: #ccc;
   transition: background-color 0.3s ease;
+}
+
+.gesture-outputOnly {
+  /*   margin-top: 10px;
+  font-size: 16px;
+  background-color: #ccc;
+  padding: 12px;
+  border-radius: 5px;
+  border: 2px solid #3a3a3a;*/
+  z-index: 999;
+  position: absolute;
+  left: 20px;
+  top: 35px;
+  font-size: 90px;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+  text-align: center;
 }
 
 .gesture-open {
