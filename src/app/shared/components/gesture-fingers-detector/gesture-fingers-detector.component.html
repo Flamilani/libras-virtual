@@ -3,9 +3,13 @@
 </card-ui>
 <div class="containerHand">
   <div id="video-wrapper">
-    <p #outputOnly class="gesture-outputOnly"></p>
-    <video #webcam autoplay muted playsinline></video>
+    <video #video autoplay muted playsinline></video>
     <canvas #canvas></canvas>
-    <p #output class="gesture-output"></p>
   </div>
+
+  @if (detectedGesture) {
+    <div class="gesture">
+      Sinal detectado: <strong>{{ detectedGesture }}</strong>
+    </div>
+  }
 </div>

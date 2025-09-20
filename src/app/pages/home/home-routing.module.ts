@@ -22,6 +22,7 @@ import { StringsNamesUrl } from 'src/app/shared/constants/strings-url/strings-na
 import { HandDetectorComponent } from './hand-detector/hand-detector.component';
 import { ComputerVisonComponent } from './computer-vison/computer-vison.component';
 import { InitialLibrasComponent } from './initial-libras/initial-libras.component';
+import { GestureFingersDetectorComponent } from 'src/app/shared/components/gesture-fingers-detector/gesture-fingers-detector.component';
 
 const routes: Routes = [
   {
@@ -98,6 +99,10 @@ const routes: Routes = [
       {
         path: processString(StringsNamesUrl.detector),
         component: HandDetectorComponent,
+      },
+      {
+        path: processString(StringsNamesUrl.detectorDatilologia),
+        component: GestureFingersDetectorComponent,
       },
       {
         path: processString(StringsNamesUrl.visorComputacional),

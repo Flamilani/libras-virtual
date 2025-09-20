@@ -1,6 +1,6 @@
-import { iInitials } from "../interfaces/initials.interface";
-import { processString } from "../utils/convert-urls";
-import { StringsNamesUrl } from "./strings-url/strings-names";
+import { iInitials } from '../interfaces/initials.interface';
+import { processString } from '../utils/convert-urls';
+import { StringsNamesUrl } from './strings-url/strings-names';
 
 const img01 = './../../../assets/imgs/deteccao-mao.png';
 const img02 = './../../../assets/imgs/expressoes-faciais.png';
@@ -15,9 +15,16 @@ export const cComputerVisor: iInitials[] = [
   },
   {
     id: '2',
+    link: `/${processString(StringsNamesUrl.detectorDatilologia)}`,
+    title: StringsNamesUrl.detectorDatilologia,
+    image: img01,
+    active: false,
+  },
+  {
+    id: '3',
     link: `/${processString(StringsNamesUrl.expressoesFaciais)}`,
     title: StringsNamesUrl.expressoesFaciais,
     image: img02,
     active: true,
   },
-]
+];
